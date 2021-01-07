@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "4d772eb1-554e-44a5-ac70-a07a76ea8ff8",
+		"name": "Schedule Component",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Schedules",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedules Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedule Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/7c8f3c8d-cb65-4f55-abb5-8e130e79c467",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"7c8f3c8d-cb65-4f55-abb5-8e130e79c467"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"\",\r\n  \"name\": \"Test Schedule\",\r\n  \"agentId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"agentName\": \"Test Agent\",\r\n  \"cronExpression\": \"\",\r\n  \"lastExecution\": \"2020-10-01T17:02:54.680Z\",\r\n  \"nextExecution\": \"2020-10-01T17:02:54.680Z\",\r\n  \"isDisabled\": true,\r\n  \"projectId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"processId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"processName\": \"Test Process\",\r\n  \"triggerName\": \"Test Trigger\",\r\n  \"startingType\": \"OneTime\",\r\n  \"status\": \"In Progress\",\r\n  \"expiryDate\": \"2020-10-01T17:02:54.680Z\",\r\n  \"startDate\": \"2020-10-01T17:02:54.680Z\",\r\n  \"createdOn\": \"2020-10-01T17:02:54.680Z\",\r\n  \"createdBy\": \"EMAIL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"6fe35b72-1f29-45ea-819f-2c3290ef44d4\",\r\n  \"name\": \"Test Schedule\",\r\n  \"agentId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"agentName\": \"Test Agent\",\r\n  \"cronExpression\": \"string\",\r\n  \"lastExecution\": \"2020-10-01T17:02:54.680Z\",\r\n  \"nextExecution\": \"2020-10-01T17:02:54.680Z\",\r\n  \"isDisabled\": true,\r\n  \"projectId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"processId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"processName\": \"Test Process\",\r\n  \"triggerName\": \"Test Trigger\",\r\n  \"startingType\": \"OneTime\",\r\n  \"status\": \"Not Started\",\r\n  \"expiryDate\": \"2020-10-01T17:02:54.680Z\",\r\n  \"startDate\": \"2020-10-01T17:02:54.680Z\",\r\n  \"createdOn\": \"2020-10-01T17:02:54.680Z\",\r\n  \"createdBy\": \"EMAIL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/6fe35b72-1f29-45ea-819f-2c3290ef44d4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"6fe35b72-1f29-45ea-819f-2c3290ef44d4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/6fe35b72-1f29-45ea-819f-2c3290ef44d4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"6fe35b72-1f29-45ea-819f-2c3290ef44d4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Schedule Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Name\",\r\n        \"value\":\"My Test Schedule\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/6fe35b72-1f29-45ea-819f-2c3290ef44d4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"6fe35b72-1f29-45ea-819f-2c3290ef44d4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "57d9d67b-5f5d-49a2-9ccf-1260c3a680a8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d8912a57-b27e-43ed-babb-8e97b0358913",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

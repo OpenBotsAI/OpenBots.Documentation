@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "91262ce8-239a-4612-8d9f-dfc75e20989a",
+		"name": "IPFencing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post IPFencing Rule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usage\": \"Deny\",\r\n    \"rule\": \"Header\",\r\n    \"ipAddress\": null,\r\n    \"ipRange\": null,\r\n    \"headerName\": \"X-PROXY\",\r\n    \"headerValue\": \"ABC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPfencing",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPfencing"
+					]
+				},
+				"description": "Creates a new IPFencing rule with the specified organizationID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all IPFencing rules for an organization",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPFencing"
+					]
+				},
+				"description": "Gets all rules for the specified organization ID\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get IPFencing rule by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPfencing/fd9cf139-8d3b-4993-b4a1-6dd2198afce2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPfencing",
+						"fd9cf139-8d3b-4993-b4a1-6dd2198afce2"
+					]
+				},
+				"description": "Gets an IPFencing rule for the specified rule ud\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an IPFencing rule by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPFencing",
+						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+					]
+				},
+				"description": "Deletes the specified IPfencing rule"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update an IPFencing entity",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usage\": \"Deny\",\r\n    \"rule\": \"Header\",\r\n    \"ipAddress\": null,\r\n    \"ipRange\": null,\r\n    \"headerName\": \"X-PROXY\",\r\n    \"headerValue\": \"ABC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPFencing",
+						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+					]
+				},
+				"description": "Updates the specified IPFencing entity with the provided model properties\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Patch an IPFencing entity",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/headerValue\",\r\n        \"value\":\"EFG\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Organizations",
+						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"IPFencing",
+						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+					]
+				},
+				"description": "Create a patch on the specified IPFecning entity with the provided patch document\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

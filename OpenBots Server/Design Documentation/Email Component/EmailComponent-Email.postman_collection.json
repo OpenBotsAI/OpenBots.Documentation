@@ -1,0 +1,557 @@
+{
+	"info": {
+		"_postman_id": "82d5336e-06d4-4fd8-b957-fe8f79f084ee",
+		"name": "EmailComponent - Email",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Emails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/58a1e106-58d2-4b4a-b78b-275f17ec9880",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"58a1e106-58d2-4b4a-b78b-275f17ec9880"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email by Id View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/1558b9a2-8518-4694-972f-ee3490787c39/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"1558b9a2-8518-4694-972f-ee3490787c39",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Direction",
+							"value": "Outgoing",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email - Draft",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "EmailMessageJson",
+							"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Nicole Carrero\",\n      \"address\": \"EMAIL\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
+							"type": "text"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/65777074-37ef-407d-8063-58bc1a5903c5/send",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"65777074-37ef-407d-8063-58bc1a5903c5",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "EmailMessageJson",
+							"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Nicole Carrero\",\n      \"address\": \"EMAIL\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/send",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailAccountId\": \"1d1c2209-1ce1-4d6d-ac78-397cc7fdbcd4\",\r\n    \"sentOnUTC\": \"2020-11-30T20:00:26.7404159\",\r\n    \"emailObjectJson\": \"<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole\",\r\n    \"senderName\": \"[\\\"NAME\\\"]\",\r\n    \"senderAddress\": \"[\\\"EMAIL\\\"]\",\r\n    \"senderUserId\": null,\r\n    \"status\": \"Sent\",\r\n    \"reason\": \"Email was sent successfully.\",\r\n    \"direction\": \"Incoming\",\r\n    \"conversationId\": null,\r\n    \"replyToEmailId\": null,\r\n    \"id\": \"58a1e106-58d2-4b4a-b78b-275f17ec9880\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": null,\r\n    \"createdOn\": \"2020-11-30T20:00:36.6344895\",\r\n    \"deletedBy\": \"\",\r\n    \"deleteOn\": null,\r\n    \"timestamp\": \"AAAAAAAGKnA=\",\r\n    \"updatedOn\": null,\r\n    \"updatedBy\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/58a1e106-58d2-4b4a-b78b-275f17ec9880",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"58a1e106-58d2-4b4a-b78b-275f17ec9880"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email With File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "SentOnUTC",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "EmailObjectJson",
+							"value": "<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole",
+							"type": "text"
+						},
+						{
+							"key": "SenderName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "SenderAddress",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "SenderUserId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Status",
+							"value": "Draft",
+							"type": "text"
+						},
+						{
+							"key": "Reason",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Direction",
+							"value": "Outgoing",
+							"type": "text"
+						},
+						{
+							"key": "ConversationId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ReplyToEmailId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "EmailAccountId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/5db3bd4a-d9bd-4085-bda0-59e89c1644b0/update",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"5db3bd4a-d9bd-4085-bda0-59e89c1644b0",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Direction\",\r\n        \"value\":\"Incoming\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/b0fb3492-3cad-4422-9f62-23b95ba6a2ba",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"b0fb3492-3cad-4422-9f62-23b95ba6a2ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/f4f2545b-4e97-4306-9b05-220fe718f3f9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"f4f2545b-4e97-4306-9b05-220fe718f3f9"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6cfddb9e-cdab-4115-8679-e159eb75c14e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4efaacae-5acf-41df-98a6-5c9990d4ac4e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

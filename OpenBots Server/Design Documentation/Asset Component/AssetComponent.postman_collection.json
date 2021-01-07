@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "dbcef32a-e18b-4b78-8dd7-c4c33dafce5a",
+		"name": "AssetComponent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload Assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "TestingNumber",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "Number",
+							"type": "text"
+						},
+						{
+							"key": "NumberValue",
+							"value": "12",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/Upload",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"Upload"
+					]
+				},
+				"description": "Post method that allows for files to be uploaded. Adds a new Asset to the existing Assets"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"NewAssetName\",\r\n    \"type\":\"number\",\r\n    \"numbervalue\": \"23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5\n",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5\n"
+					]
+				},
+				"description": "Provides an action to update an Asset, when Asset id and the new details of Asset are given"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5"
+					]
+				},
+				"description": "Provides an Asset's details for a particular Asset Id."
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/name\",\r\n        \"value\":\"Patched Name\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5"
+					]
+				},
+				"description": "Updates partial details of Asset."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5"
+					]
+				},
+				"description": "Updates partial details of Asset."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/Count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"Count"
+					]
+				},
+				"description": "Get the total count of Assets"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Asset ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"NewAssetName\",\r\n    \"type\":\"number\",\r\n    \"numbervalue\": \"23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						""
+					]
+				},
+				"description": "Adds a new asset to the existing Assets, but does no allow for files to be uploaded."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Uploaded Assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "NewName",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "File",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": "FILE"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/ec0c552e-ef08-432b-8c2a-0836c325bd98/Update",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"ec0c552e-ef08-432b-8c2a-0836c325bd98",
+						"Update"
+					]
+				},
+				"description": "Allows for assets to be updated, including objects of file type"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets"
+					]
+				},
+				"description": "Provides a list of all Assets"
+			},
+			"response": []
+		},
+		{
+			"name": "Export Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Export",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Export"
+					]
+				},
+				"description": "Export/download an Asset file"
+			},
+			"response": []
+		},
+		{
+			"name": "Increment Asset Number",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Increment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Increment"
+					]
+				},
+				"description": "Increment in the Number value of Asset by 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Decrement Asset Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Decrement",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Decrement"
+					]
+				},
+				"description": "Decreasets the value of a number asset by 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Asset Number",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Add",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Add"
+					]
+				},
+				"description": "Adds a specified number value to the value of the specified number Asset"
+			},
+			"response": []
+		},
+		{
+			"name": "Subtract Asset Value",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Subtract",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Subtract"
+					]
+				},
+				"description": "Subtract a number value from the specified number Asset\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Append Text to Asset",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/5e87d94b-cc69-4563-8fe3-3680b41af2e5/Append",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"5e87d94b-cc69-4563-8fe3-3680b41af2e5",
+						"Append"
+					]
+				},
+				"description": "Append a string text value to a specified Asset of text type\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

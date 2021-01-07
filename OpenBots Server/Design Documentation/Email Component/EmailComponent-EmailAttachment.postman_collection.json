@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "e22f254d-0294-4fd3-b934-265651f33a65",
+		"name": "EmailComponent - Email Attachment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Attachments by Email Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Attachments by Email Id Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Attachment by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/646fa6f9-511c-4fa9-b400-112fef2eb9f6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"646fa6f9-511c-4fa9-b400-112fef2eb9f6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email Attachment - Binary Objects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"51e4356b-1a13-4a17-a632-9e05ad7a89df\", \"d98ff92a-ab6c-4857-8018-c37d64b93c23\", \"bdaadd3c-acb2-4c4d-a035-5662c7b70181\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/binaryObjects",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"binaryObjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Attachment - New Files",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d1952f38-a304-4026-9051-1794c8e76c6b/emailattachments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d1952f38-a304-4026-9051-1794c8e76c6b",
+						"emailattachments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Attachment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"contentType\": \"image/png\",\r\n            \"sizeInBytes\": 78283,\r\n            \"contentStorageAddress\": \"BinaryObjects\\\\e9f57f7b-727f-4482-915d-3b33cc080711\\\\QueueItemAPI\\\\d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"binaryObjectId\": \"d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"emailId\": \"d12716c4-b577-48ba-aef7-35e51aeb9190\",\r\n            \"name\": \"CountCredentialsSequenceDiagram.png\",\r\n            \"id\": \"46ec8303-0890-4c55-bd75-144b173a071a\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"EMAIL\",\r\n            \"createdOn\": null,\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": null,\r\n            \"timestamp\": \"AAAAAAAGKic=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": null\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/46ec8303-0890-4c55-bd75-144b173a071a",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"46ec8303-0890-4c55-bd75-144b173a071a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Attachment With File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/66a27e25-ec32-4718-9fee-15fd18c92aae/update",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"66a27e25-ec32-4718-9fee-15fd18c92aae",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Attachment Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"CreatedBy\",\r\n        \"value\":\"EMAIL\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/46ec8303-0890-4c55-bd75-144b173a071a",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"46ec8303-0890-4c55-bd75-144b173a071a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Email Attachments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/fc781456-59ed-4299-829a-9df0b40b2a3b/emailattachments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"fc781456-59ed-4299-829a-9df0b40b2a3b",
+						"emailattachments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email Attachment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emails/d12716c4-b577-48ba-aef7-35e51aeb9190/emailattachments/9ca7f5a3-c331-42fa-8f50-18147e69a3f3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emails",
+						"d12716c4-b577-48ba-aef7-35e51aeb9190",
+						"emailattachments",
+						"9ca7f5a3-c331-42fa-8f50-18147e69a3f3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

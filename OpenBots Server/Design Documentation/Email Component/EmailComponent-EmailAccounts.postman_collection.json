@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "af71df78-35f8-4366-b1d9-8e014f727af8",
+		"name": "EmailComponent - Email Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update Email Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": false,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"EMAIL\",\r\n  \"encryptedPassword\": \"PASSWORD\",\r\n  \"passwordHash\": \"\",\r\n  \"apiKey\": \"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\",\r\n  \"fromEmailAddress\": \"EMAIL\",\r\n  \"fromName\": \"NAME\",\r\n  \"startOnUTC\": \"2020-10-07T17:10:41.309Z\",\r\n  \"endOnUTC\": \"2021-10-07T17:10:41.309Z\",\r\n  \"name\": \"EmailAccount\",\r\n  \"id\": \"a404d9a9-ed66-4a92-a2ce-eb015274138a\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts/a404d9a9-ed66-4a92-a2ce-eb015274138a",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts",
+						"a404d9a9-ed66-4a92-a2ce-eb015274138a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts/57493978-51a2-486f-b4c3-e610cd03f83b",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts",
+						"57493978-51a2-486f-b4c3-e610cd03f83b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Account Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Provider\",\r\n        \"value\":\"SMTP\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts/5dda5605-b5e3-4af1-943d-77e420959df8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts",
+						"5dda5605-b5e3-4af1-943d-77e420959df8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"OpenBots.Server\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"\",\r\n  \"encryptedPassword\": \"\",\r\n  \"passwordHash\": \"\",\r\n  \"apiKey\": \"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\",\r\n  \"fromEmailAddress\": \"EMAIL\",\r\n  \"fromName\": \"OpenBots Server\",\r\n  \"startOnUTC\": \"2020-10-07T17:10:41.309Z\",\r\n  \"endOnUTC\": \"2021-10-07T17:10:41.309Z\",\r\n  \"name\": \"OpenBots Server Account\",\r\n  \"id\": \"\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts/33d452a5-5f08-4beb-8f0c-2c7ab02b62ca",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts",
+						"33d452a5-5f08-4beb-8f0c-2c7ab02b62ca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Account Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/emailaccounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"emailaccounts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "23d3bcdc-d343-4cee-b32e-bea484169c7c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c86eb396-d591-4628-9761-9907685b4449",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

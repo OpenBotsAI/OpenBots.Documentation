@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "db515245-8584-4d68-a942-adc5034e65dd",
+		"name": "Role Component",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Grant Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/people/c3c317de-a50a-4a8a-936b-8ca4a955000d/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/grantadmin?personId=c3c317de-a50a-4a8a-936b-8ca4a955000d&id=ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"people",
+						"c3c317de-a50a-4a8a-936b-8ca4a955000d",
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"grantadmin"
+					],
+					"query": [
+						{
+							"key": "personId",
+							"value": "c3c317de-a50a-4a8a-936b-8ca4a955000d"
+						},
+						{
+							"key": "id",
+							"value": "ef8a6670-f522-4fcd-a55e-90aa92d1deb7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Revoke Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/people/c3c317de-a50a-4a8a-936b-8ca4a955000d/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/revokeadmin?personId=c3c317de-a50a-4a8a-936b-8ca4a955000d&id=ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"people",
+						"c3c317de-a50a-4a8a-936b-8ca4a955000d",
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"revokeadmin"
+					],
+					"query": [
+						{
+							"key": "personId",
+							"value": "c3c317de-a50a-4a8a-936b-8ca4a955000d"
+						},
+						{
+							"key": "id",
+							"value": "ef8a6670-f522-4fcd-a55e-90aa92d1deb7"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
