@@ -1,8 +1,8 @@
 Author: Nicole Carrero
 Creation Date:  8/19/2020
 
-Updated On: 10/5/2020
-Updated By: Nicole Carrero
+Updated On: 01/28/2021
+Updated By: Dairon Hernandez
 
 **Schedule Component**
 
@@ -48,6 +48,10 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Schedule id
           - Output : JSON file listing schedule information
+      - Schedule Details: [HttpGet("api/v1/schedules/{id}/View")]
+        - Payloads
+          - Input : Schedule id
+          - Output : JSON file listing schedule information with additional viewmodel details
       - Create a schedule: [HttpPost("api/v1/schedules")]
         - Payloads
           - Input : Schedule data model
@@ -64,6 +68,10 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : JSONPatchDocument in request body with changes
           - Output : 200 OK response
+      - API to run a Job "NOW": [HttpPatch("api/v1/schedules/{id}/runnow")]
+        - Payloads
+          - Input : RunNowViewModel containing automationId and agentId
+          - Output : 200 OK response if run to attempt was successful
   - ScheduleManager:
     - The ScheduleManager will inherit BaseManager and IScheduleManager, which both inherit IManager.
       - Beyond the base class and interfaces, ScheduleManager will implement the StartNewRecurringJob(), CreateCommonJob(), CreateJob(), and GetScheduleAgentsandAutomations() methods to assist SchedulesController.

@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "2390c231-d363-4626-afab-91f52111e1f4",
+		"name": "AutomationExecutionLogs Component",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Automation Execution Log",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"jobID\": \"3889f204-82e5-458a-9b90-0a86d6964f2d\",\r\n  \"automationID\": \"908c4bb7-8301-465f-993f-1afa28ffab40\",\r\n  \"agentID\": \"4ecf55fe-e333-43bd-98a6-8899bf0b3246\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs"
+					]
+				},
+				"description": "Adds a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Automation Execution Logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs"
+					]
+				},
+				"description": " Provides a list of all ProcessExecutionLogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Agent Start Automation Execution Log",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"jobID\": \"3889f204-82e5-458a-9b90-0a86d6964f2d\",\r\n  \"automationID\": \"908c4bb7-8301-465f-993f-1afa28ffab40\",\r\n  \"agentID\": \"4ecf55fe-e333-43bd-98a6-8899bf0b3246\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/startautomation",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"startautomation"
+					]
+				},
+				"description": "Allows Agent to add a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Agent End Automation Execution Log",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"jobID\": \"3889f204-82e5-458a-9b90-0a86d6964f2d\",\r\n  \"automationID\": \"908c4bb7-8301-465f-993f-1afa28ffab40\",\r\n  \"agentID\": \"4ecf55fe-e333-43bd-98a6-8899bf0b3246\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"trigger\": \"sometrigger\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"Completed\",\r\n  \"hasErrors\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/4b9f1a91-0cc8-433d-bf32-11046a333bbf/endautomation",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"4b9f1a91-0cc8-433d-bf32-11046a333bbf",
+						"endautomation"
+					]
+				},
+				"description": "Agent is able to update a ProcessExecutionLog End status"
+			},
+			"response": []
+		},
+		{
+			"name": "Automation Execution Log by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/8c665ea8-12ac-4242-aa8c-e9ed3601f8c1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"8c665ea8-12ac-4242-aa8c-e9ed3601f8c1"
+					]
+				},
+				"description": "Provides a ProcessExecutionLog's details for a particular ProcessExecutionLog Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Automation Execution log",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/a0b4f641-a353-4697-80a0-17f5d74ddf64",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"a0b4f641-a353-4697-80a0-17f5d74ddf64"
+					]
+				},
+				"description": "Deletes a ProcessExecutionLog with a specified id from the ProcessExecutionLog."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation Execution Log",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ProcessName\",\r\n  \"jobID\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"automationID\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"agentID\": \"10ea9a48-7365-4b86-8897-e1d5969137e6\",\r\n  \"startedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"trigger\": \"string\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"string\",\r\n  \"hasErrors\": true,\r\n  \"errorMessage\": \"string\",\r\n  \"errorDetails\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/8c665ea8-12ac-4242-aa8c-e9ed3601f8c1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"8c665ea8-12ac-4242-aa8c-e9ed3601f8c1"
+					]
+				},
+				"description": "Updates a ProcessExecutionLog "
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation Execution Logs Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/name\",\r\n        \"value\":\"Patched Name\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/8c665ea8-12ac-4242-aa8c-e9ed3601f8c1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"8c665ea8-12ac-4242-aa8c-e9ed3601f8c1"
+					]
+				},
+				"description": "Updates partial details of ProcessExecutionLog."
+			},
+			"response": []
+		},
+		{
+			"name": "Automation Execution Logs View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"view"
+					]
+				},
+				"description": "Gets the view for all processExecution logs"
+			},
+			"response": []
+		},
+		{
+			"name": "Automation Execution Log View by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/view/bee9fa21-5105-4e84-a4b6-a7785d7ed997",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"view",
+						"bee9fa21-5105-4e84-a4b6-a7785d7ed997"
+					]
+				},
+				"description": "Gets the view for a given processExecutionLog id"
+			},
+			"response": []
+		},
+		{
+			"name": "Automation Execution Log Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automationexecutionlogs/Count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automationexecutionlogs",
+						"Count"
+					]
+				},
+				"description": "Gets the total count of processExecutionLogs"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

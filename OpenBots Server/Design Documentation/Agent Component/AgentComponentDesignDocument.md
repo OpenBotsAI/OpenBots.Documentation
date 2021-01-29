@@ -1,7 +1,7 @@
 Author: Dairon Hernandez
 Creation Date: 08/06/2020
 
-Updated On: 11/18/2020
+Updated On: 01/28/2021
 Updated By: Dairon Hernandez
 
 **Agent Component**
@@ -16,7 +16,7 @@ Updated By: Dairon Hernandez
 
 - In-Scope:
   - Administrator and/or user can view a list of agents and their heartbeats.
-  - Administrator can declare new agents.****
+  - Administrator can declare new agents.
   - Administrator can edit and delete existing agents.
   - Administrator can connect machines and receive an agent id.
 - Out-of-Scope:
@@ -44,6 +44,10 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : None
           - Output : JSON file listing all agent information
+      - All agents viewmodel: [HttpGet("api/v1/agents/view")]
+        - Payloads
+          - Input : None
+          - Output : JSON file listing all agent viewmodel information
       - Count agents: [HttpGet("api/v1/agents/count")]
         - Payloads
           - Input : None
@@ -97,10 +101,9 @@ Updated By: Dairon Hernandez
     - AgentHeartbeatRepository will be responsible for updating and retreiving information about an agent's hearbeat
   - Agent Data Model(s):
     - The Agent data model will be used to view details of each agent.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Agent will have string MachineName, Guid MachineCredentials, string MacAddresses, string IPAddresses, bool IsEnabled, bool isConnected, and Guid CredentialId.
+      - Beyond the base classes, Agent will have string MachineName, Guid MachineCredentials, string MacAddresses, string IPAddresses, bool IsEnabled, bool isConnected, Guid CredentialId, string IPOption, and bool IsEnhancedSecurity.
     - The AgentHeartbeat model will be used to view details of each agent's heatbeat status. It will inherit Entity and INonAuditable.      
       - Heartbeats will contain the fields DateTime LastReportedOn, string LastReportedStatus, string LastReportedWork, string LastReportedMessage, bool IsHealthy
-
 **Sequence Diagrams**
 
 - [Agent Component Sequence Diagram](Sequence Diagrams/AgentComponentSequenceDiagram.png)

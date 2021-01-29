@@ -1,6 +1,9 @@
 Author: Nicole Carrero
 Creation Date: 12/4/2020
 
+Updated On: 1/22/2021
+Updated By: Nicole Carrero
+
 **Email Component**
 
 **Context**
@@ -165,6 +168,10 @@ Creation Date: 12/4/2020
         - Payloads
           - Input : None
           - Output : JSON file listing all email attachment information
+      - All email attachments view: [HttpGet("api/v1/emails/{emailId}/emailattachments")]
+        - Payloads
+          - Input : None
+          - Output : JSON file listing all email attachment view information
       - Email attachment count: [HttpGet("api/v1/emails/{emailId}/emailattachments/count")]
         - Payloads
           - Input : None
@@ -255,6 +262,9 @@ Creation Date: 12/4/2020
   - Update Email View Model:
     - The UpdateEmailViewModel will be used to update a draft email with file attachments.  It will inherit <EmailModel, UpdateEmailViewModel>.
       - UpdateEmailViewModel will have DateTime SentOnUTC, string EmailObjectJson, string SenderName, string SenderAddress, Guid SenderUserId, string Status, string Reason, string Direction, Guid ConversationId, Guid ReplyToEmailId, Guid EmailAccountId, and IFormFile[] Files.
+  - All Email Attachments View Model:
+    - The AllEmailAttachmentsViewModel view model will be used to display specific properties of email attachments.
+      - AllEmailAttachments will have Guid EmailId, Guid BinaryObjectId, long SizeInBytes, and string Name.
   - Update Email Attachment View Model:
     - The UpdateEmailAttachmentViewModel view model will be used to update an email attachment.
       - UpdateEmailAttachmentViewModel will have Guid Id, string Name, string ContentType, long SizeInBytes, Guid BinaryObjectId, and IFormFile File.

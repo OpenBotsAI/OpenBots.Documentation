@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date: 8/18/2020
 
-Updated On: 11/17/2020
+Updated On: 01/28/2021
 Updated By: Dairon Hernandez
 
 **Job Component**
@@ -106,9 +106,9 @@ Updated By: Dairon Hernandez
     - JobCheckpointRepository will be resposnible for updating and retreiving records from the JobCheckpoint table
   - Job Data Model:
     - The Job data model will be used to view details of each triggered job.  It will inherit the Entity class and INonAuditable interface.
-      - Beyond the base class, Job will have string AgentId, DateTime StartTime, DateTime EndTime, DateTime EnqueueTime, DateTime DequeueTime, Guid AutomationId, enum JobStatusType JobStatus, string Message, bool IsSuccessful, string ErrorReason, string ErrorCode, and string SerializedErrorString.
-    - The JobParameter data model contains details about the paramters that belong to a particular job. JobParameter inherits from NamedEnity and contains the fields string Datatype, string Value, and Guid JobId.
-    - The JobCheckpoint data model contains information about the current state of a job's checkpoint. The JobCheckpoints are Non-Auditable and inherit from Named Entity. The model contains the fields: string Iterator, string IteratorValue, string IteratorPosition, string IteratorCount, Guid JobId.
+      - Beyond the base class, Job will have string AgentId, DateTime StartTime, DateTime EndTime, double ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime Dequeue Time, Guid Process Id, enum JobStatusType JobStatus, string Message, bool IsSuccessful, string ErrorReason, string ErrorCode, and string SerializedErrorString.
+    - The JobParameter data model contains detials about the paramters that belong to a particular job. JobParameter inherits from NamedEnity and contains the fields string Datatype, string Value, and GUID jobId.
+    - The JobCheckpoint data model contains information about the current state of a job's checkpoint. The JobCheckpoints are Non-Auditable and inherit from Named Entity. The model contains the fields: string Iterator, string IteratorValue, string IteratorPosition, string IteratorCount, GUID JobId
 
 **Sequence Diagrams**
 

@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "17440222-34f0-43ad-9438-3050bafd494c",
+		"name": "AutomationComponent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Automations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Automations View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automations Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/f7128363-26ce-4920-b7e4-376ab16fb18a",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"f7128363-26ce-4920-b7e4-376ab16fb18a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Details View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/view/beed0630-ddb0-4272-8609-b0a443d77cd4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"view",
+						"beed0630-ddb0-4272-8609-b0a443d77cd4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add an Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"NicoleTestAutomation2\",\r\n  \"automationEngine\": \"OpenBots\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/OpenBotsServer Resources/Email Message Formats.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/24f30012-326b-46bb-8622-f396b1341522/upload",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"24f30012-326b-46bb-8622-f396b1341522",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation with File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "File",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/Sequence Diagrams/AgentComponentSequenceDiagram.png"
+						},
+						{
+							"key": "name",
+							"value": "nicole_testing",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "Published",
+							"type": "text"
+						},
+						{
+							"key": "automationEngine",
+							"value": "OpenBots",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}automations/d350d323-25ff-4656-939d-ab0b30805a6c/update",
+					"host": [
+						"{{localhost}}automations"
+					],
+					"path": [
+						"d350d323-25ff-4656-939d-ab0b30805a6c",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"adding\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"OpenBots\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/be63744f-1909-441a-95b4-9fa4effe0fc5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"be63744f-1909-441a-95b4-9fa4effe0fc5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"AutomationEngine\",\r\n        \"value\":\"OpenBots\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/15962434-6258-41bc-a148-e0a08e5fb5b8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"15962434-6258-41bc-a148-e0a08e5fb5b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/0e2bbc1b-ae95-4d54-8364-afe3bed7acf0/export",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"0e2bbc1b-ae95-4d54-8364-afe3bed7acf0",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/5ba8449a-ad7d-4416-ae03-3c61c2671602",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"5ba8449a-ad7d-4416-ae03-3c61c2671602"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Lookup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/automations/getlookup",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"automations",
+						"getlookup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

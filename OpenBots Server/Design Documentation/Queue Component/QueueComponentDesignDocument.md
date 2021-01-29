@@ -1,14 +1,14 @@
 Author: Nicole Carrero
 Creation Date: 8/19/2020
 
-Updated On: 11/27/2020
+Updated On: 1/7/2021
 Updated By: Nicole Carrero
 
 **Queue Component**
 
 **Context**
 
-- Problem: Users are unable to view, create, edit, delete, and utilize queues.  A user should be able to create new queues by defining their name and either edit or delete existing queues from the list.  In addition, a user should be able to utilize the queues to store queue item transactions from automations and update the status of those transactions containing a priority and arbitrary data in text/JSON format.  A user should be able to view the list of queues and some basic statistics about each queue.  In addition, a user should be able to add, edit, delete, or view queue items that have been assigned to each queue and the appropriate details for each queue item.  A user should be able to attach files to queue items when necessary and edit or remove those files.
+- Problem: Users are unable to view, create, edit, delete, and utilize queues.  A user should be able to create new queues by defining their name and retry count as well as either edit or delete existing queues from the list.  In addition, a user should be able to utilize the queues to store queue item transactions from automations and update the status of those transactions containing a priority and arbitrary data in text/JSON format.  A user should be able to view the list of queues and some basic statistics about each queue.  In addition, a user should be able to add, edit, delete, or view queue items that have been assigned to each queue and the appropriate details for each queue item.  A user should be able to attach files to queue items when necessary and edit or remove those files.
 - Requirements: Ensure that a user is able to create new named queues and view the list of created queues, edit and delete existing queues, create transactions from automations associated with a queue, and view, create, edit, or delete arbitrary text/JSON data as queue item transactions.  Ensure that a user is able to attach files to a queue item and edit or delete an attached file.
 
 **Component Scope**
@@ -18,14 +18,14 @@ Updated By: Nicole Carrero
   - User can view, edit, or delete existing queues.
   - User can create queue item transactions from automations associated with a queue.
   - User can view, create, edit, or delete arbitrary text/JSON data as queue item transactions.
-  - User can attach a file to a queue item.
+  - User can attach files to a queue item.
   - User can edit or remove a file attached to a queue item.
 - Out-of-Scope:
   - User can commit, rollback, or extend queue item properties such as State, State Message, IsLocked, LockedOnUTC, LockedBy, LockedUntilUTC, etc.
 
 **Design**
 
-- Overview: The overall structure uses the QueuesController to allow the user to make a web request for the list of queues or to create, edit, or delete a specific queue.  The QueuesController gets called, which in turn utilizes methods in the QueueManager, then uses the QueueRepository to retrieve, add, update, or delete the appropriate data from the Server if the request is valid.  If the request is invalid, the user will receive an error message stating the error that occurred while trying to process the request.  The overall structure of the QueueItemsController allows the user to make a web request to view the queue item transactions or to create, edit, or delete a transaction.  The QueueItemsController gets called, which in turn accesses the QueueItemManager, and then uses the QueueItemRepository to retrieve, create, edit, or delete the appropriate data from the Server if the request is valid.  If the request is invalid, the user will receive an error message stating the error that occured while trying to process the request.
+- Overview: The overall structure uses the QueuesController to allow the user to make a web request for the list of queues or to create, edit, or delete a specific queue.  The QueuesController gets called, which in turn utilizes methods in the QueueManager, then uses the QueueRepository to retrieve, add, update, or delete the appropriate data from the Server if the request is valid.  The overall structure of the QueueItemsController allows the user to make a web request to view the queue item transactions or to create, edit, or delete a transaction.  The QueueItemsController gets called, which in turn accesses the QueueItemManager, and then uses the QueueItemRepository to retrieve, create, edit, or delete the appropriate data from the Server if the request is valid.  The overall structure of the QueueItemAttachmentsController allows the user to make a web request to view the queue item attachments or to create, edit, or delete an attachment.  The QueueItemAttachmentsController gets called, which in turn accesses the QueueItemManager, and then uses the QueueItemRepository to retrieve, create, edit, or delete the appropriate data from the Server if the request is valid.  If the request is invalid for any of the above requests, the user will receive an error message stating the error that occured while trying to process the request.
 - Proposed Solution:
   - User Interface:
     - In the Dashboard under Queues, there will be links to All Queue Items, Add Queue Item, All Queues, and Add Queue.
@@ -33,8 +33,8 @@ Updated By: Nicole Carrero
       - The headers will be: Name, State, State Message, Locked By, Start Time, Expiration Time, End Time, View, Edit, and Delete.
         - The appropriate data will be displayed underneath each heading for all queue items.
       - There will be a button on the page to allow the user to create a new queue item and add it to the list.
-      - There will be a switch where the user can keep a watch on when queue items have been added, altered, or removed.
-      - The user can click on each queue item to edit or delete it, or view the queue item details on a separate page.
+      - There will be a switch where the user can keep a watch for when queue items have been added, altered, or removed.
+      - The user can click on each queue item to edit or delete it along with any attached files.  The user can also view the queue item details along with any attached files on a separate page.
     - On the All Queues Page, the queues will be shown in a table.
       - The headers will be: Name, Max Retry Count, Created By, Created On, View, Edit, and Delete.
         - The appropriate data will be displayed underneath each heading.
@@ -104,17 +104,13 @@ Updated By: Nicole Carrero
        - Payloads
          - Input : JSONPatchDocument in request body with changes
          - Output : 200 OK response
-     - Create (enqueue) queue item: [HttpPost("api/v1/queueitems/enqueue")]
+     - Create queue item (enqueue): [HttpPost("api/v1/queueitems/enqueue")]
        - Payloads
          - Input : Queue item model data
          - Output : JSON file listing new queue item view model information
-     - Attach file(s) to queue item: [HttpPost("api/v1/queueitems/{id}/attach")]
+     - Pick up next available queue item (dequeue): [HttpPut("api/v1/queueitems/dequeue")]
        - Payloads
-         - Input : Queue item id, File(s)
-         - Output : JSON file listing newly created queue item attachment(s) information
-     - Pick up (dequeue) next available queue item: [HttpPut("api/v1/queueitems/dequeue")]
-       - Payloads
-         - Input: Agent Id, Queue id
+         - Input: Agent id, Queue id
          - Output: JSON file listing specific queue item view model information
      - Successful queue item (commit): [HttpPut("api/v1/queueitems/commit")]
        - Payloads
@@ -136,39 +132,95 @@ Updated By: Nicole Carrero
        - Payloads
          - Input : Queue item id, Update queue item view model
          - Output : JSON file listing updated queue item view model information
+  - QueueItemAttachmentsController:
+    - The QueueItemAttachmentsController will make an API request and use the QueueItemManager to execute any business logic involved.  It will then access the QueueItemAttahmentRepository to retrieve all queue item attachments associated with that particular queue item from the Server and will return the information back to the view.  The controller will utilize this same structure to add, edit, delete, or view details of a queue item transaction.
+    - Routes:
+     - Queue item attachments: [HttpGet("api/v1/queueitems/{queueItemId}/queueitemattachments")]
+       - Payloads
+         - Input : None
+         - Output : JSON file listing queue item attachment information
+     - Queue item attachments (view model): [HttpGet("api/v1/queueitems/{queueItemId}/queueitemattachments/view")]
+       - Payloads
+         - Input : None
+         - Output : JSON file listing queue item attachment view information
+     - Queue item count: [HttpGet("api/v1/queueitems/{queueItemId}/queueitemattachments/count")]
+       - Payloads
+         - Input : None
+         - Output : JSON file listing queue item attachment count
+     - Queue item attachment details: [HttpGet("api/v1/queueitems/{queueItemId}/queueitemattachments/{id}")]
+       - Payloads
+         - Input : None
+         - Output : JSON file listing specific queue item attachment information
+     - Queue item attachments: [HttpGet("api/v1/queueitems/{queueItemId}/queueitemattachments")]
+       - Payloads
+         - Input : None
+         - Output : JSON file listing queue item attachment information
+     - Create queue item attachment (existing binary objects): [HttpPost("api/v1/queueitems/{queueItemId}/queueitemattachments/binaryobjects")]
+       - Payloads
+         - Input : Array of binary object ids
+         - Output : JSON file listing queue item attachment information for a specific queue item
+     - Create queue item attachment: [HttpPost("api/v1/queueitems/{queueItemId}/queueitemattachments")]
+       - Payloads
+         - Input : Files to be attached
+         - Output : JSON file listing queue item attachment information for a specific queue item
+     - Edit queue item attachment with file: [HttpPut("api/v1/queueitems/{queueItemId}/queueitemattachments/{id}/update")]
+       - Payloads
+         - Input : File to be updated
+         - Output : JSON file listing specific queue item attachment information
+     - Edit queue item attachment property: [HttpPatch("api/v1/queueitems/{queueItemId}/queueitemattachments/{id}")]
+       - Payloads
+         - Input : JSONPatchDocument in request body with changes
+         - Output : 200 OK response
+     - Delete all queue item attachments for a queue item: [HttpDelete("api/v1/queueitems/{queueItemId}/queueitemattachments")]
+       - Payloads
+         - Input : None
+         - Output : 200 OK response
+     - Delete queue item attachment: [HttpDelete("api/v1/queueitems/{queueItemId}/queueitemattachments/{id}")]
+       - Payloads
+         - Input : None
+         - Output : 200 OK response
 - Managers:
   - QueueManager:
     - The QueueManager will inherit BaseManager, which inherits IManager, and IQueueItemManager.
       - Beyond the base class and interfaces, QueueManager will implement the CheckReferentialIntegrity() method to assist QueuesController.
   - QueueItemManager:
     - The QueueItemManager will inherit BaseManager, which inherits IManager, and IQueueItemManager.
-      - Beyond the base class and interfaces, QueueItemManager will implement the Enqueue(), Dequeue(), FindQueueItem(), FindExpiredQueueItem(), Commit(), Rollback(), Extend(), UpdateState(), GetQueueItem(), SetNewState(), SetExpiredState(), GetQueueItemsAndBinaryObjectIds(), and GetQueueItemView() methods to assist QueueItemsController.
+      - Beyond the base class and interfaces, QueueItemManager will implement the Enqueue(), Dequeue(), FindQueueItem(), FindExpiredQueueItem(), Commit(), Rollback(), Extend(), UpdateState(), GetQueueItem(), SetNewState(), SetExpiredState(), GetQueueItemsAndBinaryObjectIds(), GetQueueItemView(), AttachFiles(), and UpdateAttachedFiles() methods to assist QueueItemsController.
 - Repositories:
   - QueueRepository:
     - The QueueRepository inherits from EntityRepository<Queue>, which inherits from ReadOnlyEntityRepository<Queue>, and IQueueRepository.
       - Beyond the base classes and interface, QueueRepository will retrieve all queues, add a new queue, or retrieve/edit/delete a queue by id.
   - QueueItemRepository:
     - The QueueItemRepository inherits from EntityRepository<QueueItemModel>, which inherits from ReadOnlyEntityRepository<QueueItemModel>, and IQueueItemRepository.
-      - Beyond the base classes and interface, QueueItemRepository will retrieve all queue items, add a new queue item, or retrieve/edit/delete a queue item by id.  It will have FindAllView() to allow the view model to display both the properties of the queue item and the corresponding binary object ids.
+      - Beyond the base classes and interface, QueueItemRepository will retrieve all queue items, add a new queue item, or edit/delete a queue item by id.  It will have FindAllView() to allow the view model to display both the properties of the queue item and the corresponding binary object ids.
+  - QueueItemAttachmentRepository:
+    - The QueueItemAttachmentRepository inherits from EntityRepository<QueueItemAttachment> and IQueueItemAttachmentRepository.
+      - Beyond the base class and interface, QueueItemAttachmentRepository will retrieve all queue item attachments, add a new queue item attachment, or edit/delete a queue item attachment by id.
 - Models:
   - Queue Data Model:
     - The Queue data model will be used to view details of each queue.  It will inherit the NamedEntity class, which inherits the Entity class.
       - Beyond the base classes, Queue will have string Description and int MaxRetryCount.
   - QueueItemModel Data Model:
     - The QueueItemModel data model will be used to view details of each queue item.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, QueueItemModel will have bool IsLocked, DateTime LockedOnUTC, DateTime LockedUntilUTC, Guid LockedBy, Guid QueueId, string Type, string JsonType, string DataJson, string State, string StateMessage, Guid LockTransactionKey, DateTime LockedEndTimeUTC, int RetryCount, int Priority, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, and string ResultJSON.
+      - Beyond the base classes, QueueItemModel will have bool IsLocked, DateTime LockedOnUTC, DateTime LockedUntilUTC, Guid LockedBy, Guid QueueId, string Type, string JsonType, string DataJson, string State, string StateMessage, Guid LockTransactionKey, DateTime LockedEndTimeUTC, int RetryCount, int Priority, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, and long PayloadSizeInBytes.
   - QueueItemAttachment Data Model:
     - The QueueItemAttachment data model will be used to view the binary object ids that correlate with the attachments of a queue item.  It will inherit the Entity class.
-      - Beyond the base class, QueueItemAttachment will have Guid QueueItemId and Guid BinaryObjectId.
+      - Beyond the base class, QueueItemAttachment will have Guid QueueItemId, Guid BinaryObjectId, and long SizeInBytes.
+  - Queue View Model:
+    - The QueueViewModel view model will be used to view details of each queue.
+      - QueueViewModel will have string Name (required), string Description, and int MaxRetryCount.
   - AllQueueItemsViewModel View Model:
     - The AllQueueItemsVieWModel view model will be used to view details of each queue item in addition to the list of related binary object ids (file attachments).  It will inherit IViewModel<QueueItemmodel, AllQueueItemsViewModel>.
-      - Beyond the interface, AllQueueItemsViewModel will have string Name, Guid Id, string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, List<Guid> BinaryObjectIds, Guid QueueId, and DateTime CreatedOn.
+      - Beyond the interface, AllQueueItemsViewModel will have string Name, Guid Id, string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, List<Guid> BinaryObjectIds, Guid QueueId, DateTime CreatedOn, and long PayloadSizeInBytes.
   - QueueItemViewModel View Model:
     - The QueueItemViewModel view model will be used to view details of an individual queue item in addition to the list of related binary object ids (file attachments).  It will inherit NamedEntity, which inherits Entity, and IViewModel<QueueItemModel, QueueItemViewModel>.
-      - Beyond the base classes and interface, QueueItemViewModel will have string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, Guid QueueId, string Type, string JsonType, string DataJson, Guid LockTransactionKey, int RetryCount, int Priority, and List<Guid> BinaryObjectIds.
+      - Beyond the base classes and interface, QueueItemViewModel will have string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, Guid QueueId, string Type, string JsonType, string DataJson, Guid LockTransactionKey, int RetryCount, int Priority, long PayloadSizeInBytes, and List<Guid> BinaryObjectIds.
   - UpdateQueueItemViewModel View Model:
     - The UpdateQueueItemViewModel view model will be used to update details of an individual queue item in addition to the list of related binary object ids (file attachments).  It will inherit IViewModel<QueueItemModel, UpdateQueueItemModel>.
       - Beyond the interface, UpdateQueueItemViewModel will have Guid Id, string Name, Guid QueueId, string Source, string Event, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string Type, string DataJson, string State, List<Guid> BinaryObjectIds, and IFormFile[] Files.
+  - AllQueueItemAttachments View Model:
+    - The AllQueueItemAttachmentsViewModel view model will be used to view details of queue item attachments associated with a particular queue item.
+      - AllQueueItemAttachmentsViewModel will have Guid QueueItemId, Guid BinaryObjectId, long SizeInBytes, and string Name.
 
 **Sequence Diagrams**
 
@@ -176,8 +228,9 @@ Queue
 - [Queue Component Sequence Diagram](Sequence Diagrams/QueuesController/QueueComponentSequenceDiagram.png)
 - [Queue Count Sequence Diagram](Sequence Diagrams/QueuesController/QueueCountSequenceDiagram.png)
 - [Create Queue Sequence Diagram](Sequence Diagrams/QueuesController/CreateQueueSequenceDiagram.png)
-- [Edit Queue Sequence Diagram](Sequence Diagrams/QueuesController/EditQueueSequenceDiagram.png)
-- [Edit Queue Property Sequence Diagram](Sequence Diagrams/QueuesController/EditQueuePropertySequenceDiagram.png)
+- [Edit Queue Sequence Diagram](Sequence Diagrams/QueuesController/CreateQueueSequenceDiagram.png)
+- [Edit Queue Property Sequence Diagram](Sequence Diagrams/QueuesController/EditQueueSequenceDiagram.png)
+- [Queue Details Sequence Diagram](Sequence Diagrams/QueuesController/EditQueuePropertySequenceDiagram.png)
 - [View Queue Sequence Diagram](Sequence Diagrams/QueuesController/QueueDetailsSequenceDiagram.png)
 - [Delete Queue Sequence Diagram](Sequence Diagrams/QueuesController/DeleteQueueSequenceDiagram.png)
 Queue Item
@@ -185,12 +238,19 @@ Queue Item
 - [Queue Item Count Sequence Diagram](Sequence Diagrams/QueueItemsController/QueueItemCountSequenceDiagram.png)
 - [Queue Item Details Sequence Diagram](Sequence Diagrams/QueueItemsController/QueueItemDetailsSequenceDiagram.png)
 - [Enqueue Queue Item Sequence Diagram](Sequence Diagrams/QueueItemsController/CreateQueueItemSequenceDiagram.png)
-- [Attach File Sequence Diagram](Sequence Diagrams/QueueItemsController/AttachFileSequenceDiagram.png)
-- [Delete File Sequence Diagram](Sequence Diagrams/QueueItemsController/DeleteFileSequenceDiagram.png)
 - [Edit Queue Item Sequence Diagram (Dequeue, Commit, Extend, State, Edit with Attachments)](Sequence Diagrams/QueueItemsController/EditQueueItemSequenceDiagram.png)
 - [Edit Queue Item Property Sequence Diagram](Sequence Diagrams/QueueItemsController/EditQueueItemPropertySequenceDiagram.png)
 - [Delete Queue Item Sequence Diagram](Sequence Diagrams/QueueItemsController/DeleteQueueItemSequenceDiagram.png)
 - [Rollback Queue Item Sequence Diagram](Sequence Diagrams/QueueItemsController/RollbackQueueItemSequenceDiagram.png)
+
+Queue Item Attachments
+- [Queue Item Attachment Component Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/QueueItemAttachmentComponentSequenceDiagram.png)
+- [Queue Item Attachment Count Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/QueueItemAttachmentCountSequenceDiagram.png)
+- [Queue Item Attachment Details Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/QueueItemAttachmentDetailsSequenceDiagram.png)
+- [Create Queue Item Attachment Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/CreateQueueItemAttachmentSequenceDiagram.png)
+- [Edit Queue Item Attachment Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/EditQueueItemAttachmentSequenceDiagram.png)
+- [Edit Queue Item Attachment Property Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/EditQueueItemAttachmentPropertySequenceDiagram.png)
+- [Delete Queue Item Attachment(s) Sequence Diagram](Sequence Diagrams/QueueItemAttachmentsController/DeleteQueueItemAttachmentSequenceDiagram.png)
 
 **Unit Tests**
 

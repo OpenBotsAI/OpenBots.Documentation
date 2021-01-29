@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date: 8/4/2020
 
-Updated On: 9/29/2020
+Updated On: 1/7/2021
 Updated By: Nicole Carrero
 
 **Audit Log Component**
@@ -43,6 +43,10 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : None
           - Output : JSON file listing audit log information
+      - All audit logs (view model): [HttpGet("api/v1/auditlogs/view")]
+        - Payloads
+          - Input : None
+          - Output : JSON file listing audit log view model information
       - Count audit logs: [HttpGet("api/v1/auditlogs/count")]
         - Payloads
           - Input : None
@@ -51,6 +55,10 @@ Updated By: Nicole Carrero
        - Payloads
          - Input : Audit log id
          - Output : JSON file listing the audit log details for a specific audit log
+    - Individual audit log details: [HttpGet("api/v1/auditlogs/{id}/view")]
+      - Payloads
+        - Input : Audit log id
+        - Output : JSON file listing the audit log view model details for a specific audit log.
      - Audit logs lookup: [HttpGet("api/v1/auditlogs/auditlogslookup")]
        - Payloads
          - Input : None
@@ -63,10 +71,20 @@ Updated By: Nicole Carrero
     - - The AuditLogManager will inherit IAuditLogManager and BaseManager, which inherits IManager.
       - Beyond the base class and interfaces, AuditLogManager will implement the GetAuditLogs() and ZipCsv() methods to assist AuditLogsController.
   - AuditLog Repository:
-    - The AuditLogRepository will retrieve all audit logs or the details of an individual audit log.
+    - The AuditLogRepository will retrieve all audit logs or the details of an individual audit log.  It will utilize the GetServiceName() and FindAllView() methods to assist the AuditLogsController and AuditLogManager.
+- Model / View Models:
   - AuditLog Data Model:
     - The AuditLog data model will be used to view details of each audit log.  It will inherit Entity and INonAuditable.
       - Beyond the base class and interface, AuditLog will have Guid ObjectId, string ServiceName, string MethodName, string ParametersJson, string ExceptionJson, string ChangedFromJson, and string ChangedToJson.
+  - AuditLogDetails View Model
+    - The AuditLogDetailsViewModel view model will be used to view details of each audit log.  It will inherit Entity and IViewModel<AuditLog, AuditLogDetailsViewModel>.
+      - Beyond the base class and interface, AuditLogDetailsViewModel will have Guid ObjectId, string ServiceName, string MethodName, string ParametersJson, string ExceptionJson, string ChangedFromJson, and string ChangedToJson.
+  - AuditLogsLookup View Model
+    - The AuditLogsLookupViewModel view model will be used to view the list of service names.
+      - It will have List<string> ServiceNameList>.
+  - AuditLog View Model
+    - The AuditLogViewModel view model will be used to view details of all audit logs.  It will inherit IViewModel<AuditLog, AuditLogViewModel>.
+      - Beyond the interface, AuditLogViewModel will have string ServiceName, string MethodName, string CreatedBy, DateTime CreatedOn, Guid ObjectId, and Guid Id.
 
 **Sequence Diagrams**
 - [Audit Log Component Sequence Diagram](Sequence Diagrams/AuditLogComponentSequenceDiagram.png)
