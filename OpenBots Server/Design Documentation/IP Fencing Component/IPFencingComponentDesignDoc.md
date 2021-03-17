@@ -59,7 +59,7 @@ Updated By: Nicole Carrero
           - Output : 200 OK response
   - IPFencing Manager:
     - The IPFencingManager will inherit BaseManager, which inherits IManager, and IIPFencingManager.
-      - Beyond the base class and interfaces, IPFencingManager will implement CanBeAdded(), MatchedOnRule(), IsRequestAllowed(), methods to assist IPFencingController and the IPFilter MiddleWare.
+      - Beyond the base class and interfaces, IPFencingManager will implement the appropriate methods to assist IPFencingController and the IPFilter MiddleWare.
   - IPFencingRepository:
     - The IPFencingRepository will inherit EntityRepository<IPFencing>, which inherits EntityRepository, and IIPFencingRepository.
       - Beyond the base classes and interface, IPFencingRepository will retrieve all IPFencing, find an individual IPFencing's details, and support getting by paretnID.

@@ -117,7 +117,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n  \"isEmailDisabled\": true,\r\n  \"addToAddress\": \"EMAIL\",\r\n  \"addCCAddress\": \"EMAIL\",\r\n  \"addBCCAddress\": \"EMAIL\",\r\n  \"allowedDomains\": \"string\",\r\n  \"blockedDomains\": \"string\",\r\n  \"subjectAddPrefix\": \"string\",\r\n  \"subjectAddSuffix\": \"string\",\r\n  \"bodyAddPrefix\": \"string\",\r\n  \"bodyAddSuffix\": \"string\",\r\n  \"id\": \"\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"2020-10-07T19:03:00.525Z\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+					"raw": "{\r\n  \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n  \"isEmailDisabled\": true,\r\n  \"addToAddress\": \"nicole.carrero@accelirate.com\",\r\n  \"addCCAddress\": \"dairon.hernandez@accelirate.com\",\r\n  \"addBCCAddress\": \"ashish.nangla@accelirate.com\",\r\n  \"allowedDomains\": \"string\",\r\n  \"blockedDomains\": \"string\",\r\n  \"subjectAddPrefix\": \"string\",\r\n  \"subjectAddSuffix\": \"string\",\r\n  \"bodyAddPrefix\": \"string\",\r\n  \"bodyAddSuffix\": \"string\",\r\n  \"id\": \"\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"2020-10-07T19:03:00.525Z\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,7 +157,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n            \"isEmailDisabled\": false,\r\n            \"addToAddress\": \"EMAIL\",\r\n            \"addCCAddress\": \"\",\r\n            \"addBCCAddress\": \"\",\r\n            \"allowedDomains\": \"gmail.com, hotmail.com, yahoo.com\",\r\n            \"blockedDomains\": \"hotwire.com\",\r\n            \"subjectAddPrefix\": \"MySubjectPrefix\",\r\n            \"subjectAddSuffix\": \"MySubjectSuffix\",\r\n            \"bodyAddPrefix\": \"MyBodyPrefix\",\r\n            \"bodyAddSuffix\": \"MyBodySuffix\",\r\n            \"id\": \"aa132dce-4784-42b8-ac20-541ecfa603eb\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"EMAIL\",\r\n            \"createdOn\": \"2020-10-07T19:05:31.6287826\",\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": \"2020-10-07T19:03:00.525\",\r\n            \"timestamp\": \"AAAAAAAAkns=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": \"\"\r\n        }",
+					"raw": "{\r\n            \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n            \"isEmailDisabled\": false,\r\n            \"addToAddress\": \"nicole.carrero@accelirate.com\",\r\n            \"addCCAddress\": \"\",\r\n            \"addBCCAddress\": \"\",\r\n            \"allowedDomains\": \"gmail.com, hotmail.com, yahoo.com, accelirate.com\",\r\n            \"blockedDomains\": \"hotwire.com\",\r\n            \"subjectAddPrefix\": \"MySubjectPrefix\",\r\n            \"subjectAddSuffix\": \"MySubjectSuffix\",\r\n            \"bodyAddPrefix\": \"MyBodyPrefix\",\r\n            \"bodyAddSuffix\": \"MyBodySuffix\",\r\n            \"id\": \"aa132dce-4784-42b8-ac20-541ecfa603eb\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"nicole.carrero@accelirate.com\",\r\n            \"createdOn\": \"2020-10-07T19:05:31.6287826\",\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": \"2020-10-07T19:03:00.525\",\r\n            \"timestamp\": \"AAAAAAAAkns=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": \"\"\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -264,6 +264,5 @@
 				"type": "string"
 			}
 		]
-	},
-	"protocolProfileBehavior": {}
+	}
 }

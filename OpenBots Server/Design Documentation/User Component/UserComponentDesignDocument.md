@@ -172,30 +172,25 @@ Updated By: Nicole Carrero
 - Managers:
   - ApplicationIdentityUserManager:
    - The ApplicationIdentityUserManager will inherit UserManager<ApplicationUser>.
-      - Beyond the base class, ApplicationIdentityUserManager will implement ChangePasswordAsync() method to assist AuthController.
-      - To assist OrganizationMembersController and AccessRequestsController, ApplicationIdentityUserManager will implement the CreateAsync() method.
+      - Beyond the base class, ApplicationIdentityUserManager will implement the appropriate methods to assist AuthController, OrganizationMembersController, and AccessRequestsController.
   - SignInManager:
     - The SignInManager<ApplicationUser> is part of Microsoft.AspNetCore.Identity and assists AuthController.
       - SignInManager provides the API for user sign in.
   - MembershipManager:
     - The MembershipManager will inherit BaseManager, which inherits IManager, and IMembershipManager.
-      - Beyond the base class and interfaces, MembershipManager will implement the JoinOrganization(), Search(), and PendingOrganizationAccess() methods to assist AuthController.
-      - To assist OrganizationMembersController, MembershipManager will implement GetPeopleInOrganization(), GetOrganizationMember(), and InviteUser() methods.
-      - To assist AccessRequestsController, MembershipManager will implement GetOrganizationMember(), Pending(), ApproveAccessRequest(), and RejectAccessRequest() methods.
+      - Beyond the base class and interfaces, MembershipManager will implement the appropriate methods to assist AuthController, OrganizationMembersController, and AccessRequestsController.
   - OrganizationManager:
     - The OrganizationManager will inherit BaseManager, which inherits IManager, and IOrganizationManager.
-      - Beyond the base class and interfaces, OrganizationManager will implement the AddNewOrganization() method to assist AuthController.
+      - Beyond the base class and interfaces, OrganizationManager will implement the appropriate methods to assist AuthController.
   - AccessRequestManager:
     - The AccessRequestManager will inherit BaseManager, which inherits IManager, and IAccessRequestManager.
-      - Beyond the base class and interfaces, AccessRequestManager will implement the AddAnonymousAccessRequest() method to assist AuthController.
-      - To assist OrganizationMembersController, AccessRequestManager will implement the AddAccessRequest() method.
-      - To assist AccessRequestsController, AccessRequestManager will implement the GetAccessRequests() method.
+      - Beyond the base class and interfaces, AccessRequestManager will implement the appropriate methods to assist AuthController, OrganizationMembersController, and AccessRequestsController.
   - TermsConditionsManager:
     - The TermsConditionsManager will inherit BaseManager, which inherits IManager, and ITermsConditionsManager.
-      - Beyond the base class and interfaces, TermsConditionsManager will implement GetUserAgreement() and IsAccepted() methods to assist AuthController.
+      - Beyond the base class and interfaces, TermsConditionsManager will implement the appropriate methods to assist AuthController.
   - EmailManager:
     - The EmailManager will inherit BaseManager, which inherits IManager, and IEmailManager.
-      - Beyond the base class and interfaces, EmailManager will implement the SendEmailAsync() method to assist AuthController and OrganizationMembersController.
+      - Beyond the base class and interfaces, EmailManager will implement the appropriate methods to assist AuthController and OrganizationMembersController.
 - Repositories:
   - PersonRepository:
    - The PersonRepository will inherit TenantEntityRepository<Person>, which inherits EntityRepository<Person> and ReadOnlyEntityRepository<Person>, and IPersonRepository.

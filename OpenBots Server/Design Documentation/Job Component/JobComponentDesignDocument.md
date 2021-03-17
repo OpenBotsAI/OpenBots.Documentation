@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date: 8/18/2020
 
-Updated On: 01/28/2021
+Updated On: 03/09/2021
 Updated By: Dairon Hernandez
 
 **Job Component**
@@ -98,7 +98,7 @@ Updated By: Dairon Hernandez
           - Output : JSON file listing checkpoints for the specified jobId
   - JobManager:
     - The JobManager will inherit BaseManager, which inherits IManager, and IJobManager.
-      - Beyond the base class and interfaces, JobManager will implement GetJobView(), GetJobAgentsLookup(), GetJobsAgentsAndProcesses(), and GetNextJob() methods to assist JobsController.
+      - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
   - JobRepository:
     - The JobRepository will inherit EntityRepository<Job>, which inherits EntityRepository, and IJobRepository.
       - Beyond the base classes and interface, JobRepository will retrieve all jobs, find an individual job's details, and find related properties from the Agents and Processes data tables.
@@ -107,7 +107,7 @@ Updated By: Dairon Hernandez
   - Job Data Model:
     - The Job data model will be used to view details of each triggered job.  It will inherit the Entity class and INonAuditable interface.
       - Beyond the base class, Job will have string AgentId, DateTime StartTime, DateTime EndTime, double ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime Dequeue Time, Guid Process Id, enum JobStatusType JobStatus, string Message, bool IsSuccessful, string ErrorReason, string ErrorCode, and string SerializedErrorString.
-    - The JobParameter data model contains detials about the paramters that belong to a particular job. JobParameter inherits from NamedEnity and contains the fields string Datatype, string Value, and GUID jobId.
+    - The JobParameter data model contains detials about the paramters that belong to a particular job. JobParameter inherits from NamedEnity and contains the fields string Name, string Datatype, string Value, and GUID jobId.
     - The JobCheckpoint data model contains information about the current state of a job's checkpoint. The JobCheckpoints are Non-Auditable and inherit from Named Entity. The model contains the fields: string Iterator, string IteratorValue, string IteratorPosition, string IteratorCount, GUID JobId
 
 **Sequence Diagrams**

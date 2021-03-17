@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date:  8/19/2020
 
-Updated On: 01/28/2021
+Updated On: 03/09/2021
 Updated By: Dairon Hernandez
 
 **Schedule Component**
@@ -74,13 +74,15 @@ Updated By: Dairon Hernandez
           - Output : 200 OK response if run to attempt was successful
   - ScheduleManager:
     - The ScheduleManager will inherit BaseManager and IScheduleManager, which both inherit IManager.
-      - Beyond the base class and interfaces, ScheduleManager will implement the StartNewRecurringJob(), CreateCommonJob(), CreateJob(), and GetScheduleAgentsandAutomations() methods to assist SchedulesController.
+      - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
   - ScheduleRepository:
     - The ScheduleRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository and IScheduleRepository, which inherits IEntityRepository.
       - The ScheduleRepository will retrieve all schedules, add a new schedule, or retrieve/edit/delete a schedule by id.
   - Schedule Data Model:
     - The Schedule data model will be used to view details of each schedule.  It will inherit the NamedEntity class, which inherits the Entity class.
       - Beyond the base classes, Schedule will have Guid AgentId, string AgentName, string CronExpression, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, string TriggerName, bool Recurrence, string StartingType, DateTime StartJobOn, DateTime RecurrenceUnit, DateTime JobRecurEveryUnit,  DateTime EndJobOn, DateTime EndJobAtOccurence, DateTime NoJobEndDate, string Status, DateTime ExpiryDate, DateTime StartDate, and Guid AutomationId.
+      - The ScheduleParameter data model contains detials about the paramters that belong to a particular Schedule. ScheduleParameter inherits from NamedEnity and contains the fields string Name, string Datatype, string Value, and GUID jobId.
+
 
 **Sequence Diagrams**
 

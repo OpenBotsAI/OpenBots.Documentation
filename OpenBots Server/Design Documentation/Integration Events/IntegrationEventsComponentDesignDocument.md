@@ -60,7 +60,7 @@ Creation Date: 01/06/2021
           - Output : 200 OK response
   - IntegrationEventSubscriptionAttempt Manager:
     - The IntegrationEventSubscriptionAttemptManager will inherit BaseManager and IIntegrationEventSubscriptionAttemptManager.
-      - Beyond the base class and interfaces, IntegrationEventSubscriptionAttemptManager will implement SaveAndGetAttemptCount(), GetLastAttempt(), GetAttemptView() methods.
+      - Beyond the base class and interfaces, IntegrationEventSubscriptionAttemptManager will implement the appropriate methods to assist IntegrationEventsController.
 
 **Sequence Diagrams**
 

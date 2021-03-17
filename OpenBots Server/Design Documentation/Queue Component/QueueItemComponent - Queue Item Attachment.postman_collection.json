@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "18016200-4750-4d35-a3a6-ae3196ba95f4",
+		"name": "QueueItemComponent - Queue Item Attachment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Queue Item Attachments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/82202936-87af-484f-81c1-d8007dcd2830/queueitemattachments",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"82202936-87af-484f-81c1-d8007dcd2830",
+						"queueitemattachments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Item Attachments View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/14bb9ed7-fc93-49cf-9dfd-eef7c17b6706/queueitemattachments/view",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"14bb9ed7-fc93-49cf-9dfd-eef7c17b6706",
+						"queueitemattachments",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Item Attachments Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/14bb9ed7-fc93-49cf-9dfd-eef7c17b6706/queueitemattachments/count",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"14bb9ed7-fc93-49cf-9dfd-eef7c17b6706",
+						"queueitemattachments",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Item Attachment Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/14bb9ed7-fc93-49cf-9dfd-eef7c17b6706/queueitemattachments/aa6586da-224a-496e-a3fc-69db0148f9d7",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"14bb9ed7-fc93-49cf-9dfd-eef7c17b6706",
+						"queueitemattachments",
+						"aa6586da-224a-496e-a3fc-69db0148f9d7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Queue Item Attachment - Existing Files",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"d957a3db-2b15-48cd-9df3-c59e09db8e8e\", \"63b67471-58f6-4b26-b683-5f1c32ad0a37\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}queueitems/14bb9ed7-fc93-49cf-9dfd-eef7c17b6706/queueitemattachments/files",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"14bb9ed7-fc93-49cf-9dfd-eef7c17b6706",
+						"queueitemattachments",
+						"files"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Files",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Queue Item Attachment - New Files",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}queueitems/d10644f4-041a-43e8-abcd-cd189230b007/queueitemattachments",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"d10644f4-041a-43e8-abcd-cd189230b007",
+						"queueitemattachments"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Files",
+							"disabled": true
+						},
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Queue Item Attachment File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Export Automation.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a/queueitemattachments/9b042e15-31e3-4577-aeed-2cace453af1f/update",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"494726f0-65eb-4f88-97dd-e5734fdd318a",
+						"queueitemattachments",
+						"9b042e15-31e3-4577-aeed-2cace453af1f",
+						"update"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Queue Item Attachment Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"PayloadSizeInBytes\",\r\n        \"value\":\"0\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}queueitems/ca700ab4-c457-4e40-b669-14c21bf420b5",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"ca700ab4-c457-4e40-b669-14c21bf420b5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Queue Item Attachments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/d10644f4-041a-43e8-abcd-cd189230b007/queueitemattachments",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"d10644f4-041a-43e8-abcd-cd189230b007",
+						"queueitemattachments"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Queue Item Attachment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a/queueitemattachments/241b60e6-6628-44cb-b3af-ddf97c8a3142",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"494726f0-65eb-4f88-97dd-e5734fdd318a",
+						"queueitemattachments",
+						"241b60e6-6628-44cb-b3af-ddf97c8a3142"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Queue Item Attachment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a/queueitemattachments/a1312e51-272f-453b-933e-605e729044f8",
+					"host": [
+						"{{localhost}}queueitems"
+					],
+					"path": [
+						"494726f0-65eb-4f88-97dd-e5734fdd318a",
+						"queueitemattachments",
+						"a1312e51-272f-453b-933e-605e729044f8"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}

@@ -41,7 +41,7 @@ Updated By: Nicole Carrero
           - Output : 200 OK response
   - MembershipManager:
     - The MembershipManager will inherit BaseManager, which inherits IManager, and IMemebershipManager.
-      - Beyond the base class and interfaces, MembershipManager will implement GrantAdminPermission() and RevokeAdminPermission() methods to assist MembershipController.
+      - Beyond the base class and interfaces, MembershipManager will implement the appropriate methods to assist MembershipController.
   - OrganizationMemberRepository:
    - The OrganizationMemberRepository will inherit TenantEntityRepository<OrganizationMember>, which inherits EntityRepository and ITenantRepository, and IOrganizationMemberRepository.
      - Beyond the base classes and interfaces, OrganizationMemberRepository will find the appropriate person by organization id and person id, then update the entity in the Server.

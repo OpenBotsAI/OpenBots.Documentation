@@ -69,9 +69,9 @@ Updated By: Nicole Carrero
          - Output : CSV/JSON/zip file listing audit log information
   - AuditLog Manager:
     - - The AuditLogManager will inherit IAuditLogManager and BaseManager, which inherits IManager.
-      - Beyond the base class and interfaces, AuditLogManager will implement the GetAuditLogs() and ZipCsv() methods to assist AuditLogsController.
+      - Beyond the base class and interfaces, AuditLogManager will implement the appropriate methods to assist AuditLogsController.
   - AuditLog Repository:
-    - The AuditLogRepository will retrieve all audit logs or the details of an individual audit log.  It will utilize the GetServiceName() and FindAllView() methods to assist the AuditLogsController and AuditLogManager.
+    - The AuditLogRepository will retrieve all audit logs or the details of an individual audit log.  It will utilize the appropriate methods to assist the AuditLogsController and AuditLogManager.
 - Model / View Models:
   - AuditLog Data Model:
     - The AuditLog data model will be used to view details of each audit log.  It will inherit Entity and INonAuditable.

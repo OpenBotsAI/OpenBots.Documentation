@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a8d01a0a-3c8c-4e64-afd8-28a5182a9221",
+		"_postman_id": "efb4a56f-e36c-48d6-9705-a2ad7dd63638",
 		"name": "QueueItemComponent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -52,16 +52,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/view",
-					"protocol": "https",
+					"raw": "{{localhost}}queueitems/view",
 					"host": [
-						"localhost"
+						"{{localhost}}queueitems"
 					],
-					"port": "5001",
 					"path": [
-						"api",
-						"v1",
-						"queueitems",
 						"view"
 					]
 				}
@@ -123,7 +118,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/view/d2b447f2-4e2f-4d92-acef-00ac8c1031bb",
+					"raw": "https://localhost:5001/api/v1/queueitems/view/5e4b379d-23a5-4bb8-a3bc-fc989020afec",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -134,7 +129,7 @@
 						"v1",
 						"queueitems",
 						"view",
-						"d2b447f2-4e2f-4d92-acef-00ac8c1031bb"
+						"5e4b379d-23a5-4bb8-a3bc-fc989020afec"
 					]
 				}
 			},
@@ -188,7 +183,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/1d6ae825-7139-49b3-8f6f-c5cb8947f9ab",
+					"raw": "https://localhost:5001/api/v1/queueitems/fe0d7732-06e2-4eff-be35-3d53dedb8e7b",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -198,7 +193,7 @@
 						"api",
 						"v1",
 						"queueitems",
-						"1d6ae825-7139-49b3-8f6f-c5cb8947f9ab"
+						"fe0d7732-06e2-4eff-be35-3d53dedb8e7b"
 					]
 				}
 			},
@@ -252,7 +247,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"isLocked\": false,\r\n  \"queueId\": \"1eff5baf-8e5e-44da-ba02-5e57426518e2\",\r\n  \"dataJson\": \"This is my email.\",\r\n  \"name\": \"MyQueueItem\",\r\n  \"jsonType\": \"Email\",\r\n  \"type\": \"Text\",\r\n  \"priority\": 100,\r\n  \"expireonUTC\": \"2020-11-22T19:17:32.497Z\",\r\n  \"postponeuntilUTC\": \"\",\r\n  \"retryCount\": 0,\r\n  \"errorCode\": null,\r\n  \"errorMessage\": null,\r\n  \"errorSerialized\": null,\r\n  \"source\": null,\r\n  \"event\": null\r\n}",
+					"raw": "{\r\n  \"isLocked\": false,\r\n  \"queueId\": \"2d988e77-fd34-45da-b48b-1f39be15bcab\",\r\n  \"dataJson\": \"This is my email.\",\r\n  \"name\": \"MyQueueItem\",\r\n  \"jsonType\": \"Email\",\r\n  \"type\": \"Text\",\r\n  \"priority\": 100,\r\n  \"expireonUTC\": \"2021-11-22T19:17:32.497Z\",\r\n  \"postponeuntilUTC\": \"\",\r\n  \"retryCount\": 0,\r\n  \"errorCode\": null,\r\n  \"errorMessage\": null,\r\n  \"errorSerialized\": null,\r\n  \"source\": null,\r\n  \"event\": null\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -260,16 +255,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/enqueue",
-					"protocol": "https",
+					"raw": "{{localcloudhost}}queueitems/enqueue",
 					"host": [
-						"localhost"
+						"{{localcloudhost}}queueitems"
 					],
-					"port": "5001",
 					"path": [
-						"api",
-						"v1",
-						"queueitems",
 						"enqueue"
 					]
 				}
@@ -487,49 +477,6 @@
 			"response": []
 		},
 		{
-			"name": "Attach File to Queue Item",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "files",
-							"type": "file",
-							"src": ""
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/8875ed06-4787-4c92-b9c8-4eaef7ec311a/attach",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queueitems",
-						"8875ed06-4787-4c92-b9c8-4eaef7ec311a",
-						"attach"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Update Queue Item with Attachments",
 			"request": {
 				"auth": {
@@ -595,27 +542,28 @@
 						{
 							"key": "Files",
 							"type": "file",
-							"src": ""
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Update Automation with File.PNG"
 						},
 						{
 							"key": "Files",
 							"type": "file",
-							"src": ""
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queueitems/8875ed06-4787-4c92-b9c8-4eaef7ec311a",
-					"protocol": "https",
+					"raw": "{{localcloudhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a",
 					"host": [
-						"localhost"
+						"{{localcloudhost}}queueitems"
 					],
-					"port": "5001",
 					"path": [
-						"api",
-						"v1",
-						"queueitems",
-						"8875ed06-4787-4c92-b9c8-4eaef7ec311a"
+						"494726f0-65eb-4f88-97dd-e5734fdd318a"
 					]
 				}
 			},
@@ -636,7 +584,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5dd20fd0-d3bf-465c-a680-07a453dce7fd",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -646,13 +593,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e12cc59c-b5c4-4b8e-9490-4bdd45860d99",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

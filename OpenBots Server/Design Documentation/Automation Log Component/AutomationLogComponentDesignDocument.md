@@ -66,7 +66,7 @@ Updated By: Nicole Carrero
           - Output : JSON file with updated automation log information
   - AutomationLogManager:
    - The AutomationLogManager will inherit BaseManager, which inherits IManager, and IAutomationLogManager.
-      - Beyond the base class and interfaces, AutomationLogManager will implement GetJobLogs() and ZipCsv() to assist the AutomationLogsController, which will be used when exporting automation logs.
+      - Beyond the base class and interfaces, AutomationLogManager will implement the appropriate methods to assist the AutomationLogsController, which will be used when exporting automation logs.
   - AutomationLogRepository:
    - The AutomationLogRepository will inherit EntityRepository<AutomationLog>, which inherits ReadOnlyEntityRepository, and IAutomationLogRepository.
      - In addition to the methods inherited from the base class, the AutomationLogRepository will retrieve automation logs by job id, or the details of an individual automation log.

@@ -1,10 +1,88 @@
 {
 	"info": {
 		"_postman_id": "a9304b0e-dc84-4984-9602-4b59d2e51e84",
-		"name": "Queue Component",
+		"name": "QueueComponent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Get All Queues",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queues",
+					"host": [
+						"{{localhost}}queues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queues Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queues/count",
+					"host": [
+						"{{localhost}}queues"
+					],
+					"path": [
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}queues/71688f32-3d7f-42ed-af4b-3d766a0b7541",
+					"host": [
+						"{{localhost}}queues"
+					],
+					"path": [
+						"71688f32-3d7f-42ed-af4b-3d766a0b7541"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Add a Queue",
 			"request": {
@@ -22,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"My Queue\",\r\n  \"description\": \"This is my queue.\",\r\n  \"maxRetryCount\": 3\r\n}",
+					"raw": "{\r\n  \"name\": \"QueueTest\",\r\n  \"description\": \"\",\r\n  \"maxRetryCount\": 3\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -30,16 +108,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queues",
-					"protocol": "https",
+					"raw": "{{localcloudhost}}queues",
 					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queues"
+						"{{localcloudhost}}queues"
 					]
 				}
 			},
@@ -62,7 +133,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"My First Queue\",\r\n  \"description\": \"The queue.\",\r\n  \"maxRetryCount\": 3\r\n}",
+					"raw": "{\r\n  \"name\": \"Queue1Test\",\r\n  \"description\": \"Test queue1\",\r\n  \"maxRetryCount\": 3\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +141,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queues/631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e",
+					"raw": "https://localhost:5001/api/v1/queues/71688f32-3d7f-42ed-af4b-3d766a0b7541",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -80,70 +151,7 @@
 						"api",
 						"v1",
 						"queues",
-						"631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Queues Count",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:5001/api/v1/queues/count",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queues",
-						"count"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All Queues",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:5001/api/v1/queues",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queues"
+						"71688f32-3d7f-42ed-af4b-3d766a0b7541"
 					]
 				}
 			},
@@ -165,49 +173,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/queues/631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e",
-					"protocol": "https",
+					"raw": "{{localhost}}queues/71688f32-3d7f-42ed-af4b-3d766a0b7541",
 					"host": [
-						"localhost"
+						"{{localhost}}queues"
 					],
-					"port": "5001",
 					"path": [
-						"api",
-						"v1",
-						"queues",
-						"631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get a Queue",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:5001/api/v1/queues/193ef158-d52a-4dbb-8b25-220a99a37def",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queues",
-						"193ef158-d52a-4dbb-8b25-220a99a37def"
+						"71688f32-3d7f-42ed-af4b-3d766a0b7541"
 					]
 				}
 			},
@@ -253,38 +224,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Get Queue Details",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:5001/api/v1/queues/631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"queues",
-						"631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"auth": {
@@ -301,7 +240,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "f220f0d5-a28e-4a3d-88b5-7f7be4a44f91",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -311,13 +249,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8fab5b13-d540-4b4c-97b8-733f322da09f",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

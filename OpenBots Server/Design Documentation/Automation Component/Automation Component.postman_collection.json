@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "17440222-34f0-43ad-9438-3050bafd494c",
-		"name": "AutomationComponent",
+		"_postman_id": "40dee5bb-73ad-49b9-8e38-07ece117bbbe",
+		"name": "Automation Component",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -116,7 +116,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/f7128363-26ce-4920-b7e4-376ab16fb18a",
+					"raw": "https://localhost:5001/api/v1/automations/4cd0263e-638b-402e-894d-73c962b96c70",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -126,7 +126,7 @@
 						"api",
 						"v1",
 						"automations",
-						"f7128363-26ce-4920-b7e4-376ab16fb18a"
+						"4cd0263e-638b-402e-894d-73c962b96c70"
 					]
 				}
 			},
@@ -148,7 +148,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/view/beed0630-ddb0-4272-8609-b0a443d77cd4",
+					"raw": "https://localhost:5001/api/v1/automations/view/4cd0263e-638b-402e-894d-73c962b96c70",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -159,7 +159,7 @@
 						"v1",
 						"automations",
 						"view",
-						"beed0630-ddb0-4272-8609-b0a443d77cd4"
+						"4cd0263e-638b-402e-894d-73c962b96c70"
 					]
 				}
 			},
@@ -181,13 +181,30 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"NicoleTestAutomation2\",\r\n  \"automationEngine\": \"OpenBots\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "AddNewAutomation",
+							"type": "text"
+						},
+						{
+							"key": "AutomationEngine",
+							"value": "OpenBots",
+							"type": "text"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "https://localhost:5001/api/v1/automations",
@@ -200,49 +217,6 @@
 						"api",
 						"v1",
 						"automations"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Upload Automation",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/OpenBotsServer Resources/Email Message Formats.txt"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/24f30012-326b-46bb-8622-f396b1341522/upload",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"automations",
-						"24f30012-326b-46bb-8622-f396b1341522",
-						"upload"
 					]
 				}
 			},
@@ -269,11 +243,11 @@
 						{
 							"key": "File",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/Sequence Diagrams/AgentComponentSequenceDiagram.png"
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
 						},
 						{
 							"key": "name",
-							"value": "nicole_testing",
+							"value": "AddNewAutomation",
 							"type": "text"
 						},
 						{
@@ -285,16 +259,27 @@
 							"key": "automationEngine",
 							"value": "OpenBots",
 							"type": "text"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "{{localhost}}automations/d350d323-25ff-4656-939d-ab0b30805a6c/update",
+					"raw": "https://localhost:5001/api/v1/automations/377e94f1-0340-40d2-ab02-ab880d9a6260/update",
+					"protocol": "https",
 					"host": [
-						"{{localhost}}automations"
+						"localhost"
 					],
+					"port": "5001",
 					"path": [
-						"d350d323-25ff-4656-939d-ab0b30805a6c",
+						"api",
+						"v1",
+						"automations",
+						"377e94f1-0340-40d2-ab02-ab880d9a6260",
 						"update"
 					]
 				}
@@ -318,7 +303,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"adding\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"OpenBots\"\r\n}",
+					"raw": "{\r\n\"name\": \"NicoleTestAutomation1\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"Python\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -326,7 +311,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/be63744f-1909-441a-95b4-9fa4effe0fc5",
+					"raw": "https://localhost:5001/api/v1/automations/7d1741a0-1177-4e4f-9c1f-b36bff2eef69",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -336,7 +321,7 @@
 						"api",
 						"v1",
 						"automations",
-						"be63744f-1909-441a-95b4-9fa4effe0fc5"
+						"7d1741a0-1177-4e4f-9c1f-b36bff2eef69"
 					]
 				}
 			},
@@ -367,7 +352,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/15962434-6258-41bc-a148-e0a08e5fb5b8",
+					"raw": "https://localhost:5001/api/v1/automations/7d1741a0-1177-4e4f-9c1f-b36bff2eef69",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -377,7 +362,7 @@
 						"api",
 						"v1",
 						"automations",
-						"15962434-6258-41bc-a148-e0a08e5fb5b8"
+						"7d1741a0-1177-4e4f-9c1f-b36bff2eef69"
 					]
 				}
 			},
@@ -399,7 +384,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/0e2bbc1b-ae95-4d54-8364-afe3bed7acf0/export",
+					"raw": "https://localhost:5001/api/v1/automations/377e94f1-0340-40d2-ab02-ab880d9a6260/export",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -409,8 +394,15 @@
 						"api",
 						"v1",
 						"automations",
-						"0e2bbc1b-ae95-4d54-8364-afe3bed7acf0",
+						"377e94f1-0340-40d2-ab02-ab880d9a6260",
 						"export"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -432,7 +424,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/automations/5ba8449a-ad7d-4416-ae03-3c61c2671602",
+					"raw": "https://localhost:5001/api/v1/automations/bbbf80a3-3d25-4e05-ba87-08d641db4da5",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -442,7 +434,14 @@
 						"api",
 						"v1",
 						"automations",
-						"5ba8449a-ad7d-4416-ae03-3c61c2671602"
+						"bbbf80a3-3d25-4e05-ba87-08d641db4da5"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -475,6 +474,48 @@
 						"v1",
 						"automations",
 						"getlookup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Parameters",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"Name\" : \"ExampleParameters\",\r\n    \"DataType\" : \"Text\",\r\n    \"Value\" : \"Hello World\"\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Automations/24224be9-160f-40c5-954d-00de3b5baa36/UpdateParameters",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Automations",
+						"24224be9-160f-40c5-954d-00de3b5baa36",
+						"UpdateParameters"
 					]
 				}
 			},

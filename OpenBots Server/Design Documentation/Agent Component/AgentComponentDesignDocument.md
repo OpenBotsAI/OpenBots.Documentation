@@ -94,7 +94,7 @@ Updated By: Dairon Hernandez
           - Output : List of AgentIds and AgentNames
   - Agent Manager(s):
     - The AgentManager will inherit BaseManager and IAgentManager, which both inherit IManager.
-      - Beyond the base class and interfaces, AgentManager will implement the ValidateAgent() method to assist AgentsController.  It will be responsible for performing the heartbeat functionalities of validating the Agent id.
+      - Beyond the base class and interfaces, AgentManager will implement the appropriate methods to assist AgentsController.  It will be responsible for performing the heartbeat functionalities of validating the Agent id.
   - Agent Repository(s):
     - The AgentRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository, and IAgentRepository, which inherits IEntityRepository.
       - Beyond the base classes and interfaces, AgentRepository will retrieve all agents, add a new agent, retrieve/edit/delete an agent by id, connect/disconnect an agent, and find an agent by machine name, mac address, and IP address.

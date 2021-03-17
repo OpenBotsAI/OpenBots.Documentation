@@ -76,7 +76,7 @@ Updated By: Dairon Hernandez
           - Output : JSON file listing all credential ids and names
   - CredentialManager(s):
     - The CredentialManager will inherit BaseManager, which inherits IManager.
-      - Beyond the base classes, CredentialManager will implement a ValidateRetrievalDate() method to assist CredentialsController.  ValidateRetrievalDate() will ensure that if a retrieval is attempted before StartDate or after EndDate, it will return an invalid request response.
+      - Beyond the base classes, CredentialManager will implement the appropriate methods to assist CredentialsController.
   - CredentialRepository(s):
     - The CredentialRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository, and ICredentialRepository.
     - The CredentialRepository will retrieve all credentials, add a new credential, or edit/delete a credential by id.

@@ -1,7 +1,7 @@
 Author: Dairon Hernandez
 Creation Date: 08/13/2020
 
-Updated On: 9/28/2020
+Updated On: 3/8/2021
 Updated By: Nicole Carrero
 
 **Asset Component**
@@ -28,7 +28,7 @@ Updated By: Nicole Carrero
 
 **Design**
 
-- Overview: The overall structure uses the AssetsController to allow the user to make a web request for either the entire list of assets or details of an individual asset.  If the user requests access to the entire list of assets, the request goes to the AssetsController, which may use the ProcessManager, and then calls the AssetsRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the assets could not be found.  The same process will occur when the user requests the asset details as well as add, edit, delete, or export an asset.
+- Overview: The overall structure uses the AssetsController to allow the user to make a web request for either the entire list of assets or details of an individual asset.  If the user requests access to the entire list of assets, the request goes to the AssetsController, which may use the AssetManager, and then calls the AssetRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the assets could not be found.  The same process will occur when the user requests the asset details as well as add, edit, delete, or export an asset.
 
 - Proposed Solution:
   - User Interface:
@@ -57,25 +57,41 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Asset id
           - Output : JSON file containing details for the provided asset id
-      - Add an asset: [HttpPost("api/v1/assets")]
+      - Get asset by name and type: [HttpGet("api/v1/assets/getassetbyname/{assetName}")]
         - Payloads
-          - Input : Asset model data
+          - Input : optional query parameter "?assetType={assetType}"
+          - Output : JSON file listing details for the asset with a matching name (and optional type)
+      - Add JSON asset: [HttpPost("api/v1/assets")]
+        - Payloads
+          - Input : Asset model data (name, type, JSON value)
           - Output : JSON file listing new asset information
-      - Upload asset file: [HttpPost("api/v1/assets/{id}/upload")]
+      - Add text asset: [HttpPost("api/v1/assets")]
         - Payloads
-          - Input : Asset file
-          - Output : JSON file listing updated asset information
+          - Input : Asset model data (name, type, text value)
+          - Output : JSON file listing new asset information
+      - Add number asset: [HttpPost("api/v1/assets")]
+        - Payloads
+          - Input : Asset model data (name, type, number value)
+          - Output : JSON file listing new asset information
+      - Add file asset: [HttpPost("api/v1/assets")]
+        - Payloads
+          - Input : Asset model data (name, type, file, optional drive name)
+          - Output : JSON file listing new asset information
       - Export asset file: [HttpGet("api/v1/assets/{id}/export")]
         - Payloads
           - Input : Asset id
           - Output : Asset file
+      - Create agent asset: [HttpPost("api/v1/assets/addagentasset")]
+        - Payloads
+          - Input : Asset model data (name, agent id, optional file, optional drive name)
+          - Output : JSON file listing new agent asset information
       - Update asset: [HttpPut("api/v1/assets/{id}")]
         - Payloads
-          - Input : Name, Value (Number Value, Text Value, or JSON Value)
+          - Input : Name, type, value (number, text, or JSON)
           - Output : 200 OK response
       - Update asset with file: [HttpPut("api/v1/assets/{id}/update")]
         - Payloads
-          - Input : Name, File (to be saved in Binary Objects Component and referenced in Assets using Binary Object id)
+          - Input : Name, file
           - Output : 200 OK response
       - Update asset property: [HttpPatch("api/v1/assets/{id}")]
         - Payloads
@@ -84,9 +100,30 @@ Updated By: Nicole Carrero
       - Delete asset: [HttpDelete("api/v1/assets/{id}")]
         - Payloads
           - Input : Asset id
-          - Output : 200 OK response     
-  - Asset Manager(s):
-    - There is no manager for the Asset Component because it utilizes methods provided in ProcessManager: Export(), Update(), and Upload().  See Process Component design documentation for more information.
+          - Output : 200 OK response   
+      - Increment asset: [HttpPut("api/v1/assets/{id}/increment")]
+        - Payloads
+          - Input : Asset id
+          - Output : 200 OK response
+      - Decrement asset: [HttpPut("api/v1/assets/{id}/decrement")]
+         - Payloads
+           - Input : Asset id
+           - Output : 200 OK response
+      - Add to asset: [HttpPut("api/v1/assets/{id}/add?value={number}")]
+        - Payloads
+          - Input : Asset id, number to add
+          - Output : 200 OK response
+      - Subtract from asset: [HttpPut("api/v1/assets/{id}/subtract?value={number}")]
+        - Payloads
+          - Input : Asset id, number to subtract
+          - Output : 200 OK response
+      - Append text to asset: [HttpPut("api/v1/assets/{id}/append?value={text}")]
+        - Payloads
+          - Input : Asset id, text to append
+          - Output : 200 OK response
+  - Asset Manager:
+    - The AssetManager will inherit BaseManager, which inherits IManager, and IAssetManager.
+      - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
   - Asset Repository(s):
     - The AssetRepository will retrieve all assets or details of an asset as well as add, edit, delete, or export assets.
   - Asset Data Model(s):

@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date: 12/4/2020
 
-Updated On: 1/22/2021
+Updated On: 3/8/2021
 Updated By: Nicole Carrero
 
 **Email Component**
@@ -135,23 +135,23 @@ Updated By: Nicole Carrero
           - Output : JSON file listing specific email view model information
       - Add email (draft): [HttpPost("api/v1/emails")]
         - Payloads
-          - Input : Email data model
-          - Output : JSON file listing newly created email information
+          - Input : Add email view model (direction, all other properties are optional)
+          - Output : JSON file listing newly created email draft information
       - Send email draft (update and send existing email): [HttpPut("api/v1/emails/{id}/send")]
         - Payloads
-          - Input : Email id, SendEmailViewModel data, Email account name (as optional query parameter)
+          - Input : Email id, SendEmailViewModel data (anything missing from draft that needs to be included) Email account name (as optional query parameter)
           - Output : JSON file listing updated email view model information
       - Send new email: [HttpPost("api/v1/emails/send")]
         - Payloads
-          - Input : SendEmailViewModel data, Email account name (as optional query parameter)
+          - Input : SendEmailViewModel data (drive name is optional), Email account name (as optional query parameter)
           - Output : JSON file listing newly created email view model information
       - Edit email: [HttpPut("api/v1/emails/{id}")]
         - Payloads
           - Input : Email id, Email data model
           - Output : JSON file listing updated email information
-      - Edit email with files: [HttpPut("api/v1/emails/{id}/update")]
+      - Edit email with file(s): [HttpPut("api/v1/emails/{id}/update")]
         - Payloads
-          - Input : Email id, UpdateEmailViewModel data
+          - Input : Email id, UpdateEmailViewModel data (drive name is optional)
           - Output : JSON file listing updated email view model information
       - Edit email property: [HttpPatch("api/v1/emails/{id}")]
         - Payloads
@@ -159,59 +159,63 @@ Updated By: Nicole Carrero
           - Output : 200 OK response
       - Delete email: [HttpDelete("api/v1/emails/{id}")]
         - Payloads
-          - Input : Email id
+          - Input : Email id, drive name (optional)
           - Output : 200 OK response
   - Email Attachments Controller:
     - The EmailAttachmentsController will make an API request to access the EmailAttachmentRepository in order to retrieve, add, edit, or delete the appropriate email attachments.
     - Routes:
       - All email attachments: [HttpGet("api/v1/emails/{emailId}/emailattachments")]
         - Payloads
-          - Input : None
+          - Input : Email id
           - Output : JSON file listing all email attachment information
       - All email attachments view: [HttpGet("api/v1/emails/{emailId}/emailattachments")]
         - Payloads
-          - Input : None
+          - Input : Email id
           - Output : JSON file listing all email attachment view information
       - Email attachment count: [HttpGet("api/v1/emails/{emailId}/emailattachments/count")]
         - Payloads
-          - Input : None
+          - Input : Email id
           - Output : Count of all email attachments
       - Email attachment details: [HttpGet("api/v1/emails/{emailId}/emailattachments/{id}")]
         - Payloads
-          - Input : Email attachment id
+          - Input : Email id, attachment id
           - Output : JSON file listing specific email attachment  information
-      - Add email attachment(s) (using existing binary object files): [HttpPost("api/v1/emails/{emailId}/emailattachments/{id}")]
+      - Add email attachment(s) (using existing Server files): [HttpPost("api/v1/emails/{emailId}/emailattachments/{id}")]
         - Payloads
-          - Input : Email id, Binary object id(s) list
+          - Input : Email id, attachment id, file id(s) list, optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s) information
       - Add email attachment(s) (upload new file(s)) [HttpPost("api/v1/emails/{emailId}/emailattachments")]
         - Payloads
-          - Input : Email id, File(s)
+          - Input : Email id, file(s), optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s)
       - Edit email attachment: [HttpPut("api/v1/emails/{emailId}/emailattachments/{id}")]
         - Payloads
-          - Input : Email attachment id, Email attachment data model
+          - Input : Email id, attachment id, attachment data model
           - Output : 200 Ok response
       - Edit email attachment (with file): [HttpPut("api/v1/emails/{emailId}/emailattachments/{id}/update")]
         - Payloads
-          - Input : Email attachment id, UpdateEmailAttachmentViewModel view model
+          - Input : Email id, attachment id, UpdateEmailAttachmentViewModel view model (drive name is optional)
           - Output : JSON file listing updated email attachment information
       - Edit email attachment property: [HttpPatch("api/v1/emails/{emailId}/emailattachments/{id}")]
         - Payloads
-          - Input : Email attachment id, JSONPatchDocument in request body
+          - Input : Email id, attachment id, JSONPatchDocument in request body
           - Output : 200 Ok response
       - Delete all email attachments: [HttpDelete("api/v1/emails/{emailId}/emailattachments")]
         - Payloads
-          - Input : Email id
+          - Input : Email id, optional query parameter ("?driveName={driveName}")
           - Output : 200 Ok response
       - Delete email attachment: [HttpDelete("api/v1/emails/{emailId}/emailattachments/{id}")]
         - Payloads
-          - Input : Email attachment id
+          - Input : Email id, attachment id, optional query parameter ("?driveName={driveName}")
           - Output : 200 Ok response
+      - Export email attachment: [HttpGet("api/v1/emails/{emailId}/emailattachments/{id}/export")]
+        - Payloads
+          - Input : Email id, attachment id, optional query parameter ("?driveName={driveName}")
+          - Output : Email attachment file
 - Manager:
   - Email Manager:
     - The EmailManager will inherit BaseManager, which inherits IManager, and IEmailManager.
-      - Beyond the base class and interfaces, EmailManager will implement the SendEmailAsync() and IsEmailAllowed() methods to assist EmailController. 
+      - Beyond the base class and interfaces, EmailManager will implement the appropriate methods to assist EmailsController. 
 - Repositories:
   - EmailAccountRepository:
     - The EmailAccountRepository will inherit EntityRepository<EmailAccount>, which inherits ReadOnlyEntityRepository<EmailAccount>, and IEmailAccountRepository.
@@ -227,7 +231,7 @@ Updated By: Nicole Carrero
       - Beyond the base classes and interface, EmailRepository will access the EmailLog data table to retrieve, add, edit, or delete the entity in the Server.
 - Data Models:
   - Email Address Data Model:
-    - The EmailAddress data model will be used for email addresses when sending an email.  It has the methods ToMailAddress() and IterateBack() to assist in the creation of the email message.
+    - The EmailAddress data model will be used for email addresses when sending an email.  It has the methods ToMailAddress and IterateBack to assist in the creation of the email message.
       - EmailAddress will have string Name and string Address.
   - Email Attachment Data Model:
     - The EmailAttachment Data Model will be used for storing email attachments when sending an email.  It inherits the NamedEntity class, which inherits Entity and INamedEntity.  Entity inherits the IEntity interface.
@@ -308,6 +312,7 @@ Updated By: Nicole Carrero
   - [Edit Email Attachment Property Sequence Diagram](Sequence Diagrams/EmailAttachmentsController/EditEmailAttachmentPropertySequenceDiagram.png)
   - [Delete Email Attachments Sequence Diagram](Sequence Diagrams/EmailAttachmentsController/DeleteEmailAttachmentsSequenceDiagram.png)
   - [Delete Email Attachment Sequence Diagram](Sequence Diagrams/EmailAttachmentsController/DeleteEmailAttachmentSequenceDiagram.png)
+  - [Export Email Attachment Sequence Diagram](Sequence Diagrams/EmailAttachmentsController/ExportEmailAttachmentSequenceDiagram.png)
 
 **Unit Tests**
 

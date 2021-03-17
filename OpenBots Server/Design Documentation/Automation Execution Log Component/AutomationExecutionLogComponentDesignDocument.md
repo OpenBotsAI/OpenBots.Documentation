@@ -84,7 +84,7 @@ Updated By: Nicole Carrero
            - Output : 200 OK response
   - AutomationExecutionLogManager:
    - The AutomationExecutionLogManager will inherit BaseManager, which inherits IManager, and IAutomationExecutionLogManager.
-      - Beyond the base class and interface, AutomationExecutionLogManager will implement GetExecutionView() and GetAutomationAndAgentNames() methods to assist AutomationExecutionLogsController.
+      - Beyond the base class and interface, AutomationExecutionLogManager will implement the appropriate methods to assist AutomationExecutionLogsController.
   - AutomationExecutionLogRepository:
     - AutomationExecutionLogRepository will inherit EntityRepository<AutomationExecutionLog>, which inherits ReadOnlyEntityRepository, and IProcessExecutionLogRepository.
     - In addition to the methods in the base class, the AutomationExecutionLogRepository will retrieve automation execution logs using a view model.
