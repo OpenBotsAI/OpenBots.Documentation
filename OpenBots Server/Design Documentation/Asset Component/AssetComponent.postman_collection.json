@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dbcef32a-e18b-4b78-8dd7-c4c33dafce5a",
+		"_postman_id": "1dfdf2b2-d1ea-4ed5-8940-fa6b637640d0",
 		"name": "AssetComponent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -730,6 +730,71 @@
 					]
 				},
 				"description": "Append a string text value to a specified Asset of text type\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset View by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/view/616edb10-50a8-48bf-9c7f-6fd1000e62bf",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"view",
+						"616edb10-50a8-48bf-9c7f-6fd1000e62bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Asset View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Assets/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Assets",
+						"view"
+					]
+				}
 			},
 			"response": []
 		}

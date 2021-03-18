@@ -250,10 +250,19 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"AgentId\" : \"ecc5ea09-3d82-471d-8207-053119a5d021\"\r\n},\r\n{\r\n    \"AgentId\" : \"c4ae8cf8-3823-41ad-8ec1-11f498e6ac5f\"\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/AgentGroups/a38d65d3-23f6-4ea5-8064-f22c70507368/AddAgentToGroup/3a74809a-2406-4fe9-a89a-1fcde84a5894",
+					"raw": "https://localhost:5001/api/v1/AgentGroups/f29845a3-54b4-4867-9f17-7997363f2878/UpdateGroupMembers",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -263,9 +272,8 @@
 						"api",
 						"v1",
 						"AgentGroups",
-						"a38d65d3-23f6-4ea5-8064-f22c70507368",
-						"AddAgentToGroup",
-						"3a74809a-2406-4fe9-a89a-1fcde84a5894"
+						"f29845a3-54b4-4867-9f17-7997363f2878",
+						"UpdateGroupMembers"
 					]
 				},
 				"description": "Creates a new AgentGroupMember entity with the specified IDs"
@@ -273,7 +281,7 @@
 			"response": []
 		},
 		{
-			"name": "Get All Group Members",
+			"name": "Get AgentGroup view by id",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -288,7 +296,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/AgentGroups/a38d65d3-23f6-4ea5-8064-f22c70507368/GetAllGroupMembers",
+					"raw": "https://localhost:5001/api/v1/AgentGroups/view/f29845a3-54b4-4867-9f17-7997363f2878",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -298,11 +306,10 @@
 						"api",
 						"v1",
 						"AgentGroups",
-						"a38d65d3-23f6-4ea5-8064-f22c70507368",
-						"GetAllGroupMembers"
+						"view",
+						"f29845a3-54b4-4867-9f17-7997363f2878"
 					]
-				},
-				"description": "Gets all GroupMembers for the specified AgentGroup id"
+				}
 			},
 			"response": []
 		}

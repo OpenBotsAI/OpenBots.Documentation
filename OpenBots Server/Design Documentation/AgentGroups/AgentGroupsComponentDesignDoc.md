@@ -1,5 +1,8 @@
 Author: Dairon Hernandez
-Creation Date: 02/19/2020
+Creation Date: 02/19/2021
+
+Updated On: 3/15/2021
+Updated By: Dairon Hernandez
 
 **AgentGroups Component**
 
@@ -39,26 +42,26 @@ Creation Date: 02/19/2020
         - Payloads
           - Input : None
           - Output : JSON file listing all agentGroup information
-      - Get all group members for this agentGroup id: [HttpGet("api/v1/agentGroups/{AgentGroupId}/GetAllGroupMembers")]
+      - Get view for the specified id: [HttpGet("api/v1/agentGroups/view/id")]
         - Payloads
           - Input : agentGroup id
-          - Output : Paginated list of all group members with the specified id
+          - Output : JSON file listing AgentGroup view information. (Includes the GroupMembers)
       - Count agentsGroups: [HttpGet("api/v1/agentGroups/count")]
         - Payloads
           - Input : None
           - Output : Count of all agentsGroups
-      - Agent details: [HttpGet("api/v1/agents/{id}")]
+      - Agent details: [HttpGet("api/v1/agentGroups/{id}")]
         - Payloads
-          - Input : Agent id
-          - Output : JSON file listing agent information
+          - Input : AgentGroup id
+          - Output : JSON file listing AgentGroup information
       - Create an agentGroup: [HttpPost("api/v1/agentGroups")]
         - Payloads
           - Input : Name, Description, IsEnabled
           - Output : 200 OK response
-      - Create an agentGroup: [HttpPost("api/v1/agentGroups/{AgentGroupId/AddAgentToGroup/{AgentId}}")]
+      - Create an agentGroup: [HttpPut("api/v1/agentGroups/{id}/UpdateGroupMembers")]
         - Payloads
           - Input : Agent id and AgentGroup Id
-          - Output : 200 OK response
+          - Output : Newly created AgentGroupMembers
       - Edit an agentGroup: [HttpPut("api/v1/agentGroups/{id}")]
         - Payloads
           - Input : Name, Description, IsEnabled

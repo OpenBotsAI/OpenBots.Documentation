@@ -1,8 +1,8 @@
 Author: Dairon Hernandez
 Creation Date: 08/13/2020
 
-Updated On: 3/8/2021
-Updated By: Nicole Carrero
+Updated On: 3/15/2021
+Updated By: Dairon Hernandez
 
 **Asset Component**
 
@@ -10,7 +10,7 @@ Updated By: Nicole Carrero
 
 - Problem: Administrators are not able to create assets.  Administrators should be able to create an asset by defining its name, data type, and value. An administrator should be able to view a list of assets, as well as edit and delete them.  Administrators should be able to export an asset file if necessary.
 
-- Requirements: Ensure an administrator is able to create new assets by defining their key values and edit or delete them. Ensure an administrator is able to view a list of assets, request the values of individual assets, and export an individual asset's file.
+- Requirements: Ensure an administrator is able to create new assets by defining their key values and edit or delete them. Ensure an administrator is able to view a list of assets, request the values of individual assets, and export an individual asset's file. Additionally, Assets with Agent IDs can be created and used by the agent and studio applications.
 
 **Component Scope**
 
@@ -28,7 +28,11 @@ Updated By: Nicole Carrero
 
 **Design**
 
-- Overview: The overall structure uses the AssetsController to allow the user to make a web request for either the entire list of assets or details of an individual asset.  If the user requests access to the entire list of assets, the request goes to the AssetsController, which may use the AssetManager, and then calls the AssetRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the assets could not be found.  The same process will occur when the user requests the asset details as well as add, edit, delete, or export an asset.
+- Overview: The overall structure uses the AssetsController to allow the user to make a web request for either the entire list of assets or details of an individual asset.  If the user requests access to the entire list of assets, the request goes to the AssetsController, which may use the ProcessManager, and then calls the AssetsRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the assets could not be found.  The same process will occur when the user requests the asset details as well as add, edit, delete, or export an asset.
+
+-Types of Assets
+  - Global-asset: The first time an Asset name is used it will create a new Global-Asset. Global Asset cannot be deleted until all child Assets are deleted
+  - Agent-asset: Assets that contain an Agent Id and share a name with a Global-Asset. Agent-Assets can only be create if a global asset of the same name already exists. 
 
 - Proposed Solution:
   - User Interface:
@@ -49,49 +53,49 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : None
           - Output : JSON file containing a list of all assets
+      - Get all assets view: [HttpGet("api/v1/assets/view")]
+        - Payloads
+          - Input : None
+          - Output : JSON file containing a list of all asset views. (Includes AgentName and FileName)
       - Count all assets: [HttpGet("api/v1/assets/count")]
         - Payloads
           - Input : None
           - Output : Total count of assets from the Server
       - Get asset details: [HttpGet("api/v1/assets/{id}")]
         - Payloads
-          - Input : Asset id
+          - Input : asset id
           - Output : JSON file containing details for the provided asset id
-      - Get asset by name and type: [HttpGet("api/v1/assets/getassetbyname/{assetName}")]
+      - Get asset view details: [HttpGet("api/v1/assets/view/{id}")]
         - Payloads
-          - Input : optional query parameter "?assetType={assetType}"
-          - Output : JSON file listing details for the asset with a matching name (and optional type)
-      - Add JSON asset: [HttpPost("api/v1/assets")]
+          - Input : asset id
+          - Output : JSON file containing view details for the provided asset id (Includes AgentName and FileName).
+      - Get asset file: [HttpGet("api/v1/assets/GetAssetByName/{AssetName}")]
         - Payloads
-          - Input : Asset model data (name, type, JSON value)
+          - Input : asset name and/or asset type
+          - Output : global asset file, unless called by an agent with an existing agent-asset
+      - Add an asset: [HttpPost("api/v1/assets")]
+        - Payloads
+          - Input : asset model data
           - Output : JSON file listing new asset information
-      - Add text asset: [HttpPost("api/v1/assets")]
+      - Upload asset file: [HttpPost("api/v1/assets/{id}/upload")]
         - Payloads
-          - Input : Asset model data (name, type, text value)
-          - Output : JSON file listing new asset information
-      - Add number asset: [HttpPost("api/v1/assets")]
+          - Input : asset file
+          - Output : JSON file listing updated asset information
+      - Upload agent-asset file: [HttpPost("api/v1/assets/AddAgentAsset")]
         - Payloads
-          - Input : Asset model data (name, type, number value)
-          - Output : JSON file listing new asset information
-      - Add file asset: [HttpPost("api/v1/assets")]
-        - Payloads
-          - Input : Asset model data (name, type, file, optional drive name)
-          - Output : JSON file listing new asset information
+          - Input : asset model data
+          - Output : JSON file listing created asset information
       - Export asset file: [HttpGet("api/v1/assets/{id}/export")]
         - Payloads
-          - Input : Asset id
-          - Output : Asset file
-      - Create agent asset: [HttpPost("api/v1/assets/addagentasset")]
-        - Payloads
-          - Input : Asset model data (name, agent id, optional file, optional drive name)
-          - Output : JSON file listing new agent asset information
+          - Input : asset id
+          - Output : asset file
       - Update asset: [HttpPut("api/v1/assets/{id}")]
         - Payloads
-          - Input : Name, type, value (number, text, or JSON)
+          - Input : Name, Value (Number Value, Text Value, or JSON Value)
           - Output : 200 OK response
       - Update asset with file: [HttpPut("api/v1/assets/{id}/update")]
         - Payloads
-          - Input : Name, file
+          - Input : Name, File
           - Output : 200 OK response
       - Update asset property: [HttpPatch("api/v1/assets/{id}")]
         - Payloads
@@ -124,6 +128,10 @@ Updated By: Nicole Carrero
   - Asset Manager:
     - The AssetManager will inherit BaseManager, which inherits IManager, and IAssetManager.
       - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
+          - Input : asset id
+          - Output : 200 OK response     
+  - Asset Manager(s):
+    - The asset manager will execute necessary logic for the controller methods to function. The manager contains the publicly accessible methods: CreateAgentAsset(), GetMatchingAsset(), AssetNameAvailability() and GetSizeInBytes(). 
   - Asset Repository(s):
     - The AssetRepository will retrieve all assets or details of an asset as well as add, edit, delete, or export assets.
   - Asset Data Model(s):
