@@ -1,7 +1,7 @@
 Author: Nicole Carrero
 Creation Date: 12/4/2020
 
-Updated On: 3/8/2021
+Updated On: 3/23/2021
 Updated By: Nicole Carrero
 
 **Email Component**
@@ -10,6 +10,12 @@ Updated By: Nicole Carrero
 
 - Problem: Users cannot view and modify email configuration settings or send emails.  Administrators should be able to create an email message, attach files to the email, and send the email message.  Administrators should be able to view and modify core system email settings and accounts.
 - Requirements: Ensure that an administrator is able to modify key system email settings and accounts.  Ensure that an administrator is able to create an email message, attach files, and send email messages.
+- NOTE: If you are using a Google email account and your messages are not sending, please follow the steps below: (from https://serverfault.com/questions/635139/how-to-fix-send-mail-authorization-failed-534-5-7-14)
+  - It may take more than one step to fix this issue
+    1. Log into your Google account and then go to this link: https://www.google.com/settings/security/lesssecureapps.  Set "Access For Less Secure Apps" to ON. Test to see if your issue is resolved. If it isn't resolved, continue to Step #2.	
+    2. Go to https://support.google.com/accounts/answer/6009563 (Titled: "Password incorrect error"). This page says "There are several reasons why you might see a 'Password Incorrect' error (aka 534-5.7.14) when signing in to Google using third-party apps. In some cases, even if you type your password correctly." This page gives four suggestions of things to try.
+      - In most cases, the first suggestion works: Go to https://g.co/allowaccess from a different device you have previously used to access your Google account and follow the instructions.
+	    - Try signing in again from the blocked app and send an email.
 
 **Component Scope**
 
