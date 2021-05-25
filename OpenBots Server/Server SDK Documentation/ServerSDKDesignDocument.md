@@ -1,0 +1,368 @@
+Author: Nicole Carrero
+Creation Date: 5/21/2021
+
+**Server SDK**
+
+**Context**
+
+- Problem: Developers, the Agent, and the Studio cannot access or call Server and Documents APIs in a quick an efficient manner.
+- Requirements: Ensure that a developer, the Agent, and the Studio can access and call Server and Documents APIs in a quick and efficient manner.
+
+**Component Scope**
+
+- In-Scope:
+  - Developers, the Agent, and the Studio can access Server APIs.
+  - Developers, the Agent, and the Studio can access Documents APIs.
+- Out-of-Scope:
+  - Developers, the Agent, and the Studio can alter Server APIs.
+  - Developers, the Agent, and the Studio can alter Documents APIs.
+
+**Design**
+
+- Overview: The overall structure uses the methods in each file within the Api folder to allow the user to call a method that makes a request or to simply make a single request.  The API gets called, which in turn acesses the Server or Documents, and then retrieves, adds, updates, exports, or deletes the appropriate data from the Server or Documents if the request is valid.  If the request is invalid, the user will receive an error message stating the error that occurred while trying to process the request.
+- Types of API Requests
+  - Server:  The requests made using OpenBots Server
+  - Documents: The requests made using OpenBots Documents
+- Proposed Solution:
+  - User Interface:
+    - There is no user interface, as these methods will be used in the development process.
+  - Api Folder:
+    - The Api Folder will be where the methods are contained to make a request and access either the Server or Documents.
+    - Routes:
+    - NOTE: The base URLs change depending on whether you are using the open source Server, cloud Server, or Documents.  They can also change based on the current environment.  All possible Server and Documents API calls are not listed here; the ones listed are currently being used in the Agent and Studio.  In most cases, the base path and token should be added to the SDK's API instance configuration before making the request.
+    - NOTE: The current API version is 1.
+      - AuthApi:
+        - The AuthApi is used to authenticate the machine user/Agent and retrieve the appropriate information.
+        - Get User Info: This method gets the required user info to continue making requests for the Server and Documents.
+          - Payload
+            - Input : API version, agent id, server type, organization name, environment, server URL, username, password
+            - Output : UserInfo model data of current user
+          - Get Service Registration (Cloud only): [HttpGet("{serviceUrl}/api/v{apiVersion}/ServiceRegistration")]
+            - NOTE: Service URL is https://api.members.openbots.io
+            - Payload
+              - Input : Environment (i.e. "LIVE," "DEV," "DEMO," "TEST")
+              - Output : JSON file listing all service registration information (i.e. base URLs for Documents, Authentication, etc.)
+          - Get Auth Token (Local): [HttpGet("{loginUrl}/api/v{apiVersion}/Auth/token")]
+            - Method Name: ApiVapiVersionAuthTokenPostWithHttpInfo
+            - Payload
+              - Input : Login model data (username and password properties)
+          - Get Auth Token (Cloud & Documents): [HttpGet("{loginUrl}/api/v{apiVersion}/Auth/machine/token)"]
+            - No method name, as the logic in included in the code base to be called through OpenId Connect
+            - Payload
+              - Input : Login URL (retrieved from get service registration), API version, server type ("Local," "Cloud," "Documents"), username, password
+              - Output : Authentication token as a string
+          - NOTE: The two methods below are only used when accessing the cloud Server.
+          - Get Server Info: Method that retrieves the user information such as person id, email, username, token, and organizations.
+            - Payload
+              - Input : API version, server URL, token
+              - Output : ServerInfo model data
+            - Get User Info: ApiVapiVersionAuthGetUserInfoGetAsyncWithHttpInfo
+              - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/Auth/GetUserInfo")]
+              - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Auth/GetUserInfo")]
+              - Payload
+                - Input : Token
+                - Output : ServerInfo model data
+          - Get Organization Id: Method that retrieves the user's current organization id (if user belongs to multiple organizations)
+            - Method Name: ApiVapiVersionOrganizationsGetAsyncWithHttpInfo
+            - Payload
+              - Input : Token, API version, organizationName, server URL, list of user's organizations (in form of OrganizationListing model)
+              - Output : Organization id
+            - Get Organization (located in OrganizationsApi): [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations")]
+              - Payload
+                - Input : Filter (optional), order by (optional), top (optional), skip (optional)
+                - Output : Paginated list of organizations (that if provided, match the optional parameters)
+    - NOTE: If any of the following use organization id and the server type is Local, organization should be set as an empty string.  In addition, the server URL and authentication token need to be set before calling the API requests.  For instance, "var apiInsance = new AssetsApi(serverUrl);" and "apiInstance.Configuration.AccessToken = token;".  Lastly, every call needs to be made from an API instance, like "apiInstance.ApiVapiVersionAssetsGetAssetByNameAssetNameGetAsyncWithHttpInfo(assetName, apiVersion, orgId, "Number").Result.Data;".
+      - AssetsApi:
+        - The AssetsApi is used for Asset operations on the Server.
+        - Get Asset: ApiVapiVersionAssetsGetAssetByNameAssetNameGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/Assets/GetAssetByName/{assetName}")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/api/v{apiVersion}/Organizations/Assets/GetAssetByName/{assetName}")]
+          - Payload
+            - Input : Asset name, API version, organization id, asset type
+            - Output : Asset model data
+        - Update Asset: ApiVapiVersionAssetsIdPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/Assets")]
+          - Payload
+            - Input : Asset id, API version, organization id, asset data model
+            - Output : 200 OK Response
+        - Download File Asset: ExportAssetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/Assets/{id}/Export")]
+          - Cloud : [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Export")]
+          - Payload
+            - Input : Asset id, API version, organization id
+            - Output : Memory Stream of file content
+        - Update File Asset: ApiVapiVersionAssetsIdUpdatePutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Update")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Update")]
+          - Payload
+            - Input : Asset id, API version, organization id, asset name, asset type, asset file id, file as FileStream
+            - Output : 200 OK response
+        - Append Asset: ApiVapiVersionAssetsIdAppendPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Append")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Append")]
+          - Payload
+            - Input : Asset id, API version, organization id, appended text
+            - Output : 200 OK response
+        - Increment Asset: ApiVapiVersionAssetsIdIncrementPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Increment")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Increment")]
+            - Payload
+              - Input : Asset id, API version, organization id
+              - Output : 200 OK response
+        - Decrement Asset: ApiVapiVersionAssetsIdDecrementPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Decrement")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Decrement")]
+            - Payload
+              - Input : Asset id, API version, organization id
+              - Output : 200 OK response
+        - Add Asset: ApiVapiVersionAssetsIdAddPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Add")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Add")]
+            Payload
+              - Input : Asset id, API version, organization id, value
+              - Output : 200 OK response
+        - Subtract Asset: ApiVapiVersionAssetsIdSubtractPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Assets/{id}/Append")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Assets/{id}/Append")]
+            - Payload
+              - Input : Asset id, API version, organization id, value
+              - Output : 200 OK response
+      - AutomationsApi:
+        - The AutomationsApi is used for Automation operations on the Server.
+        - Upload Automation: ApiVapiVersionAutomationsPostWithHttpInfo
+          - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/Automations")]
+          - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Automations")]
+            - Payload
+              - Input : API version, organization id, name, file (as FileStream), automation engine
+              - Output : Automation data model
+        - Update Parameters: ApiVapiVersionAutomationsAutomationIdUpdateParametersPostWithHttpInfo
+          - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/Automations/{id}/UpdateParameters")]
+          - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Automations/{id}/UpdateParameters")]
+            - Payload
+              - Input : Automation id, organization id, API version, automation parameters list
+              - Output : 200 OK response
+      - CredentialsApi:
+        - The CredentialsApi is used for Credential operations on the Server.
+        - Get Credential: ApiVapiVersionCredentialsGetCredentialByNameCredentialNameGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/Credentials/GetCredentialByName/{credentialName}")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Credentials/GetCredentialByName/{credentialName}")]
+            - Payload
+              - Input : Credential name, API version, organization id
+              - Output : Credential data model
+        - Update Credential: ApiVapiVersionCredentialsIdPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/Credentials/{id}")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Credentials/{id}")]
+            - Payload
+              - Input : Credential id, API version, organization id, credential data model
+              - Output : 200 OK response
+      - QueuesApi:
+        - The QueuesApi is used for Queue operations on the Server.
+        - Get Queue By Name: ApiVapiVersionQueuesGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/Queues")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Queues")]
+            - Payload
+              - Input : API version, organization id, filter ("Name eq '{queueName}'")
+              - Output : Queue data model
+      - QueueItemsApi:
+        - The QueueItemsApi is used for queue item operations on the Server.
+        - Get Queue Item by Id: GetQueueItemAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/QueueItems/{id}")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/{id}")]
+            - Payload
+              - Input : Queue item id, API version, organization id
+              - Output : Queue item data model
+        - Get Queue Item by Lock Transaction Key: ApiVapiVersionQueueItemsGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/QueueItems")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems")]
+            - Payload
+              - Input : API version, organization id, filter ("LockTransactionKey eq guid'{transactionKey}'")
+              - Output : Queue item data model
+        - Enqueue Queue Item: ApiVapiVersionQueueItemsEnqueuePostAsyncWithHttpInfo
+          - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/QueueItems/Enqueue")]
+          - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/Enqueue")]
+            - Payload
+              - Input : API version, organization id, queue item data model
+              - Output : Queue item view model
+        - Dequeue Queue Item: ApiVapiVersionQueueItemsDequeueGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/QueueItems/Dequeue")]
+          - Cloud:[HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/Dequeue")]
+            - Payload
+              - Input : API version, organization id, agent id, queue id
+              - Output : Queue item view model
+        - Commit Queue Item: ApiVapiVersionQueueItemsCommitPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/QueueItems/Commit")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/Commit")]
+            - Payload
+              - Input : AI version, organization id, lock transaction key
+              - Output : 200 OK response
+        - Rollback Queue Item: ApiVapiVersionQueueItemsRollbackPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/QueueItems/Rollback")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/Rollback")]
+            - Payload
+              - Input : API version, organization id, lock transaction key, error code (optional), error message(optional), is fatal (optional)
+              - Output : 200 OK response
+        - Extend Queue Item: ApiVapiVersionQueueItemsExtendPutAsyncWithHttpInfo
+          - Local: [HttpPut("{serverUrl}/api/v{apiVersion}/QueueItems/Extend")]
+          - Cloud: [HttpPut("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/Extend")]
+            - Payload
+              - Input : API version, organization id, lock transaction key
+              - Output : 200 OK response
+      - QueueItemAttachmentsApi:
+        - The QueueItemAttachmentsApi is used for queue item attachment operations on the Server.
+        - Attach Files: ApiVapiVersionQueueItemsQueueItemIdQueueItemAttachmentsPostAsyncWithHttpInfo
+          - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/QueueItems/{queueItemId}/QueueItemAttachments")]
+          - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/{queueItemId}/QueueItemAttachments")]
+            - Payload
+              - Input : Queue item id, API version, organization id, attachments list (each file in list as FileStream)
+              - Output : 200 OK response
+        - Get Queue Item Attachments: ApiVapiVersionQueueItemsQueueItemIdQueueItemAttachmentsGetAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/QueueItems/{queueItemId}/QueueItemAttachments")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/QueueItems/{queueItemId}/QueueItemAttachments")]
+            - Payload
+              - Input : Queue item id, API version, organization
+              - Output : Paginated list of queue item attachment data models
+        - Export Queue Item Attachment: ExportQueueItemAttachmentAsyncWithHttpInfo
+          - Local: [HttpGet("{serverUrl}/api/v{apiVersion}/QueueItems/{queueItemId}/QueueItemAttachments/{id}/Export")]
+          - Cloud: [HttpGet("{serverUrl}/api/v{apiVersion}/Organization/{organizationId}/QueueItems/{queueItemId}/QueueItemAttachments/{id}/Export")]
+            - Payload
+              - Input : Queue item attachment id, API version, organization id, queue item id
+              - Output : Memory Stream of file
+      - EmailsApi:
+        - The EmailsApi is used for Server email operations.
+          - Send Email: ApiVapiVersionEmailsSendPostAsyncWithHttpInfo
+            - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/Emails/Send")]
+            - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Emails/Send")]
+              - Payload
+                - Input : API version, organization id, email message data model (in JSON format), attachments list (each file as FileStream), email account name
+                - Output : 200 OK response
+      - DocumentProcessingEngineServiceApi
+        - The DocumentProcessingEngineServiceApi is used for operations involving Documents.
+        - Change Status: ApiServicesAppDocumentprocessingengineserviceChangestatusPostWithHttpInfo
+          - Documents: [HttpPut("{documentsUrl}/api/services/app/DocumentProcessingEngingService/ChangeStatus")]
+            - Payload
+              - Input : Human task id, new status
+              - Output : 200 OK response
+        - Compare Tables: Method that compares two data tables
+          - Method Name: Compare
+          - NOTE: The TableComparisonManager data model needs to be instanitated first before calling this method, as it is located within the model itself.  In addition, the IgnoreColumns and LookupColumns properties need to be defined before calling this method.
+            - Payload
+              - Input : Expected data table, actual data table
+              - Output : Data Table model data of differences as property of TableComparisonManager
+        - Get Document Status: Method to retrieve DocumentStatus data model
+          - Method Name: GetDocumentStatus
+          - Payload
+            - Input : Human task id
+            - Output : Document status data model
+          - Get Status: ApiServicesAppDocumentprocessingengineserviceGetstatusGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetStatus")]
+            - Payload
+              - Input : Human task id
+              - Output : Document status
+        - Mark Document as Verified: ApiServicesAppDocumentprocessingengineserviceMarkdocumentasverifiedPostWithHttpInfo
+          - Documents [HttpPost("{documentsUrl}/api/services/app/DocumentProcessingEngineService/MarkDocumentAsVerified")]
+          - Payload
+            - Input : Human task id, document id, is verified
+            - Output: Boolean value (true / false)
+        - Save Document Results: Method to retrieve DocumentResult data model
+          - Method Name: SaveDocumentResults
+          - Payload
+            - Input : Human task id, await completion, save page images, save page text, timeout, output folder, data table
+            - Output : Document result data model
+          - Get Status: See "Get Status" API request under "Get Document Status" method
+          - Get Documents: ApiServicesAppDocumentprocessingengineserviceGetdocumentsGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetDocuments")]
+            - Payload
+              - Input : Human task id
+              - Output : List of extracted document view models data
+          - Get Document Data: ApiServicesAppDocumentprocessingengineserviceGetdocumentdataGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetDocumentData")]
+            - Payload
+              - Input : Human task id, document id
+              - Output : Document content view model data
+          - Get Page Image (called when save page images = true): ApiServicesAppDocumentprocessingengineserviceGetpageimageGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetPageImage")]
+            - Payload
+              - Input : Human task id, document id, page number
+              - Output : Page details (as a string)
+          - Get Page Text (called when save page text = true): ApiServicesAppDocumentprocessingengineserviceGetpagetextGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetPageText")]
+            - Payload
+              - Input : Human task id, document id, page number
+              - Output : Page details (as string)
+        - Submit Document: Method to create a new document to be processed
+          - Method Name: SubmitDocument
+          - Payload
+            - Input : File path of document, task queue name, document name, description, case number, case type, assigned to, due on
+            - Output : Dictionary of task id and status values
+          - Get Queue: ApiServicesAppDocumentprocessingengineserviceGetqueuesGetWithHttpInfo
+            - Documents: [HttpGet("{documentsUrl}/api/services/app/DocumentProcessingEngineService/GetQueues")]
+            - Payload
+              - Input : None
+              - Output : Dictionary of queue ids and names
+          - Create or Edit Task: ApiServicesAppHumantasksCreateoreditPostWithHttpInfo
+            - Documents: [HttpPost("{documentsUrl}/api/services/app/HumanTasks/CreateOrEdit")]
+            - Payload
+              - Input : CreateOrEditHumanTaskDto data model
+              - Output : Document id
+          - Submit Document: ApiServicesAppDocumentprocessingengineserviceSubmitdocumentswithdetailsPostWithHttpInfo
+            - Documents: [HttpPost("{documentsUrl}/api/services/app/DocumentProcessingEngineService/SubmitDocumentsWithDetails")]
+            - Payload
+              - Input : List of files (each file as FileStream), task queue id, name, description, caseNumber, caseType, assigned to, due on, document id
+              - Output : API response of SubmitDocumentResponse data model
+          - Get Status: See "GetStatus" API request under "Get Document Status" method
+  - Client Folder:
+    - This folder contains the logic to configure, request, and retrieve the API calls.
+  - Exceptions Folder:
+    - This folder contains the custom exceptions created for the SDK.
+  - SDK Data Model(s):
+    - The SDK Data Models will be used for requesting and receiving the APIs.
+      - UserInfo: Retrieved when authenticating through the Server.
+        - UserInfo contains string ServerType, string OrganizationId, string Token, string ServerUrl, string LoginUrl, and string DocumentsUrl.
+      - Login: Used to store the machine's credentials for Server authentication.
+        - Login contains string UserName and string Password.
+      - ServerInfo: Retrieved when getting user information from the Server.
+        - ServerInfo contains Guid PersonId, string Email, string UserName, string Token, bool ForcedPasswordChange, bool IsUserConsentRequired, bool IsJoinOrRequestOrgPending, and List<OrganizationListing> MyOrganizations.
+        - OrganizationListing: Used in ServerInfo.
+          - OrganizationListing contains Guid Id, string Name, bool IsAdministrator, and Guid TenantKey.
+      - Organization: Retrieved when authenticating user information and to obtain organization id.
+        - Organization contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, string Description, List<OrganizationUnit> Units, List<AccessRequests> AccessRequests, List<OrganizationMember> OrganizationMembers, List<OrganizationSetting> OrganizationSettings, and Guid OrganizationId.
+      - Asset: Retrieved when requesting data from the Server.
+        - Asset contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, string Type, string TextValue, double NumberValue, string JsonValue, Guid FileId, long SizeInBytes, and Guid AgentId.
+      - Automation: Retrieved when requesting data from the Server.
+        - Automation contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, Guid FileId, string OriginalPackageName, string AutomationEngine, double AverageSuccessfulExecutionInMinutes, and double AverageUnSuccessfulExecutionInMinutes.
+      - Credential: Retrieved when requesting data from the Server.
+        - Credential contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, string Provider, DateTime StartDate, DateTime EndDate, string Domain, string UserName, string PasswordSecret, string PasswordHash, and string Certificate.
+      - Queue: Retrieved when requesting data from the Server.
+        - Queue contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, string Description, and int MaxRetryCount.
+      - QueueItem: Retrieved when requesting data from the Server.
+        - QueueItem contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, string Name, bool IsLocked, DateTime LockedOnUTC, DateTime LockedUntilUTC, Guid LockedBy, Guid QueueId, string Type, string JsonType, string DataJson, string State, string StateMessage, Guid LockTransactionKey, DateTime LockedEndTimeUTC, int RetryCount, int Priority, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, and long PayloadSizeInBytes.
+      - QueueItemAttachment: Retrieved when requesting data from the Server.
+        - QueueItemAttachment contains Guid Id, bool IsDeleted, string CreatedBy, DateTime CreatedOn, string DeletedBy, DateTime DeletedOn, byte[] Timestamp, DateTime UpdatedOn, string UpdatedBy, Guid QueueItemId, Guid FileId, and long SizeInBytes.
+      - EmailMessage: Used when sending an email from the Server.
+        - EmailMessage contains List<EmailAddress> To, List<EmailAddress> CC, List<EmailAddress> BCC, string Subject, string Body, and bool IsBodyHtml (usually set to true).
+        - EmailAddress: Used in EmailMessage.
+          - EmailAddress contains string Name and sString Address.
+      - TableComparisonManager: Used to compare two data tables.
+        - TableComparisonManager contains string IgnoreColumns, string LookupCoumns (both separated with commas for each column), and DataTable Differences.
+      - DocumentStatus: Used when requesting a document's status and other details from Documents.
+        - DocumentStatus contains string Status, bool IsDocumentCompleted, bool HasError, bool IsCurrentlyProcessing, and bool IsSuccessful.
+      - DocumentResult: Retrieved when saving a document's results.
+        - DocumentResult contains string OutputAsJSON, DataTableOutputAsTable, DataTable DataAsTable, string Status, bool IsCompleted, bool HasFailedOrError.
+      - ExtractedDocumentView: Used to retrieve data from get documents API.
+        - ExtractedDocument int Order, int TenantId, string Name, int NumberOfPages, double QualityScore, string PageRangeLabel, bool IsVerified, bool HasErrors, string DocumentClassificationType, bool IsExtractedContentStructured, string Schema, bool IsSkipped, Guid? SessionIdD, Guid ExtractedFileId, long OrganizationUnitId, Guid DocumentId, bool IsReadOnly, int Version, Guid EntityId, List<PageNumber> Pages, and Guid Id.
+      - DocumentContentView: Retrieved when requesting document data.
+        - DocumentContentView contains int ContentVersion, bool IsContentReadOnly, string Content, bool IsVerified, bool HasErrors, string Schema, and Guid EntityId.
+      - CreateOrEditWithHumanTaskDto:
+        - 
+      - SubmitDocumentResponse:
+        - 
+
+**Sequence Diagrams**
+
+- Please see Server and Documents documentation for sequence diagrams for each component.
+
+**Unit Tests**
+
+- Positive Test Cases: N/A
+- Negative Test Cases: N/A

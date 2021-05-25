@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "d7d6a9df-a0ec-41e2-adb6-a6d65e28d663",
+		"name": "EmailComponent - Email Settings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Email Settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Settings by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings/aa132dce-4784-42b8-ac20-541ecfa603eb",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings",
+						"aa132dce-4784-42b8-ac20-541ecfa603eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Settings Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings/count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email Settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n  \"isEmailDisabled\": true,\r\n  \"addToAddress\": \"nicole.carrero@accelirate.com\",\r\n  \"addCCAddress\": \"dairon.hernandez@accelirate.com\",\r\n  \"addBCCAddress\": \"ashish.nangla@accelirate.com\",\r\n  \"allowedDomains\": \"string\",\r\n  \"blockedDomains\": \"string\",\r\n  \"subjectAddPrefix\": \"string\",\r\n  \"subjectAddSuffix\": \"string\",\r\n  \"bodyAddPrefix\": \"string\",\r\n  \"bodyAddSuffix\": \"string\",\r\n  \"id\": \"\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"2020-10-07T19:03:00.525Z\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"organizationId\": \"ef8a6670-f522-4fcd-a55e-90aa92d1deb7\",\r\n            \"isEmailDisabled\": false,\r\n            \"addToAddress\": \"nicole.carrero@accelirate.com\",\r\n            \"addCCAddress\": \"\",\r\n            \"addBCCAddress\": \"\",\r\n            \"allowedDomains\": \"gmail.com, hotmail.com, yahoo.com, accelirate.com\",\r\n            \"blockedDomains\": \"hotwire.com\",\r\n            \"subjectAddPrefix\": \"MySubjectPrefix\",\r\n            \"subjectAddSuffix\": \"MySubjectSuffix\",\r\n            \"bodyAddPrefix\": \"MyBodyPrefix\",\r\n            \"bodyAddSuffix\": \"MyBodySuffix\",\r\n            \"id\": \"aa132dce-4784-42b8-ac20-541ecfa603eb\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"nicole.carrero@accelirate.com\",\r\n            \"createdOn\": \"2020-10-07T19:05:31.6287826\",\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": \"2020-10-07T19:03:00.525\",\r\n            \"timestamp\": \"AAAAAAAAkns=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": \"\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings/aa132dce-4784-42b8-ac20-541ecfa603eb",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings",
+						"aa132dce-4784-42b8-ac20-541ecfa603eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Settings Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"BlockedDomains\",\r\n        \"value\":\"YourDomain\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings/aa132dce-4784-42b8-ac20-541ecfa603eb",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings",
+						"aa132dce-4784-42b8-ac20-541ecfa603eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email Settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emailsettings/aa132dce-4784-42b8-ac20-541ecfa603eb",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emailsettings",
+						"aa132dce-4784-42b8-ac20-541ecfa603eb"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}

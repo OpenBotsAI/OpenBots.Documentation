@@ -1,0 +1,777 @@
+{
+	"info": {
+		"_postman_id": "8b0fd0f3-a60b-4d12-abba-77f7cab10d67",
+		"name": "Webhooks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Integration Events ",
+			"item": [
+				{
+					"name": "Get Integration Event by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/241fd289-76ae-499b-b9ee-d2f3d9b3db69",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"241fd289-76ae-499b-b9ee-d2f3d9b3db69"
+							]
+						},
+						"description": "Provides an IntegrationEvent's details for a particular IntegrationEvent id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All IntegrationEvents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents"
+							]
+						},
+						"description": "Gets a list of all integration events "
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup For IntegrationEvent Entity Names",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/IntegrationEventLookup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"IntegrationEventLookup"
+							]
+						},
+						"description": "Gets a list of all unique entity names that have an existing IntegrationEvent"
+					},
+					"response": []
+				},
+				{
+					"name": "Post BusinessEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Employee Onboarded\",\r\n    \"Description\" : \"New Employee has be onboarded\",\r\n    \"EntityType\" : \"Employee\",\r\n    \"PayloadSchema\" : \"Name : Bob Smith\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"BusinessEvents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Raise Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EntityID\" : \"a68d0783-594f-4b44-b7dd-d0b7c3753b0b\",\r\n    \"EntityName\" : \"John Smith\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/RaiseEvent/d07de8de-3402-4994-9f24-1abaa0bcb03d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"RaiseEvent",
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Employee Onboarded\",\r\n    \"Description\" : \"New Employee has be onboarded\",\r\n    \"EntityType\" : \"Employee\",\r\n    \"PayloadSchema\" : \"Name : Bob Smith\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Update Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/Name\",\r\n        \"value\":\"NewEmployee\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Existing Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEvents",
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "ReadOnly API containing details about all existing integration events"
+		},
+		{
+			"name": "Integration Event Subscriptions",
+			"item": [
+				{
+					"name": "Get All Subscriptions ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions"
+							]
+						},
+						"description": "Provides a list of all Integration Event Subscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Integration Event Subscription by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions/241fd289-76ae-499b-b9ee-d2f3d9b3db69",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions",
+								"241fd289-76ae-499b-b9ee-d2f3d9b3db69"
+							]
+						},
+						"description": "Provides an IntegrationEventSubscription's details for a particular IntegrationEventSubscription id"
+					},
+					"response": []
+				},
+				{
+					"name": "Post New IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"CredentialsUpdated\",\r\n  \"entityType\": \"Credential\",\r\n  \"integrationEventName\": \"Credentials.CredentialUpdated\",\r\n  \"entityID\": \"\",\r\n  \"entityName\": \"\",\r\n  \"transportType\": \"HTTPS\",\r\n  \"httP_URL\": \"https://webhook.site/176d9a1e-2ccb-4984-8394-4d7765155d5f\",\r\n  \"httP_AddHeader_Key\": \"Hello\",\r\n  \"httP_AddHeader_Value\": \"World\",\r\n  \"httP_Max_RetryCount\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions",
+								""
+							]
+						},
+						"description": "Adds a new IntegrationEvntSubscription to the existing subscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Update an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions/241fd289-76ae-499b-b9ee-d2f3d9b3db69",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions",
+								"241fd289-76ae-499b-b9ee-d2f3d9b3db69"
+							]
+						},
+						"description": "Updates an IntegrationEventSubscription entity when the id of an existing subscription is given"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions/241fd289-76ae-499b-b9ee-d2f3d9b3db69",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions",
+								"241fd289-76ae-499b-b9ee-d2f3d9b3db69"
+							]
+						},
+						"description": "Deletes an IntegrationEventSubscription with a specified id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Update an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Name\",\r\n        \"value\":\"AgentsSubscription\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptions/241fd289-76ae-499b-b9ee-d2f3d9b3db69",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptions",
+								"241fd289-76ae-499b-b9ee-d2f3d9b3db69"
+							]
+						},
+						"description": "Updates partial details of IntegrationEventSubscription"
+					},
+					"response": []
+				}
+			],
+			"description": "API endpoint used to manager Event Subscriptions\r\n"
+		},
+		{
+			"name": "Integration Event Log",
+			"item": [
+				{
+					"name": "Get All Integration Event Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventLogs",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventLogs"
+							]
+						},
+						"description": "Provides a list of all IntegrationEventLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Integration Event Log by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventLogs/106da986-9e32-4ad4-897e-8b97a5dfe760",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventLogs",
+								"106da986-9e32-4ad4-897e-8b97a5dfe760"
+							]
+						},
+						"description": "Gets an integration event log for the specified log ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Export Payload For the Specified Integration Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventLogs/ExportPayload/106da986-9e32-4ad4-897e-8b97a5dfe760",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventLogs",
+								"ExportPayload",
+								"106da986-9e32-4ad4-897e-8b97a5dfe760"
+							]
+						},
+						"description": "Export the payload corresponding to the specified attempt"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup for all integrationEvent names",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventLogs/IntegrationEventLogsLookup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventLogs",
+								"IntegrationEventLogsLookup"
+							]
+						},
+						"description": "Provides a list of all integration event logs by name\r\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Keeps a log of all integration events that have occured"
+		},
+		{
+			"name": "Integration Event Subscription Attempt",
+			"item": [
+				{
+					"name": "Get All Integregration Event Subscription Atemmpts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptionAttempts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptionAttempts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubscriptionAttempt by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptionAttempts/2c3bb851-087b-4c05-9e4f-002c02350dad",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptionAttempts",
+								"2c3bb851-087b-4c05-9e4f-002c02350dad"
+							]
+						},
+						"description": "Gets details of the IntegrationEventSubscriptionAttempt corresponding to the provided Guid"
+					},
+					"response": []
+				},
+				{
+					"name": "Get ViewModel for all SubscriptionAttemts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptionAttempts/view",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptionAttempts",
+								"view"
+							]
+						},
+						"description": "Gets a list of AllSubscriptionAttemptsViewModel "
+					},
+					"response": []
+				},
+				{
+					"name": "Get the View for the specified Attempt ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Gets the viewmodel for the speccified Attempt ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Keeps a log of each attempt to send a webhook to an event subscription"
+		}
+	]
+}

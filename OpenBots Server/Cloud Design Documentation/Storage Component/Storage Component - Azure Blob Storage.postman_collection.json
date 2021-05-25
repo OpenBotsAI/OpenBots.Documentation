@@ -1,0 +1,1426 @@
+{
+	"info": {
+		"_postman_id": "3a2ba9e3-6fd3-4009-b820-56d3f56ffc88",
+		"name": "Storage Component - Azure Blob Storage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DrivesController",
+			"item": [
+				{
+					"name": "All Drives",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drives Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/DriveDetails/d4ee1cac-8f34-4ea1-b63e-4684a4db029b",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"DriveDetails",
+								"d4ee1cac-8f34-4ea1-b63e-4684a4db029b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Details By Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/DriveDetailsByName/Files",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"DriveDetailsByName",
+								"Files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"NewFiles\",\r\n  \"fileStorageAdapterType\": \"AzureBlobStorage\",\r\n  \"storagePath\": \"http://devaccessserveropenbots.blob.core.windows.net\",\r\n  \"maxStorageAllowedInBytes\": 100000000,\r\n  \"isDefault\": false,\r\n  \"description\": \"Second storage drive\",\r\n  \"isExternal\": false,\r\n  \"connectionString\": \"DefaultEndpointsProtocol=https;AccountName=devaccessserveropenbots;AccountKey=qyYOTdq9rUxEcn73hQWqPVsR/w4HRmANkBR/KIjgX8Zb//gT9z4SUGeIA3TsI2W+dM8yC1aCdquXa3FdBKyzIA==;EndpointSuffix=core.windows.net\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"fileStorageAdapterType\": \"LocalFileStorage\",\r\n            \"storagePath\": \"OldFiles\",\r\n            \"maxStorageAllowedInBytes\": null,\r\n            \"isDefault\": false,\r\n            \"name\": \"OldFiles\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/91e073e7-48ce-4d65-93d7-76ff0f242462",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"91e073e7-48ce-4d65-93d7-76ff0f242462"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/91e073e7-48ce-4d65-93d7-76ff0f242462",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"91e073e7-48ce-4d65-93d7-76ff0f242462"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Names Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/driveNames?adapterType=AzureBlobStorage",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"driveNames"
+							],
+							"query": [
+								{
+									"key": "adapterType",
+									"value": "AzureBlobStorage"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drives View (Billing Component)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Storage/8b17fd7e-88f9-4530-beff-a183a44956fa/Drives/View",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"Drives",
+								"View"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Max Drive Size Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Storage/8b17fd7e-88f9-4530-beff-a183a44956fa/Drives/MaxDriveSizeCount",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"Drives",
+								"MaxDriveSizeCount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Used Drive Storage Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Storage/8b17fd7e-88f9-4530-beff-a183a44956fa/Drives/UsedDriveStorageCount",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"Drives",
+								"UsedDriveStorageCount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilesController",
+			"item": [
+				{
+					"name": "All Files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Folders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Files & Folders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "$orderby",
+									"value": "createdOn+desc",
+									"disabled": true
+								},
+								{
+									"key": "$top",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "$skip",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "ParentId+eq+guid'37a01356-7514-47a2-96ce-986faadd628e'",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Files & Folders With ParentId Filter (All Child Files & Folders)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f?$filter=ParentId eq guid'fe2d6e4c-25de-452c-91fc-0a791082597f'",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "ParentId eq guid'fe2d6e4c-25de-452c-91fc-0a791082597f'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Files Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/Count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"Count"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folders Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders",
+								"count"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/7376bcb3-ba24-46a9-a715-2fe51147b2e4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"7376bcb3-ba24-46a9-a715-2fe51147b2e4"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folder Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders/89558e63-6d8e-47b3-833d-2007b4b8c99e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders",
+								"89558e63-6d8e-47b3-833d-2007b4b8c99e"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File Details By Storage Path",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/Details/Files?path=Files\\TestFolder1\\FileComponentDesignDocument.md",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"Details",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "path",
+									"value": "Files\\TestFolder1\\FileComponentDesignDocument.md"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folder Details By Storage Path",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/Details/Files?path=Files\\TestFolder1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"Details",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "path",
+									"value": "Files\\TestFolder1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "StoragePath",
+									"value": "Files\\TestFolder2",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/Sequence Diagrams/AddAutomationSequenceDiagram.png"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/Sequence Diagrams/AutomationComponentSequenceDiagram.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "TestFolder1Child2",
+									"type": "text"
+								},
+								{
+									"key": "StoragePath",
+									"value": "Files\\TestFolder1",
+									"type": "text"
+								},
+								{
+									"key": "isFile",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/1ddeb8b3-a331-477f-b2d7-6fe4522633c1/Download",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"1ddeb8b3-a331-477f-b2d7-6fe4522633c1",
+								"Download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/e8797ed2-6b05-401e-9242-ea86319116cc",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"e8797ed2-6b05-401e-9242-ea86319116cc"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders/1c6e32b8-d3bb-4d66-bb18-9f8c71627cc2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders",
+								"1c6e32b8-d3bb-4d66-bb18-9f8c71627cc2"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ABC123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/fb62fa9d-8856-478f-848d-1664cad248cb/Rename",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"fb62fa9d-8856-478f-848d-1664cad248cb",
+								"Rename"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FolderTest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders/9e7e2805-7e0f-4717-b0b2-ff86749659e0/Rename",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders",
+								"9e7e2805-7e0f-4717-b0b2-ff86749659e0",
+								"Rename"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/c06b67c0-4468-4ba8-ab48-ab4e7af4601c/Move/168792ed-4d7e-4965-bb14-8ce8969c743e",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"c06b67c0-4468-4ba8-ab48-ab4e7af4601c",
+								"Move",
+								"168792ed-4d7e-4965-bb14-8ce8969c743e"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Folders/168792ed-4d7e-4965-bb14-8ce8969c743e/Move/e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Folders",
+								"168792ed-4d7e-4965-bb14-8ce8969c743e",
+								"Move",
+								"e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Files",
+									"type": "file",
+									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/AutomationComponentDesignDocument.md"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/storage/8b17fd7e-88f9-4530-beff-a183a44956fa/drives/fe2d6e4c-25de-452c-91fc-0a791082597f/Files/1ddeb8b3-a331-477f-b2d7-6fe4522633c1/Replace",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"storage",
+								"8b17fd7e-88f9-4530-beff-a183a44956fa",
+								"drives",
+								"fe2d6e4c-25de-452c-91fc-0a791082597f",
+								"Files",
+								"1ddeb8b3-a331-477f-b2d7-6fe4522633c1",
+								"Replace"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}

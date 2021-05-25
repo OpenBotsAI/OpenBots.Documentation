@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "e7112520-8b0d-41d2-a3f7-210fafbc8c60",
+		"name": "Billing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All DailyBalances",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/9138d127-68b0-4d7d-8af3-ff431a30017a/Billing/DailyBalances",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"9138d127-68b0-4d7d-8af3-ff431a30017a",
+						"Billing",
+						"DailyBalances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export DailyBalances",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/9138d127-68b0-4d7d-8af3-ff431a30017a/Billing/DailyBalances/export/zip",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"9138d127-68b0-4d7d-8af3-ff431a30017a",
+						"Billing",
+						"DailyBalances",
+						"export",
+						"zip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All DailyOrchestrationDebits",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyOrchestrationDebits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All DailyCredits",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyCredits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DailyOrchestrationDebits Sum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits/Sum",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyOrchestrationDebits",
+						"Sum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DailyCredits Sum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits/Sum",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyCredits",
+						"Sum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DailyOrchestrationDebits Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits/Count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyOrchestrationDebits",
+						"Count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DailyCredits Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits/Count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyCredits",
+						"Count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DailyBalances Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyBalances/Count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"DailyBalances",
+						"Count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OrganizationBillingStatus",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/OrganizationBillingStatus",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"OrganizationBillingStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Current CreditBalance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/CreditBalance",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"Billing",
+						"CreditBalance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,1241 @@
+{
+	"info": {
+		"_postman_id": "98fe0d1a-d263-4d87-995d-ece533e9ae10",
+		"name": "Storage Component - Local File Storage (Open Source)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DrivesController",
+			"item": [
+				{
+					"name": "All Drives",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drives Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/count",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/DriveDetails/37a01356-7514-47a2-96ce-986faadd628e",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"DriveDetails",
+								"37a01356-7514-47a2-96ce-986faadd628e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Details By Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/DriveDetails/Files",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"DriveDetails",
+								"Files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"OldFiles\",\r\n  \"fileStorageAdapterType\": \"LocalFileStorage\",\r\n  \"storagePath\": \"OldFiles\",\r\n  \"maxStorageAllowedInBytes\": 50000000,\r\n  \"isDefault\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"fileStorageAdapterType\": \"LocalFileStorage\",\r\n            \"maxStorageAllowedInBytes\": 2147483648,\r\n            \"isDefault\": false,\r\n            \"name\": \"test_live\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/65def3fc-1515-482c-9013-30d35f1d1abf",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"65def3fc-1515-482c-9013-30d35f1d1abf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Drive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/e940c375-a5a0-4905-b102-75f89da2c453",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"e940c375-a5a0-4905-b102-75f89da2c453"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drive Names Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/driveNames?adapterType=LocalFileStorage",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"driveNames"
+							],
+							"query": [
+								{
+									"key": "adapterType",
+									"value": "LocalFileStorage"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilesController",
+			"item": [
+				{
+					"name": "All Files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Folders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Files & Folders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "$orderby",
+									"value": "createdOn+desc",
+									"disabled": true
+								},
+								{
+									"key": "$top",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "$skip",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "$filter",
+									"value": "ParentId+eq+guid'37a01356-7514-47a2-96ce-986faadd628e'",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Files & Folders With ParentId Filter (All Child Files & Folders)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e?$filter=ParentId eq guid'37a01356-7514-47a2-96ce-986faadd628e'",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "ParentId eq guid'37a01356-7514-47a2-96ce-986faadd628e'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Files Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/Count",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"Count"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folders Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/folders/count",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"folders",
+								"count"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/f73d75b3-76b7-46cd-bc01-00506557c2af",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"f73d75b3-76b7-46cd-bc01-00506557c2af"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folder Details By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/a7740dc6-5f2f-411c-b91e-01285bc72cfa",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders",
+								"a7740dc6-5f2f-411c-b91e-01285bc72cfa"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File Details By Storage Path",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/Details/Files?path=Files\\Assets\\a10c2b0e-43fc-4db2-928a-8fa97569dd87\\Automation Component.postman_collection.json",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"Details",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "path",
+									"value": "Files\\Assets\\a10c2b0e-43fc-4db2-928a-8fa97569dd87\\Automation Component.postman_collection.json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Folder Details By Storage Path",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/Details/Files?path=Files\\TestFolder",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"Details",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "path",
+									"value": "Files\\TestFolder"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "StoragePath",
+									"value": "Files\\FolderTest",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Cloud Design Documentation/Agent Component/Sequence Diagrams/AgentComponentSequenceDiagram.png"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "TestFolder3",
+									"type": "text"
+								},
+								{
+									"key": "StoragePath",
+									"value": "Files",
+									"type": "text"
+								},
+								{
+									"key": "isFile",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Download",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"Download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"5c4fbfca-24f7-4466-86d9-8ba92702af9d"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/18fad814-edb4-4abe-a7dd-1d5451091ae7",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders",
+								"18fad814-edb4-4abe-a7dd-1d5451091ae7"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ABC123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Rename",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"Rename"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FolderTest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/34b49b3e-fded-4ba4-a0ce-d85ed0d3705e/Rename",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders",
+								"34b49b3e-fded-4ba4-a0ce-d85ed0d3705e",
+								"Rename"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Copy File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Copy/168792ed-4d7e-4965-bb14-8ce8969c743e",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"Copy",
+								"168792ed-4d7e-4965-bb14-8ce8969c743e"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Copy Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/18fad814-edb4-4abe-a7dd-1d5451091ae7/Copy/e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders",
+								"18fad814-edb4-4abe-a7dd-1d5451091ae7",
+								"Copy",
+								"e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/c06b67c0-4468-4ba8-ab48-ab4e7af4601c/Move/168792ed-4d7e-4965-bb14-8ce8969c743e",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Files",
+								"c06b67c0-4468-4ba8-ab48-ab4e7af4601c",
+								"Move",
+								"168792ed-4d7e-4965-bb14-8ce8969c743e"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/168792ed-4d7e-4965-bb14-8ce8969c743e/Move/e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"37a01356-7514-47a2-96ce-986faadd628e",
+								"Folders",
+								"168792ed-4d7e-4965-bb14-8ce8969c743e",
+								"Move",
+								"e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Files",
+									"type": "file",
+									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Cloud Design Documentation/Email Component/Sequence Diagrams/EmailAccountsController/AllEmailAccountsSequenceDiagram.png"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}storage/drives/{driveId}/Files/{fileId}/Replace",
+							"host": [
+								"{{localhost}}storage"
+							],
+							"path": [
+								"drives",
+								"{driveId}",
+								"Files",
+								"{fileId}",
+								"Replace"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}

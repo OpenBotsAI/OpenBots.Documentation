@@ -1,0 +1,584 @@
+{
+	"info": {
+		"_postman_id": "a7715783-6c29-4c2c-80de-bddd38b44cf6",
+		"name": "QueueItemComponent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Queue Items",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Items View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/view",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Item Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/queueitems/1548ac9c-ca3b-43d0-8032-d58a7e19cdec",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"queueitems",
+						"1548ac9c-ca3b-43d0-8032-d58a7e19cdec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue Item Details View",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/view/5e4b379d-23a5-4bb8-a3bc-fc989020afec",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"view",
+						"5e4b379d-23a5-4bb8-a3bc-fc989020afec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get QueueItems Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Queue Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/fe0d7732-06e2-4eff-be35-3d53dedb8e7b",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"fe0d7732-06e2-4eff-be35-3d53dedb8e7b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Queue Item Property",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Priority\",\r\n        \"value\":\"90\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/1548ac9c-ca3b-43d0-8032-d58a7e19cdec",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"1548ac9c-ca3b-43d0-8032-d58a7e19cdec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enqueue Queue Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isLocked\": false,\r\n  \"queueId\": \"2d988e77-fd34-45da-b48b-1f39be15bcab\",\r\n  \"dataJson\": \"This is my email.\",\r\n  \"name\": \"MyQueueItem\",\r\n  \"jsonType\": \"Email\",\r\n  \"type\": \"Text\",\r\n  \"priority\": 100,\r\n  \"expireonUTC\": \"2021-11-22T19:17:32.497Z\",\r\n  \"postponeuntilUTC\": \"\",\r\n  \"retryCount\": 0,\r\n  \"errorCode\": null,\r\n  \"errorMessage\": null,\r\n  \"errorSerialized\": null,\r\n  \"source\": null,\r\n  \"event\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localcloudhost}}queueitems/enqueue",
+					"host": [
+						"{{localcloudhost}}queueitems"
+					],
+					"path": [
+						"enqueue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dequeue Queue Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/dequeue?agentId=4ecf55fe-e333-43bd-98a6-8899bf0b3246&queueId=1eff5baf-8e5e-44da-ba02-5e57426518e2",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"dequeue"
+					],
+					"query": [
+						{
+							"key": "agentId",
+							"value": "4ecf55fe-e333-43bd-98a6-8899bf0b3246"
+						},
+						{
+							"key": "queueId",
+							"value": "1eff5baf-8e5e-44da-ba02-5e57426518e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Commit Queue Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/commit?transactionKey=30cd9872-7439-4dcc-8390-5e1943a4f9dd",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"commit"
+					],
+					"query": [
+						{
+							"key": "transactionKey",
+							"value": "30cd9872-7439-4dcc-8390-5e1943a4f9dd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rollback Queue Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/rollback/?isFatal=true&transactionKey=bd06f9a9-fc68-4983-944d-8f912aa8eb41",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"rollback",
+						""
+					],
+					"query": [
+						{
+							"key": "isFatal",
+							"value": "true"
+						},
+						{
+							"key": "errorCode",
+							"value": "400 Bad Request",
+							"disabled": true
+						},
+						{
+							"key": "transactionKey",
+							"value": "bd06f9a9-fc68-4983-944d-8f912aa8eb41"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extend Queue Item LockedBy DateTime",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/extend/?transactionKey=caded257-e926-4761-b5f0-b2acdef286f1",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"extend",
+						""
+					],
+					"query": [
+						{
+							"key": "transactionKey",
+							"value": "caded257-e926-4761-b5f0-b2acdef286f1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Queue Item State / State Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/queueitems/64a6677f-5141-4983-a21a-54be8b7cf79e/state?transactionKey=d65c7e6e-a75d-4e32-9c25-255b43696d72&stateMessage=Queue Item transaction is being processed.",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"queueitems",
+						"64a6677f-5141-4983-a21a-54be8b7cf79e",
+						"state"
+					],
+					"query": [
+						{
+							"key": "transactionKey",
+							"value": "d65c7e6e-a75d-4e32-9c25-255b43696d72"
+						},
+						{
+							"key": "stateMessage",
+							"value": "Queue Item transaction is being processed."
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Queue Item with Attachments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "QueueItem",
+							"type": "text"
+						},
+						{
+							"key": "QueueId",
+							"value": "1eff5baf-8e5e-44da-ba02-5e57426518e2",
+							"type": "text"
+						},
+						{
+							"key": "Source",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Event",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ExpireOnUTC",
+							"value": "2020-11-22T19:17:32.497",
+							"type": "text"
+						},
+						{
+							"key": "PostponeUntilUTC",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "Text",
+							"type": "text"
+						},
+						{
+							"key": "DataJson",
+							"value": "Email body goes here.",
+							"type": "text"
+						},
+						{
+							"key": "State",
+							"value": "New",
+							"type": "text"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Update Automation with File.PNG"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localcloudhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a",
+					"host": [
+						"{{localcloudhost}}queueitems"
+					],
+					"path": [
+						"494726f0-65eb-4f88-97dd-e5734fdd318a"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

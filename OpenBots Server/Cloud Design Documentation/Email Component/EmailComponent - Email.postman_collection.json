@@ -1,0 +1,550 @@
+{
+	"info": {
+		"_postman_id": "1014391a-40c3-4f5a-92ae-8b1c8d0da556",
+		"name": "EmailComponent - Email",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Emails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/02296e87-abf3-45bf-b13b-00f077549ff3",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"02296e87-abf3-45bf-b13b-00f077549ff3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email by Id View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/d88ffa1a-e654-4cee-bcef-1c76cee17dcd/view",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"d88ffa1a-e654-4cee-bcef-1c76cee17dcd",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email - Draft",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Direction",
+							"value": "Outgoing",
+							"type": "text"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/Agent.postman_collection.json",
+							"disabled": true
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/AgentComponentDesignDocument.md",
+							"disabled": true
+						},
+						{
+							"key": "DriveName",
+							"value": "Files",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email - Draft",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "EmailMessageJson",
+							"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Nicole Carrero\",\n      \"address\": \"nicole.carrero@openbots.ai\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
+							"type": "text"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - Accelirate, Inc/AccelirateAutomationSuite Project/Component Design Docs/Credentials Component/CredentialsComponentDesignDocument.md",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/cd46919d-7436-42ce-9db3-7982fae3314a/send",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"cd46919d-7436-42ce-9db3-7982fae3314a",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
+						},
+						{
+							"key": "EmailMessageJson",
+							"value": "{\n  \"to\": [\n    {\n      \"name\": \"nicole.carrero@openbots.ai\",\n      \"address\": \"nicole.carrero@openbots.ai\"\n    }\n  ],\n  \"cc\": [\n    {\n      \"name\": \"ncarrero18@gmail.com\",\n      \"address\": \"ncarrero18@gmail.com\"\n    }\n  ],\n  \"bcc\": [\n    {\n      \"name\": \"nicole.carrero@accelirate.com\",\n      \"address\": \"nicole.carrero@accelirate.com\"\n    }\n  ],\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true\n}",
+							"type": "text"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/send?accountName=NicoleATest",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"send"
+					],
+					"query": [
+						{
+							"key": "accountName",
+							"value": "NicoleATest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailAccountId\": \"1d1c2209-1ce1-4d6d-ac78-397cc7fdbcd4\",\r\n    \"sentOnUTC\": \"2020-11-30T20:00:26.7404159\",\r\n    \"emailObjectJson\": \"<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole\",\r\n    \"senderName\": \"[\\\"Nicole Carrero\\\"]\",\r\n    \"senderAddress\": \"[\\\"nicole.carrero@accelirate.com\\\"]\",\r\n    \"senderUserId\": null,\r\n    \"status\": \"Sent\",\r\n    \"reason\": \"Email was sent successfully.\",\r\n    \"direction\": \"Incoming\",\r\n    \"conversationId\": null,\r\n    \"replyToEmailId\": null,\r\n    \"id\": \"964bfe9c-ebd3-469b-a659-1789635986a5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/ab9ed4ac-a298-4e8e-8260-6e89cdfd1370",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"ab9ed4ac-a298-4e8e-8260-6e89cdfd1370"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email With File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "SentOnUTC",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "EmailObjectJson",
+							"value": "<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "SenderName",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "SenderAddress",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "SenderUserId",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Status",
+							"value": "Draft",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Reason",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Direction",
+							"value": "Outgoing",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ConversationId",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ReplyToEmailId",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "EmailAccountId",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "Files",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Asset API Changes/Create Json Asset.PNG"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/3808aa96-53a0-418d-9d12-ed681f4f2a80/update",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"3808aa96-53a0-418d-9d12-ed681f4f2a80",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Direction\",\r\n        \"value\":\"Outgoing\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/emails/964bfe9c-ebd3-469b-a659-1789635986a5",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"emails",
+						"964bfe9c-ebd3-469b-a659-1789635986a5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/ab9ed4ac-a298-4e8e-8260-6e89cdfd1370",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"ab9ed4ac-a298-4e8e-8260-6e89cdfd1370"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Files",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

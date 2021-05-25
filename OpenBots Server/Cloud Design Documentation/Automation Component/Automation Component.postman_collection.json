@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "fad6608a-f828-4347-96b5-4b17f2f455f9",
+		"name": "Automation Component",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Automations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Automations View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/view",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automations Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/count",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/4cd0263e-638b-402e-894d-73c962b96c70",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"4cd0263e-638b-402e-894d-73c962b96c70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Details View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/view/4cd0263e-638b-402e-894d-73c962b96c70",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"view",
+						"4cd0263e-638b-402e-894d-73c962b96c70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add an Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "AddNewAutomation",
+							"type": "text"
+						},
+						{
+							"key": "AutomationEngine",
+							"value": "OpenBots",
+							"type": "text"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation with File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "File",
+							"type": "file",
+							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
+						},
+						{
+							"key": "name",
+							"value": "AddNewAutomation",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "Published",
+							"type": "text"
+						},
+						{
+							"key": "automationEngine",
+							"value": "OpenBots",
+							"type": "text"
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/377e94f1-0340-40d2-ab02-ab880d9a6260/update",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"377e94f1-0340-40d2-ab02-ab880d9a6260",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"NicoleTestAutomation1\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"Python\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/7d1741a0-1177-4e4f-9c1f-b36bff2eef69",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"7d1741a0-1177-4e4f-9c1f-b36bff2eef69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Automation Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"AutomationEngine\",\r\n        \"value\":\"OpenBots\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/7d1741a0-1177-4e4f-9c1f-b36bff2eef69",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"7d1741a0-1177-4e4f-9c1f-b36bff2eef69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/377e94f1-0340-40d2-ab02-ab880d9a6260/export",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"377e94f1-0340-40d2-ab02-ab880d9a6260",
+						"export"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Automation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/bbbf80a3-3d25-4e05-ba87-08d641db4da5",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"bbbf80a3-3d25-4e05-ba87-08d641db4da5"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automation Lookup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/automations/getlookup",
+					"host": [
+						"{{ServerURL}}"
+					],
+					"path": [
+						"organizations",
+						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"automations",
+						"getlookup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
