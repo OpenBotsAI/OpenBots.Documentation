@@ -1,11 +1,11 @@
 Author: Nicole Carrero
-Creation Date: 5/21/2021
+Creation Date: 5/27/2021
 
 **Server SDK**
 
 **Context**
 
-- Problem: Developers, the Agent, and the Studio cannot access or call Server and Documents APIs in a quick an efficient manner.
+- Problem: Developers, the Agent, and the Studio cannot access or call Server and Documents APIs in a quick and efficient manner.
 - Requirements: Ensure that a developer, the Agent, and the Studio can access and call Server and Documents APIs in a quick and efficient manner.
 
 **Component Scope**
@@ -19,7 +19,7 @@ Creation Date: 5/21/2021
 
 **Design**
 
-- Overview: The overall structure uses the methods in each file within the Api folder to allow the user to call a method that makes a request or to simply make a single request.  The API gets called, which in turn acesses the Server or Documents, and then retrieves, adds, updates, exports, or deletes the appropriate data from the Server or Documents if the request is valid.  If the request is invalid, the user will receive an error message stating the error that occurred while trying to process the request.
+- Overview: The overall structure uses the methods in each file within the Api folder to allow the user to call a method that makes requests to the Server or Documents, or to simply make a single request.  The API gets called, which in turn acesses the Server or Documents, and then retrieves, adds, updates, exports, or deletes the appropriate data from the Server or Documents if the request is valid.  If the request is invalid, the user will receive an error message stating the error that occurred while trying to process the request.
 - Types of API Requests
   - Server:  The requests made using OpenBots Server
   - Documents: The requests made using OpenBots Documents
@@ -29,7 +29,7 @@ Creation Date: 5/21/2021
   - Api Folder:
     - The Api Folder will be where the methods are contained to make a request and access either the Server or Documents.
     - Routes:
-    - NOTE: The base URLs change depending on whether you are using the open source Server, cloud Server, or Documents.  They can also change based on the current environment.  All possible Server and Documents API calls are not listed here; the ones listed are currently being used in the Agent and Studio.  In most cases, the base path and token should be added to the SDK's API instance configuration before making the request.
+    - NOTE: The base URLs change depending on whether you are using the open source Server, Cloud Server, or Documents.  However, the URLs themselves will not be needed when using the SDK, and only listed here for reference.  The base URLs can also change based on the current environment.  All possible Server and Documents API calls are not listed here; the ones listed are currently being used in the Agent and Studio.  In most cases, the base path and token should be added to the SDK's API instance configuration before making the request.
     - NOTE: The current API version is 1.
       - AuthApi:
         - The AuthApi is used to authenticate the machine user/Agent and retrieve the appropriate information.
@@ -38,12 +38,12 @@ Creation Date: 5/21/2021
             - Input : API version, agent id, server type, organization name, environment, server URL, username, password
             - Output : UserInfo model data of current user
           - Get Service Registration (Cloud only): [HttpGet("{serviceUrl}/api/v{apiVersion}/ServiceRegistration")]
-            - NOTE: Service URL is https://api.members.openbots.io
+            - NOTE: Service URL is always https://api.members.openbots.io
             - Payload
-              - Input : Environment (i.e. "LIVE," "DEV," "DEMO," "TEST")
-              - Output : JSON file listing all service registration information (i.e. base URLs for Documents, Authentication, etc.)
+              - Input : Environment as filter (i.e. "LIVE," "DEV," "DEMO," "TEST")
+              - Output : JSON file listing all service registration information (i.e. base URLs for Documents, Authentication, Cloud Server, etc.)
           - Get Auth Token (Local): [HttpGet("{loginUrl}/api/v{apiVersion}/Auth/token")]
-            - Method Name: ApiVapiVersionAuthTokenPostWithHttpInfo
+            - Method Name: ApiVapiVersionAuthTokenPostAsyncWithHttpInfo
             - Payload
               - Input : Login model data (username and password properties)
           - Get Auth Token (Cloud & Documents): [HttpGet("{loginUrl}/api/v{apiVersion}/Auth/machine/token)"]
@@ -51,8 +51,8 @@ Creation Date: 5/21/2021
             - Payload
               - Input : Login URL (retrieved from get service registration), API version, server type ("Local," "Cloud," "Documents"), username, password
               - Output : Authentication token as a string
-          - NOTE: The two methods below are only used when accessing the cloud Server.
-          - Get Server Info: Method that retrieves the user information such as person id, email, username, token, and organizations.
+          - NOTE: The two methods below are only used when accessing the Cloud Server.
+          - Get Server Info: Method that retrieves the user information such as person id, email, username, token, and organizations
             - Payload
               - Input : API version, server URL, token
               - Output : ServerInfo model data
@@ -130,13 +130,13 @@ Creation Date: 5/21/2021
               - Output : 200 OK response
       - AutomationsApi:
         - The AutomationsApi is used for Automation operations on the Server.
-        - Upload Automation: ApiVapiVersionAutomationsPostWithHttpInfo
+        - Upload Automation: ApiVapiVersionAutomationsPostAsyncWithHttpInfo
           - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/Automations")]
           - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Automations")]
             - Payload
               - Input : API version, organization id, name, file (as FileStream), automation engine
               - Output : Automation data model
-        - Update Parameters: ApiVapiVersionAutomationsAutomationIdUpdateParametersPostWithHttpInfo
+        - Update Parameters: ApiVapiVersionAutomationsAutomationIdUpdateParametersPostAsyncWithHttpInfo
           - Local: [HttpPost("{serverUrl}/api/v{apiVersion}/Automations/{id}/UpdateParameters")]
           - Cloud: [HttpPost("{serverUrl}/api/v{apiVersion}/Organizations/{organizationId}/Automations/{id}/UpdateParameters")]
             - Payload
@@ -353,10 +353,10 @@ Creation Date: 5/21/2021
         - ExtractedDocument int Order, int TenantId, string Name, int NumberOfPages, double QualityScore, string PageRangeLabel, bool IsVerified, bool HasErrors, string DocumentClassificationType, bool IsExtractedContentStructured, string Schema, bool IsSkipped, Guid? SessionIdD, Guid ExtractedFileId, long OrganizationUnitId, Guid DocumentId, bool IsReadOnly, int Version, Guid EntityId, List<PageNumber> Pages, and Guid Id.
       - DocumentContentView: Retrieved when requesting document data.
         - DocumentContentView contains int ContentVersion, bool IsContentReadOnly, string Content, bool IsVerified, bool HasErrors, string Schema, and Guid EntityId.
-      - CreateOrEditWithHumanTaskDto:
-        - 
-      - SubmitDocumentResponse:
-        - 
+      - CreateOrEditWithHumanTaskDto: Used to create a human task.
+        - CreateOrEditWithHumanTaskDto contains string Name, string Description, string CaseNumber, string CaseType, DateTime DueOn, string Status, Guid DocumentSessionID, string AssignedTo, Guid TaskQueueId, long OrganizationUnitId, long UserId, and Guid Id.
+      - SubmitDocumentResponse: Used to retrieve submitted document results.
+        - SubmitDocumentResponse contains Guid HumanTaskID, Guid SessionID, and string Message.
 
 **Sequence Diagrams**
 
