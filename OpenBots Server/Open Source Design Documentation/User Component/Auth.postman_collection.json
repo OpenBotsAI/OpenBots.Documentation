@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"organization\": \"Acme Test\",\r\n  \"department\": \"\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"password\",\r\n  \"createNewOrganization\": false,\r\n  \"utm_Source\": \"\",\r\n  \"utm_Medium\": \"\",\r\n  \"utm_Campaign\": \"\",\r\n  \"utm_Term\": \"\",\r\n  \"utm_Content\": \"\",\r\n  \"plan\": \"\",\r\n  \"apiKey\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+					"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"organization\": \"Acme Test\",\r\n  \"department\": \"\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"password\",\r\n  \"createNewOrganization\": false,\r\n  \"utm_Source\": \"\",\r\n  \"utm_Medium\": \"\",\r\n  \"utm_Campaign\": \"\",\r\n  \"utm_Term\": \"\",\r\n  \"utm_Content\": \"\",\r\n  \"plan\": \"\",\r\n  \"apiKey\": \"apiKey\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -162,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"NewFiles\",\r\n  \"fileStorageAdapterType\": \"AzureBlobStorage\",\r\n  \"storagePath\": \"http://devaccessserveropenbots.blob.core.windows.net\",\r\n  \"maxStorageAllowedInBytes\": 100000000,\r\n  \"isDefault\": false,\r\n  \"description\": \"Second storage drive\",\r\n  \"isExternal\": false,\r\n  \"connectionString\": \"DefaultEndpointsProtocol=https;AccountName=devaccessserveropenbots;AccountKey=qyYOTdq9rUxEcn73hQWqPVsR/w4HRmANkBR/KIjgX8Zb//gT9z4SUGeIA3TsI2W+dM8yC1aCdquXa3FdBKyzIA==;EndpointSuffix=core.windows.net\"\r\n}",
+							"raw": "{\r\n  \"name\": \"NewFiles\",\r\n  \"fileStorageAdapterType\": \"AzureBlobStorage\",\r\n  \"storagePath\": \"http://storagepath.blob.core.windows.net\",\r\n  \"maxStorageAllowedInBytes\": 100000000,\r\n  \"isDefault\": false,\r\n  \"description\": \"Second storage drive\",\r\n  \"isExternal\": false,\r\n  \"connectionString\": \"connectionString\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -939,12 +939,12 @@
 								{
 									"key": "Files",
 									"type": "file",
-									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/Sequence Diagrams/AddAutomationSequenceDiagram.png"
+									"src": "/C:/Users/NicoleCarrero/source/repos/Open Source Design Documentation/Automation Component/Sequence Diagrams/AddAutomationSequenceDiagram.png"
 								},
 								{
 									"key": "Files",
 									"type": "file",
-									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/Sequence Diagrams/AutomationComponentSequenceDiagram.png"
+									"src": "/C:/Users/NicoleCarrero/source/repos/Open Source Design Documentation/Automation Component/Sequence Diagrams/AutomationComponentSequenceDiagram.png"
 								}
 							]
 						},
@@ -1371,7 +1371,7 @@
 								{
 									"key": "Files",
 									"type": "file",
-									"src": "/C:/Users/NicoleCarrero/source/repos/OpenBots.Documentation/OpenBots Server/Open Source Design Documentation/Automation Component/AutomationComponentDesignDocument.md"
+									"src": "/C:/Users/NicoleCarrero/source/repos/Open Source Design Documentation/Automation Component/AutomationComponentDesignDocument.md"
 								},
 								{
 									"key": "",

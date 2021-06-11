@@ -205,17 +205,17 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Add Automation.PNG"
 						},
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Delete Automation.PNG"
 						},
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Export Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Export Automation.PNG"
 						}
 					]
 				},
@@ -255,7 +255,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"contentType\": \"image/png\",\r\n            \"sizeInBytes\": 78283,\r\n            \"contentStorageAddress\": \"BinaryObjects\\\\e9f57f7b-727f-4482-915d-3b33cc080711\\\\QueueItemAPI\\\\d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"binaryObjectId\": \"d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"emailId\": \"d12716c4-b577-48ba-aef7-35e51aeb9190\",\r\n            \"name\": \"CountCredentialsSequenceDiagram.png\",\r\n            \"id\": \"46ec8303-0890-4c55-bd75-144b173a071a\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"nicole.carrero@accelirate.com\",\r\n            \"createdOn\": null,\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": null,\r\n            \"timestamp\": \"AAAAAAAGKic=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": null\r\n        }",
+					"raw": "{\r\n            \"contentType\": \"image/png\",\r\n            \"sizeInBytes\": 78283,\r\n            \"contentStorageAddress\": \"BinaryObjects\\\\e9f57f7b-727f-4482-915d-3b33cc080711\\\\QueueItemAPI\\\\d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"binaryObjectId\": \"d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"emailId\": \"d12716c4-b577-48ba-aef7-35e51aeb9190\",\r\n            \"name\": \"CountCredentialsSequenceDiagram.png\",\r\n            \"id\": \"46ec8303-0890-4c55-bd75-144b173a071a\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"test@test.com\",\r\n            \"createdOn\": null,\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": null,\r\n            \"timestamp\": \"AAAAAAAGKic=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": null\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -302,7 +302,7 @@
 						{
 							"key": "File",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Update Automation with File.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Update Automation with File.PNG"
 						},
 						{
 							"key": "DriveName",

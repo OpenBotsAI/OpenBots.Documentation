@@ -137,13 +137,13 @@
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/Agent.postman_collection.json",
+							"src": "/C:/Users/Name/OneDrive - ServerDocumentation/AgentComponent/Agent.postman_collection.json",
 							"disabled": true
 						},
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/ServerDocumentation/AgentComponent/AgentComponentDesignDocument.md",
+							"src": "/C:/Users/Name/OneDrive - ServerDocumentation/AgentComponent/AgentComponentDesignDocument.md",
 							"disabled": true
 						},
 						{
@@ -183,13 +183,13 @@
 					"formdata": [
 						{
 							"key": "EmailMessageJson",
-							"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Nicole Carrero\",\n      \"address\": \"nicole.carrero@openbots.ai\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
+							"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Name\",\n      \"address\": \"test@test.com\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
 							"type": "text"
 						},
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - Accelirate, Inc/AccelirateAutomationSuite Project/Component Design Docs/Credentials Component/CredentialsComponentDesignDocument.md",
+							"src": "/C:/Users/Name/OneDrive - Component Design Docs/Credentials Component/CredentialsComponentDesignDocument.md",
 							"disabled": true
 						}
 					]
@@ -233,16 +233,16 @@
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Add Automation.PNG"
 						},
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Delete Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Delete Automation.PNG"
 						},
 						{
 							"key": "EmailMessageJson",
-							"value": "{\n  \"to\": [\n    {\n      \"name\": \"nicole.carrero@openbots.ai\",\n      \"address\": \"nicole.carrero@openbots.ai\"\n    }\n  ],\n  \"cc\": [\n    {\n      \"name\": \"ncarrero18@gmail.com\",\n      \"address\": \"ncarrero18@gmail.com\"\n    }\n  ],\n  \"bcc\": [\n    {\n      \"name\": \"nicole.carrero@accelirate.com\",\n      \"address\": \"nicole.carrero@accelirate.com\"\n    }\n  ],\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.<br><br> Love, Nicole\",\n  \"isBodyHtml\": true\n}",
+							"value": "{\n  \"to\": [\n    {\n      \"name\": \"test@test.com\",\n      \"address\": \"test@test.com\"\n    }\n  ],\n  \"cc\": [\n    {\n      \"name\": \"test@test.com\",\n      \"address\": \"test@test.com\"\n    }\n  ],\n  \"bcc\": [\n    {\n      \"name\": \"test@test.com\",\n      \"address\": \"test@test.com\"\n    }\n  ],\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.\",\n  \"isBodyHtml\": true\n}",
 							"type": "text"
 						},
 						{
@@ -254,9 +254,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{localcloudhost}}emails/send?accountName=NicoleATest",
+					"raw": "{{localhost}}emails/send?accountName=Name",
 					"host": [
-						"{{localcloudhost}}emails"
+						"{{localhost}}emails"
 					],
 					"path": [
 						"send"
@@ -264,7 +264,7 @@
 					"query": [
 						{
 							"key": "accountName",
-							"value": "NicoleATest"
+							"value": "Name"
 						}
 					]
 				}
@@ -288,7 +288,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"emailAccountId\": \"1d1c2209-1ce1-4d6d-ac78-397cc7fdbcd4\",\r\n    \"sentOnUTC\": \"2020-11-30T20:00:26.7404159\",\r\n    \"emailObjectJson\": \"<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole\",\r\n    \"senderName\": \"[\\\"Nicole Carrero\\\"]\",\r\n    \"senderAddress\": \"[\\\"nicole.carrero@accelirate.com\\\"]\",\r\n    \"senderUserId\": null,\r\n    \"status\": \"Sent\",\r\n    \"reason\": \"Email was sent successfully.\",\r\n    \"direction\": \"Incoming\",\r\n    \"conversationId\": null,\r\n    \"replyToEmailId\": null,\r\n    \"id\": \"964bfe9c-ebd3-469b-a659-1789635986a5\"\r\n}",
+					"raw": "{\r\n    \"emailAccountId\": \"1d1c2209-1ce1-4d6d-ac78-397cc7fdbcd4\",\r\n    \"sentOnUTC\": \"2020-11-30T20:00:26.7404159\",\r\n    \"emailObjectJson\": \"<bold>Here is</bold> my body of my email.  My password is NULL.\",\r\n    \"senderName\": \"[\\\"Name\\\"]\",\r\n    \"senderAddress\": \"[\\\"test@test.com\\\"]\",\r\n    \"senderUserId\": null,\r\n    \"status\": \"Sent\",\r\n    \"reason\": \"Email was sent successfully.\",\r\n    \"direction\": \"Incoming\",\r\n    \"conversationId\": null,\r\n    \"replyToEmailId\": null,\r\n    \"id\": \"964bfe9c-ebd3-469b-a659-1789635986a5\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -333,7 +333,7 @@
 						},
 						{
 							"key": "EmailObjectJson",
-							"value": "<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole",
+							"value": "<bold>Here is</bold> my body of my email.  My password is NULL.",
 							"type": "text",
 							"disabled": true
 						},
@@ -400,7 +400,7 @@
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Asset API Changes/Create Json Asset.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Asset API Changes/Create Json Asset.PNG"
 						},
 						{
 							"key": "DriveName",
@@ -410,9 +410,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{localcloudhost}}emails/3808aa96-53a0-418d-9d12-ed681f4f2a80/update",
+					"raw": "{{localhost}}emails/3808aa96-53a0-418d-9d12-ed681f4f2a80/update",
 					"host": [
-						"{{localcloudhost}}emails"
+						"{{localhost}}emails"
 					],
 					"path": [
 						"3808aa96-53a0-418d-9d12-ed681f4f2a80",

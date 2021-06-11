@@ -1,6 +1,9 @@
 Author: Nicole Carrero
 Creation Date: 5/27/2021
 
+Updated On: 6/9/2021
+Updated BY: Nicole Carrero
+
 **Server SDK**
 
 **Context**
@@ -26,8 +29,107 @@ Creation Date: 5/27/2021
 - Proposed Solution:
   - User Interface:
     - There is no user interface, as these methods will be used in the development process.
+  - Helper Methods Folder:
+    - The Helper Methods folder will be where the methods are contained to make a request to access either the Server or Documents.  Helper methods contains the following files:
+      - Server Methods:
+        - NOTE: Before calling most methods below, an instance of AuthMethods needs to be created and GetUserInfo needs to be called in order to get the proper parameters to use the methods below (see AuthMethods).
+          - Example: 
+            AuthMethods authMethods = new AuthMethods(serverType, organizationName, serverUrl, username, password);
+            UserInfo userInfo = authMethods.GetUserInfo();
+        - AgentMethods
+          - SendAgentHeartbeat(UserInfo userInfo, string agentId, HeartbeatViewModel body)
+            - Returns NextJobViewModel
+          - ResolveAgent(UserInfo userInfo, ResolveAgentViewModel body)
+            - Returns Returns ResolvedAgentResponseViewModel
+          - ConnectAgent(UserInfo userInfo, string agentId, ConnectedAgentViewModel connectAgentViewModel)
+            - Returns ConnectedAgentViewModel
+          - DisconnectAgent(UserInfo userInfo, string agentId, ConnectAgentViewModel)
+            - Returns nothing (void)
+          - GetAgent(UserInfo userInfo, string agentId)
+            - Returns AgentViewModel
+        - AssetMethods
+          - GetAsset(string token, string serverUrl, string organizationName, string assetName, string assetType, string apiVersion)
+            - Returns Asset
+          - PutAsset(string token, string serverUrl, string organizationId, Asset asset, string apiVersion)
+            - Returns nothing (void)
+          - DownloadFileAsset(string token, string serverUrl, string organizationId, Asset asset, string directoryPath, string apiVersion)
+            - Writes file to the appropriate directory path
+          - UpdateFileAsset(string token, string serverUrl, string organizationId, Asset asset, string filePath, string apiVersion)
+            - Returns nothing (void)
+          - AppendAsset(string token, string serverUrl, string organizationId, Guid assetId, string appendText, string apiVersion)
+            - Returns nothing (void)
+          - IncrementAsset(string token, string serverUrl, string organizationId, Guid assetId, string apiVersion)
+            - Returns nothing (void)
+          - DecrementAsset(string token, string serverUrl, string organizationId, Guid assetId, string apiVersion)
+            - Returns nothing (void)
+          - AddAsset(string token, string serverUrl, string organizationId, Guid assetId, int value, string apiVersion)
+            - Returns nothing (void)
+          - SubtractAsset(string token, string serverUrl, string organizationId, Guid assetId, int value, string apiVersion)
+            - Returns nothing (void)
+        - AuthMethods
+          - NOTE: An instance needs to be created of AuthMethods before implementing the methods below
+            - Example: AuthMethods authMethods = new AuthMethods(environmentSettings.ServerType, environmentSettings.OrganizationName, environmentSettings.ServerUrl, environmentSettings.Username, environmentSettings.Password);
+          - GetUserInfo()
+            - Returns UserInfo
+          - GetDocumentsAuthToken(string token, string password);
+            - Returns UserInfo
+          - Ping()
+            - Returns server IP as a string
+        - AutomationMethods
+          - UploadAutomation(string name, string filePath, string automationEngine, AuthMethods authMethods)
+            - Returns AutomationModel
+          - UpdateParameters(Guid automationId, IEnumerable<AutomationParameter> automationParameters, authMethods authMethods)
+            - Returns nothing (void)
+          - ExportAutomation(UserInfo userInfo, string automationId)
+            - Returns MemoryStream
+          - GetAutomation(UserInfo userInfo, string automationId)
+            - Returns Automation
+          - GetAutomations(UserInfo userInfo, string filter = null)
+            - Returns AutomationPaginatedList
+        - CredentialMethods
+          - GetCredential(string token, string serverUrl, string organizationId, string name, string apiVersion)
+            - Returns Credential
+          - PutCredential(string token, string serverUrl, string organizationId, Credential credential, string apiVersion)
+            - Returns nothing (void)
+          - GetCredentials(UserInfo userInfo, string credentialId)
+            - Returns Credential
+        - ExecutionLogMethods
+          - CreateExecutionLog(UserInfo userInfo, AutomationExecutionLog body)
+            - Returns AutomationExecutionLog
+          - UpdateExecutionLog(UserInfo userInfo, AutomationExecutionLog body)
+            - Returns status code as integer
+        - JobMethods
+          - UpdateJobStatus(UserInfo userInfo, string agentId, string jobId, JobStatusType status, JobErrorViewModel errorModel = null)
+            - Returns Job
+          - UpdateJobPatch(UserInfo userInfo, string id, List<Operation> body)
+            - Returns status code as integer
+          - GetJobViewModel(UserInfo userInfo, string jobId)
+            - Returns JobViewModel
+        - QueueItemMethods
+          - GetQueueItemById()
+            - Returns QueueItem
+          - GetQueueItemByLockTransactionKey()
+            - Returns QueueItem
+        - QueueMethods
+        - ServerEmailMethods
+      - Documents Methods:
+        - DocumentMethods
+          - ChangeStatus(UserInfo userInfo, Guid humanTaskId, string status)
+            - Returns nothing (void)
+          - CompareTables(List<string> ignoreColumns, List<string> lookupColumns, DataTable expected, DataTable actual)
+            - Returns DataTable
+          - GetDocumentStatus(UserInfo userInfo, Guid humanTaskId)
+            - Returns DocumentStatus
+          - AwaitProcessing(UserInfo userInfo, Guid humanTaskId, int timeoutInSeconds = 120)
+            - Returns DocumentStatus
+          - MarkDocumentAsVerified(UserInfo userInfo, Guid humanTaskId, Guid docId)
+            - Returns nothing (void)
+          - SaveDocumentResults(UserInfo userInfo, Guid humanTaskId, bool awaitCompletion, bool savePageImages, bool savePageText, int timeout, string outputFolder, DataTable dataTable)
+            - Returns DocumentResult
+          - SubmitDocument(UserInfo userInfo, string fileToProcess, string taskQueueName, string name, string description, string caseType, string caseNumber, string assignedTo, DateTime dueOn)
+            - Returns Dictionary<string, string> (task id and status)
   - Api Folder:
-    - The Api Folder will be where the methods are contained to make a request and access either the Server or Documents.
+    - The Api Folder will be where the API methods are contained that will be used by the helper methods to make an API request to access either the Server or Documents.
     - Routes:
     - NOTE: The base URLs change depending on whether you are using the open source Server, Cloud Server, or Documents.  However, the URLs themselves will not be needed when using the SDK, and only listed here for reference.  The base URLs can also change based on the current environment.  All possible Server and Documents API calls are not listed here; the ones listed are currently being used in the Agent and Studio.  In most cases, the base path and token should be added to the SDK's API instance configuration before making the request.
     - NOTE: The current API version is 1.

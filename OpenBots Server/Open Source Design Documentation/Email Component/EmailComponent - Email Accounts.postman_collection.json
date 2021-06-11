@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": false,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"nicole.carrero@accelirate.com\",\r\n  \"encryptedPassword\": \"Blue1093.\",\r\n  \"passwordHash\": \"\",\r\n  \"apiKey\": \"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\",\r\n  \"fromEmailAddress\": \"nicole.carrero@accelirate.com\",\r\n  \"fromName\": \"Nicole Carrero\",\r\n  \"startOnUTC\": \"2020-10-07T17:10:41.309Z\",\r\n  \"endOnUTC\": \"2021-10-07T17:10:41.309Z\",\r\n  \"name\": \"EmailAccount\",\r\n  \"id\": \"a404d9a9-ed66-4a92-a2ce-eb015274138a\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": false,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"test@test.com\",\r\n  \"encryptedPassword\": \"password\",\r\n  \"passwordHash\": \"\",\r\n  \"apiKey\": \"apiKey\",\r\n  \"fromEmailAddress\": \"test@test.com\",\r\n  \"fromName\": \"Name\",\r\n  \"startOnUTC\": \"2020-10-07T17:10:41.309Z\",\r\n  \"endOnUTC\": \"2021-10-07T17:10:41.309Z\",\r\n  \"name\": \"EmailAccount\",\r\n  \"id\": \"a404d9a9-ed66-4a92-a2ce-eb015274138a\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -136,7 +136,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"nicole.carrero@accelirate.com\",\r\n  \"encryptedPassword\": \"Blue1093.\",\r\n  \"fromEmailAddress\": \"nicole.carrero@accelirate.com\",\r\n  \"fromName\": \"Nicole Carrero\",\r\n  \"name\": \"NicoleATest\"\r\n}",
+					"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"test@test.com\",\r\n  \"encryptedPassword\": \"test\",\r\n  \"fromEmailAddress\": \"test@test.com\",\r\n  \"fromName\": \"Name\",\r\n  \"name\": \"ATest\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,9 +144,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{localcloudhost}}emailaccounts",
+					"raw": "{{localhost}}emailaccounts",
 					"host": [
-						"{{localcloudhost}}emailaccounts"
+						"{{localhost}}emailaccounts"
 					]
 				}
 			},

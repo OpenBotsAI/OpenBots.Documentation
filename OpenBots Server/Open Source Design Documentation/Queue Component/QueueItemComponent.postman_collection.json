@@ -255,9 +255,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{localcloudhost}}queueitems/enqueue",
+					"raw": "{{localhost}}queueitems/enqueue",
 					"host": [
-						"{{localcloudhost}}queueitems"
+						"{{localhost}}queueitems"
 					],
 					"path": [
 						"enqueue"
@@ -542,12 +542,12 @@
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Update Automation with File.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Update Automation with File.PNG"
 						},
 						{
 							"key": "Files",
 							"type": "file",
-							"src": "/C:/Users/NicoleCarrero/OneDrive - OpenBots Inc/OpenBots/API Changes/Automation API Changes/Add Automation.PNG"
+							"src": "/C:/Users/Name/OneDrive - API Changes/Automation API Changes/Add Automation.PNG"
 						},
 						{
 							"key": "DriveName",
@@ -558,9 +558,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{localcloudhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a",
+					"raw": "{{localhost}}queueitems/494726f0-65eb-4f88-97dd-e5734fdd318a",
 					"host": [
-						"{{localcloudhost}}queueitems"
+						"{{localhost}}queueitems"
 					],
 					"path": [
 						"494726f0-65eb-4f88-97dd-e5734fdd318a"

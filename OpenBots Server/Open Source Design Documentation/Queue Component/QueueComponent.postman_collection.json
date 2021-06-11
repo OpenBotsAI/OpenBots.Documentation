@@ -108,9 +108,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{localcloudhost}}queues",
+					"raw": "{{localhost}}queues",
 					"host": [
-						"{{localcloudhost}}queues"
+						"{{localhost}}queues"
 					]
 				}
 			},
