@@ -1,0 +1,1157 @@
+{
+	"info": {
+		"_postman_id": "7ff6e1f5-b439-433e-b34d-7f934b8dc8e4",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"token\": \"{{token}}\",\r\n  \"refreshToken\": \"refreshToken\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/refresh",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend Email Confirmation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/resendemailconfirmation?emailAddress={{emailAddress}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"resendemailconfirmation"
+							],
+							"query": [
+								{
+									"key": "emailAddress",
+									"value": "{{emailAddress}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Info.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/getuserinfo",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"getuserinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Email Address",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/confirmemailaddress?emailAddress=EMAIL&Token={{token}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"confirmemailaddress"
+							],
+							"query": [
+								{
+									"key": "emailAddress",
+									"value": "EMAIL"
+								},
+								{
+									"key": "Token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newPassword\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/setuserpassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"setuserpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"oldPassword\": \"password\",\r\n  \"newPassword\": \"password1\",\r\n  \"confirmPassword\": \"password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Auth/changepassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Auth",
+								"changepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"organization\": \"{{organizationName}}\",\r\n  \"department\": \"\",\r\n  \"email\": \"{{emailAddress}}\",\r\n  \"password\": \"password\",\r\n  \"createNewOrganization\": false,\r\n  \"utm_Source\": \"\",\r\n  \"utm_Medium\": \"\",\r\n  \"utm_Campaign\": \"\",\r\n  \"utm_Term\": \"\",\r\n  \"utm_Content\": \"\",\r\n  \"plan\": \"\",\r\n  \"apiKey\": \"{{apiKey}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "https://localhost:5001/api/v1/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{emailAddress}}\",\r\n  \"company\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/forgotpassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgotpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/confirmemail?userId={{personId}}&code={{token}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"confirmemail"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{personId}}"
+								},
+								{
+									"key": "code",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"{{personId}}\",\r\n  \"newPassword\": \"password\",\r\n  \"token\": \"{{token}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/setpassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"setpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/auth/verifyusertoken?userId={{personId}}&code={{token}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verifyusertoken"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{personId}}"
+								},
+								{
+									"key": "code",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set(\"token\", data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}auth/token",
+							"host": [
+								"{{localhost}}auth"
+							],
+							"path": [
+								"token"
+							]
+						},
+						"description": "https://localhost:5001/api/v1/auth/token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Member",
+			"item": [
+				{
+					"name": "Get Organization People",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/people",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"organizationId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"isAdministrator\": false,\r\n  \"approvedBy\": \"string\",\r\n  \"approvedOn\": \"2020-10-20T14:22:30.560Z\",\r\n  \"isInvited\": false,\r\n  \"invitedBy\": \"string\",\r\n  \"invitedOn\": \"2020-10-20T14:22:30.561Z\",\r\n  \"inviteAccepted\": false,\r\n  \"inviteAcceptedOn\": \"2020-10-20T14:22:30.561Z\",\r\n  \"isAutoApprovedByEmailAddress\": false,\r\n  \"person\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"isAgent\": false,\r\n    \"company\": \"string\",\r\n    \"department\": \"string\",\r\n    \"emails\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"address\": \"user@example.com\",\r\n        \"emailVerificationId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isPrimaryEmail\": true,\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"credentials\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"secret\": \"string\",\r\n        \"salt\": \"string\",\r\n        \"isExpired\": false,\r\n        \"expiresOnUTC\": \"2020-10-20T14:22:30.561Z\",\r\n        \"forceChange\": false,\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"phones\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"phoneNumber\": \"string\",\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"emailVerifications\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"address\": \"user@example.com\",\r\n        \"isVerified\": false,\r\n        \"verificationEmailCount\": 0,\r\n        \"verificationCode\": \"string\",\r\n        \"verificationCodeExpiresOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"isVerificationEmailSent\": false,\r\n        \"verificationSentOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"organizationId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"orgEmail\": \"string\",\r\n    \"name\": \"string\",\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"string\",\r\n    \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n    \"deletedBy\": \"string\",\r\n    \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n    \"timestamp\": \"string\",\r\n    \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n    \"updatedBy\": \"string\"\r\n  },\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"string\",\r\n  \"createdOn\": \"2020-10-20T14:22:30.561Z\",\r\n  \"deletedBy\": \"string\",\r\n  \"deleteOn\": \"2020-10-20T14:22:30.561Z\",\r\n  \"timestamp\": \"string\",\r\n  \"updatedOn\": \"2020-10-20T14:22:30.561Z\",\r\n  \"updatedBy\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers?organizationId={{organizationId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers"
+							],
+							"query": [
+								{
+									"key": "organizationId",
+									"value": "{{organizationId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Organization Members",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete from Organization",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invite Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"organizationId\": \"{{organizationId}}\",\r\n  \"processId\": \"{{childEntityId}}\",\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"Test User\",\r\n  \"company\": \"{{organizationName}}\",\r\n  \"department\": \"\",\r\n  \"shareUrl\": \"\",\r\n  \"password\": \"{{password}}\",\r\n  \"skipEmailVerification\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/inviteuser",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"inviteuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Organization Member Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"isInvited\",\r\n        \"value\":\"true\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization Members",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Organization Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"organizationId\": \"{{organizationId}}\",\r\n  \"personId\": \"{{personId}}\",\r\n  \"isAdministrator\": false,\r\n  \"approvedBy\": \"string\",\r\n  \"approvedOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"isInvited\": false,\r\n  \"invitedBy\": \"string\",\r\n  \"invitedOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"inviteAccepted\": false,\r\n  \"inviteAcceptedOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"isAutoApprovedByEmailAddress\": false,\r\n  \"person\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"isAgent\": false,\r\n    \"company\": \"string\",\r\n    \"department\": \"string\",\r\n    \"emails\": [\r\n      {\r\n        \"personId\": \"{{personId{}}\",\r\n        \"address\": \"user@example.com\",\r\n        \"emailVerificationId\": \"{{childEntityId}}\",\r\n        \"isPrimaryEmail\": true,\r\n        \"id\": \"{{entityId}}\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"credentials\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"secret\": \"string\",\r\n        \"salt\": \"string\",\r\n        \"isExpired\": false,\r\n        \"expiresOnUTC\": \"2020-10-20T14:30:51.333Z\",\r\n        \"forceChange\": false,\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"phones\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"phoneNumber\": \"string\",\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"emailVerifications\": [\r\n      {\r\n        \"personId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"address\": \"user@example.com\",\r\n        \"isVerified\": false,\r\n        \"verificationEmailCount\": 0,\r\n        \"verificationCode\": \"string\",\r\n        \"verificationCodeExpiresOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"isVerificationEmailSent\": false,\r\n        \"verificationSentOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"string\",\r\n        \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"deletedBy\": \"string\",\r\n        \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"timestamp\": \"string\",\r\n        \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n        \"updatedBy\": \"string\"\r\n      }\r\n    ],\r\n    \"organizationId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"orgEmail\": \"string\",\r\n    \"name\": \"string\",\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"string\",\r\n    \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n    \"deletedBy\": \"string\",\r\n    \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n    \"timestamp\": \"string\",\r\n    \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n    \"updatedBy\": \"string\"\r\n  },\r\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"string\",\r\n  \"createdOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"deletedBy\": \"string\",\r\n  \"deleteOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"timestamp\": \"string\",\r\n  \"updatedOn\": \"2020-10-20T14:30:51.333Z\",\r\n  \"updatedBy\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/organizationmembers/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"organizationmembers",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access Request",
+			"item": [
+				{
+					"name": "Edit Request Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"isAccessRequested\",\r\n        \"value\":\"true\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/accessrequests/3e90f265-eec4-484e-958c-12909634e50a",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+								"accessrequests",
+								"3e90f265-eec4-484e-958c-12909634e50a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/reject",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/approve",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Access Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationId\": \"{{organizationId}}\",\r\n    \"personId\": \"{{personId}}\",\r\n    \"isAccessRequested\": true,\r\n    \"accessRequestedOn\": \"2020-10-20T18:39:36.5206211\",\r\n    \"organization\": \"{{organizationName}}\",\r\n    \"person\": null,\r\n    \"id\": \"{{entityId}}\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"\",\r\n    \"createdOn\": \"2020-10-16T18:39:36.7533333\",\r\n    \"deletedBy\": \"\",\r\n    \"deleteOn\": null,\r\n    \"timestamp\": \"AAAAAAACAQU=\",\r\n    \"updatedOn\": \"2020-10-16T19:13:02.5801572\",\r\n    \"updatedBy\": \"EMAIL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Access Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationId\": \"{{organizationId}}\",\r\n    \"personId\": \"{{personId}}\",\r\n    \"isAccessRequested\": false,\r\n    \"accessRequestedOn\": \"2020-10-16T18:39:36.5206211\",\r\n    \"organization\": null,\r\n    \"person\": null,\r\n    \"id\": \"{{entityId}}\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"\",\r\n    \"createdOn\": \"2020-10-16T18:39:36.7533333\",\r\n    \"deletedBy\": \"\",\r\n    \"deleteOn\": null,\r\n    \"timestamp\": \"AAAAAAACAQU=\",\r\n    \"updatedOn\": \"2020-10-16T19:13:02.5801572\",\r\n    \"updatedBy\": \"EMAIL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests?organizationId={{organizationId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests"
+							],
+							"query": [
+								{
+									"key": "organizationId",
+									"value": "{{organizationId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pending Access Requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/pending",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Access Requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

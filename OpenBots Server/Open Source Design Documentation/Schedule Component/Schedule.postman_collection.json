@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "5e6a33d6-5fff-418f-a20f-8fb782abdb4d",
+		"name": "Schedule",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Schedules",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/{{entityId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"{{entityId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedules Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedule Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/{{entityId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"{{entityId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{entityId}}}}\",\r\n    \"name\": \"ScheduleWithParam\",\r\n    \"agentId\": \"{{childEntityId}}\",\r\n    \"agentName\": \"Agent\",\r\n    \"cronExpression\": null,\r\n    \"lastExecution\": null,\r\n    \"nextExecution\": null,\r\n    \"isDisabled\": null,\r\n    \"projectId\": null,\r\n    \"automationId\": \"{{childEntityId2}}\",\r\n    \"automationName\": \"Test121\",\r\n    \"triggerName\": null,\r\n    \"startingType\": \"manual\",\r\n    \"status\": null,\r\n    \"expiryDate\": null,\r\n    \"startDate\": null,\r\n    \"createdOn\": \"2021-01-13T20:43:50.6473656\",\r\n    \"createdBy\": \"\",\r\n    \"scheduleNow\": null,\r\n    \"queueId\": null,\r\n    \"Parameters\": [\r\n        {\r\n            \"dataType\": \"Text\",\r\n            \"value\": \"Hello\",\r\n            \"scheduleId\": \"{{entityId}}\",\r\n            \"name\": \"AParameter\",\r\n            \"id\": \"{{childEntityId3}}\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"\",\r\n            \"createdOn\": \"2021-01-13T20:43:42.3703202\",\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": null,\r\n            \"timestamp\": \"AAAAAAAAI9Q=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": null\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/{{entityId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"{{entityId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Schedule Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Name\",\r\n        \"value\":\"My Test Schedule\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/{{entityId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"{{entityId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ErrorCheck02\",\r\n  \"agentId\": \"{{childEntityId}}\",\r\n  \"automationId\": \"{{childEntityId2}}\",\r\n  \"isDisabled\": false,\r\n  \"cronExpression\": \"\",\r\n  \"projectId\": \"\",\r\n  \"recurrence\": null,\r\n  \"startingType\": \"queueArrival\",\r\n  \"expiryDate\": \"\",\r\n  \"startDate\": null,\r\n  \"cronExpressionTimeZone\": \"\",\r\n  \"queueId\": \"{{childEntityId3}}\",\r\n  \"maxRunningJobs\": null,\r\n  \"parameters\": [\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/Schedules",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"Schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RunNow for Schedule",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"agentId\": \"{{childEntityId}}\",\r\n\"automationId\": \"{{childEntityId2}}\",\r\n\"Parameters\" :\r\n[{\r\n\"Name\" : \"Greetings\",\r\n\"DataType\" : \"Text\",\r\n\"Value\" : \"HelloThere\"\r\n},\r\n{\r\n\"Name\" : \"SecondParameter\",\r\n\"DataType\" : \"Number\",\r\n\"Value\" : \"123\"\r\n}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/RunNow",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"RunNow"
+					]
+				},
+				"description": "Runs a Schedule now"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedule View by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/schedules/View/{{entityId}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						"View",
+						"{{entityId}}"
+					]
+				},
+				"description": "Gets the ScheduleViewModel of the specified schedule ID"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

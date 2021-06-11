@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "29602fc7-4b6f-4fbe-9243-e68b045bffb0",
-		"name": "Audit Log Component",
+		"_postman_id": "4ee6ae9c-c8b9-473a-9799-f5b4b9d00fe1",
+		"name": "Audit Log",
 		"description": "The audit log component is able to pull a list of audit logs from the Server.  It can pull all audit logs, pull audit logs based on filtering (Service Name, Method Name, Updated By, and Timestamp), and pull individual audit log information by it's unique id.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -54,7 +54,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/AuditLogs/5d94fc55-0c04-4193-88b5-034cd8ddf50f",
+					"raw": "https://localhost:5001/api/v1/AuditLogs/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -64,7 +64,7 @@
 						"api",
 						"v1",
 						"AuditLogs",
-						"5d94fc55-0c04-4193-88b5-034cd8ddf50f"
+						"{{entityId}}"
 					]
 				},
 				"description": "Retrieve all audit log details by individual audit log id"
@@ -182,7 +182,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "925e66a1-dace-4906-8f6a-fb5e12aa0980",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -192,13 +191,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9429c630-9648-46f5-9aff-72bef0e639f9",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

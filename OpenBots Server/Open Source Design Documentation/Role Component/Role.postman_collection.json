@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "db515245-8584-4d68-a942-adc5034e65dd",
-		"name": "Role Component",
+		"_postman_id": "bd9fa01a-29e7-40ca-be22-1155543aad4d",
+		"name": "Role",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -21,7 +21,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/people/c3c317de-a50a-4a8a-936b-8ca4a955000d/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/grantadmin?personId=c3c317de-a50a-4a8a-936b-8ca4a955000d&id=ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+					"raw": "https://localhost:5001/api/v1/people/{{personId}}/organizations/{{organizationId}}/grantadmin?personId={{personId}}&id={{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -31,19 +31,19 @@
 						"api",
 						"v1",
 						"people",
-						"c3c317de-a50a-4a8a-936b-8ca4a955000d",
+						"{{personId}}",
 						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"{{organizationId}}",
 						"grantadmin"
 					],
 					"query": [
 						{
 							"key": "personId",
-							"value": "c3c317de-a50a-4a8a-936b-8ca4a955000d"
+							"value": "{{personId}}"
 						},
 						{
 							"key": "id",
-							"value": "ef8a6670-f522-4fcd-a55e-90aa92d1deb7"
+							"value": "{{entityId}}"
 						}
 					]
 				}
@@ -66,7 +66,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/people/c3c317de-a50a-4a8a-936b-8ca4a955000d/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/revokeadmin?personId=c3c317de-a50a-4a8a-936b-8ca4a955000d&id=ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+					"raw": "https://localhost:5001/api/v1/people/{{personId}}/organizations/{{organizationId}}/revokeadmin?personId={{personId}}&id={{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -76,19 +76,19 @@
 						"api",
 						"v1",
 						"people",
-						"c3c317de-a50a-4a8a-936b-8ca4a955000d",
+						"{{personId}}",
 						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+						"{{organizationId}}",
 						"revokeadmin"
 					],
 					"query": [
 						{
 							"key": "personId",
-							"value": "c3c317de-a50a-4a8a-936b-8ca4a955000d"
+							"value": "{{personId}}"
 						},
 						{
 							"key": "id",
-							"value": "ef8a6670-f522-4fcd-a55e-90aa92d1deb7"
+							"value": "{{entityId}}"
 						}
 					]
 				}
@@ -105,6 +105,5 @@
 				"type": "string"
 			}
 		]
-	},
-	"protocolProfileBehavior": {}
+	}
 }

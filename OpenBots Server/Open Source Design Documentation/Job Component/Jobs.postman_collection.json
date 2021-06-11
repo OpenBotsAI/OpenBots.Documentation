@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "07837cbe-d9f9-49bc-9e42-2fafb1ea1542",
+		"_postman_id": "f82116fe-e8f5-42c2-aef1-c498ba90c3fa",
 		"name": "Jobs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -21,7 +21,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs?$orderby = createdOndesc",
+					"raw": "https://localhost:5001/api/v1/Jobs?$orderby=createdOndesc",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -34,8 +34,8 @@
 					],
 					"query": [
 						{
-							"key": "$orderby ",
-							"value": " createdOndesc"
+							"key": "$orderby",
+							"value": "createdOndesc"
 						}
 					]
 				},
@@ -60,7 +60,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"AgentId\":\"3618c59f-3bf8-4db4-adfb-53228940a8d1\",\r\n    \"ProcessID\" : \"8585a32f-fcb9-4e54-b652-0997f557f790\",\r\n    \"JobStatus\":\"New\",\r\n    \"Message\":\"\",\r\n    \"IsSuccessful\":\"true\"\r\n}",
+					"raw": "{\r\n    \"AgentId\":\"{{childEntityId}}\",\r\n    \"AutomationId\" : \"{{childEntityId2}}\",\r\n    \"JobStatus\":\"New\",\r\n    \"Message\":\"\",\r\n    \"IsSuccessful\":\"true\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +100,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/35af51d5-dc3d-4ea6-83a2-6631fdecec43",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -110,7 +110,7 @@
 						"api",
 						"v1",
 						"Jobs",
-						"35af51d5-dc3d-4ea6-83a2-6631fdecec43"
+						"{{entityId}}"
 					]
 				},
 				"description": "Provides a Job's details for a particular Job Id."
@@ -134,7 +134,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"agentId\": \"4b56857b-2f66-453f-ad2a-185a955fcb9c\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"enqueueTime\": null,\r\n        \"dequeueTime\": null,\r\n        \"processId\": \"8585a32f-fcb9-4e54-b652-0997f557f790\",\r\n        \"jobStatus\": 1,\r\n        \"message\": \"\",\r\n        \"JoBParameters\":\r\n    [{\"DataType\":\"Number\",\r\n    \"Value\":12,\r\n    \"Name\":\"JobParamNumber\"},\r\n    {\"DataType\":\"Text\",\r\n    \"Value\":\"Hello\",\r\n    \"Name\":\"JobParam2\"}]\r\n}",
+					"raw": "{\r\n     \"agentId\": \"{{childEntityId}}\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"enqueueTime\": null,\r\n        \"dequeueTime\": null,\r\n        \"automationId\": \"{{childEntityId2}}\",\r\n        \"jobStatus\": 1,\r\n        \"message\": \"\",\r\n        \"JoBParameters\":\r\n    [{\"DataType\":\"Number\",\r\n    \"Value\":12,\r\n    \"Name\":\"JobParamNumber\"},\r\n    {\"DataType\":\"Text\",\r\n    \"Value\":\"Hello\",\r\n    \"Name\":\"JobParam2\"}]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -142,7 +142,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/b3538733-d6fc-49d8-bc2f-b50a271ba660",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -152,7 +152,7 @@
 						"api",
 						"v1",
 						"Jobs",
-						"b3538733-d6fc-49d8-bc2f-b50a271ba660"
+						"{{entityId}}"
 					]
 				},
 				"description": "Provides an action to update a Job, when Job id and the new details of Job are given"
@@ -167,7 +167,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{token}}",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzRhODQ1Yy05YzUyLTRhYzAtOGIxMi00YmU1N2YxZmFjYjYiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQGFkbWluLmNvbSIsIm5iZiI6MTU5ODQ1NDU0OSwiZXhwIjoxNTk4NDU1NzQ5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.z0-QPyETzzdesnKK2rGccT_iYb9sNm9gGpkKJEO_P7k",
 							"type": "string"
 						}
 					]
@@ -175,7 +175,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/b355c5ea-6f3b-4d5d-85c2-dfe85fafb96d",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -185,7 +185,7 @@
 						"api",
 						"v1",
 						"Jobs",
-						"b355c5ea-6f3b-4d5d-85c2-dfe85fafb96d"
+						"{{entityId}}"
 					]
 				},
 				"description": "Deletes a Job with a specified id from the Job."
@@ -217,7 +217,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/37081a9c-0ff7-4f6a-83a3-0593d38d0395",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -227,7 +227,7 @@
 						"api",
 						"v1",
 						"Jobs",
-						"37081a9c-0ff7-4f6a-83a3-0593d38d0395"
+						"{{entityId}}"
 					]
 				},
 				"description": "Updates partial details of Job."
@@ -250,7 +250,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/view/63d87a93-cace-4688-aff1-00774859c65b",
+					"raw": "https://localhost:5001/api/v1/Jobs/view/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -261,7 +261,7 @@
 						"v1",
 						"Jobs",
 						"view",
-						"63d87a93-cace-4688-aff1-00774859c65b"
+						"{{entityId}}"
 					]
 				},
 				"description": "Provides a Job's details and viewmodel for a particular Job Id."
@@ -416,7 +416,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/Next?agentId=4ecf55fe-e333-43bd-98a6-8899bf0b3245",
+					"raw": "https://localhost:5001/api/v1/Jobs/Next?agentId={{childentityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -431,7 +431,7 @@
 					"query": [
 						{
 							"key": "agentId",
-							"value": "4ecf55fe-e333-43bd-98a6-8899bf0b3245"
+							"value": "{{childentityId}}"
 						}
 					]
 				},
@@ -464,7 +464,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/cb881b39-3bd4-46b6-9b9d-2d8de983bcd3/Status/Completed?AgentID=3618c59f-3bf8-4db4-adfb-53228940a8d1",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}/Status/Completed?AgentID={{childEntityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -474,14 +474,14 @@
 						"api",
 						"v1",
 						"Jobs",
-						"cb881b39-3bd4-46b6-9b9d-2d8de983bcd3",
+						"{{entityId}}",
 						"Status",
 						"Completed"
 					],
 					"query": [
 						{
 							"key": "AgentID",
-							"value": "3618c59f-3bf8-4db4-adfb-53228940a8d1"
+							"value": "{{childEntityId}}"
 						}
 					]
 				},
@@ -548,7 +548,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/7b4b136f-43da-4ac5-a735-0042a1d7569e/AddCheckpoint",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}/AddCheckpoint",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -558,7 +558,7 @@
 						"api",
 						"v1",
 						"Jobs",
-						"7b4b136f-43da-4ac5-a735-0042a1d7569e",
+						"{{entityId}}",
 						"AddCheckpoint"
 					]
 				},
@@ -582,7 +582,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Jobs/7b4b136f-43da-4ac5-a735-0042a1d7569e/JobCheckpoints?$",
+					"raw": "https://localhost:5001/api/v1/Jobs/{{entityId}}/JobCheckpoints",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -592,20 +592,13 @@
 						"api",
 						"v1",
 						"Jobs",
-						"7b4b136f-43da-4ac5-a735-0042a1d7569e",
+						"{{entityId}}",
 						"JobCheckpoints"
-					],
-					"query": [
-						{
-							"key": "$",
-							"value": null
-						}
 					]
 				},
 				"description": "Gets all checkpoints for a specified job id"
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

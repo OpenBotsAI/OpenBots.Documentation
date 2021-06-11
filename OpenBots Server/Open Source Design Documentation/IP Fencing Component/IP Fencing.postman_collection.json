@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "91262ce8-239a-4612-8d9f-dfc75e20989a",
-		"name": "IPFencing",
+		"_postman_id": "36668640-2831-4803-a13f-0cc166cc773e",
+		"name": "IP Fencing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -30,7 +30,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPfencing",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPfencing",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -40,7 +40,7 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPfencing"
 					]
 				},
@@ -64,7 +64,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPFencing",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -74,7 +74,7 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPFencing"
 					]
 				},
@@ -98,7 +98,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPfencing/fd9cf139-8d3b-4993-b4a1-6dd2198afce2",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPfencing/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -108,9 +108,9 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPfencing",
-						"fd9cf139-8d3b-4993-b4a1-6dd2198afce2"
+						"{{entityId}}"
 					]
 				},
 				"description": "Gets an IPFencing rule for the specified rule ud\r\n"
@@ -133,7 +133,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPFencing/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -143,9 +143,9 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPFencing",
-						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+						"{{entityId}}"
 					]
 				},
 				"description": "Deletes the specified IPfencing rule"
@@ -177,7 +177,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPFencing/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -187,9 +187,9 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPFencing",
-						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+						"{{entityId}}"
 					]
 				},
 				"description": "Updates the specified IPFencing entity with the provided model properties\r\n"
@@ -211,7 +211,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/Organizations/e9f57f7b-727f-4482-915d-3b33cc080711/IPFencing/d9c10d3f-cade-4ebe-a785-efb2a25476ae",
+					"raw": "https://localhost:5001/api/v1/Organizations/{{organizationId}}/IPFencing/{{entityId}}",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -221,15 +221,14 @@
 						"api",
 						"v1",
 						"Organizations",
-						"e9f57f7b-727f-4482-915d-3b33cc080711",
+						"{{organizationId}}",
 						"IPFencing",
-						"d9c10d3f-cade-4ebe-a785-efb2a25476ae"
+						"{{entityId}}"
 					]
 				},
 				"description": "Create a patch on the specified IPFecning entity with the provided patch document\r\n"
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

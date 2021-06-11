@@ -1,0 +1,1467 @@
+{
+	"info": {
+		"_postman_id": "18949226-9cac-44b2-9584-f4ffc0083511",
+		"name": "Email",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Email",
+			"item": [
+				{
+					"name": "Get Emails",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails",
+							"host": [
+								"{{localhost}}emails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/count",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email by Id View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/view",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email - Draft",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Direction",
+									"value": "Outgoing",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails",
+							"host": [
+								"{{localhost}}emails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email - Draft",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "EmailMessageJson",
+									"value": "{\n  \"messageID\": \"\",\n  \"inReplyToMessageID\": \"\",\n  \"messageTopic\": \"\",\n  \"recievedOnUTC\": \"2020-10-09T19:16:26.425Z\",\n  \"to\": [\n    {\n      \"name\": \"Name\",\n      \"address\": \"{{emailAddress}}\"\n    }\n  ],\n  \"isPossibleSpam\": false,\n  \"isPossibleVirus\": false,\n  \"priority\": 0,\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.\",\n  \"isBodyHtml\": true,\n  \"deliveryNotificationOptions\": 0\n}",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/send",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "EmailMessageJson",
+									"value": "{\n  \"to\": [\n    {\n      \"name\": \"{{emailAddress}}\",\n      \"address\": \"{{emailAddress}}\"\n    }\n  ],\n  \"cc\": [\n    {\n      \"name\": \"\",\n      \"address\": \"\"\n    }\n  ],\n  \"bcc\": [\n    {\n      \"name\": \"\",\n      \"address\": \"\"\n    }\n  ],\n  \"subject\": \"Please read my email\",\n  \"body\": \"<bold>Here is</bold> my body of my email.  My password is <sensitive>'password'</sensitive>.\",\n  \"isBodyHtml\": true\n}",
+									"type": "text"
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails/send?accountName={{emailAccountName}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"send"
+							],
+							"query": [
+								{
+									"key": "accountName",
+									"value": "{{emailAccountName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailAccountId\": \"{{childEntityId}}\",\r\n    \"sentOnUTC\": \"2020-11-30T20:00:26.7404159\",\r\n    \"emailObjectJson\": \"<bold>Here is</bold> my body of my email.  My password is NULL.\",\r\n    \"senderName\": \"[\\\"{{emailAddress}}\\\"]\",\r\n    \"senderAddress\": \"[\\\"{{emailAddress}}\\\"]\",\r\n    \"senderUserId\": null,\r\n    \"status\": \"Sent\",\r\n    \"reason\": \"Email was sent successfully.\",\r\n    \"direction\": \"Incoming\",\r\n    \"conversationId\": null,\r\n    \"replyToEmailId\": null,\r\n    \"id\": \"{{entityId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email With File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "SentOnUTC",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "EmailObjectJson",
+									"value": "<bold>Here is</bold> my body of my email.  My password is NULL.<br><br> Love, Nicole",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "SenderName",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "SenderAddress",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "SenderUserId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Status",
+									"value": "Draft",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Reason",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Direction",
+									"value": "Outgoing",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ConversationId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ReplyToEmailId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "EmailAccountId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/update",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Direction\",\r\n        \"value\":\"Outgoing\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email Account",
+			"item": [
+				{
+					"name": "Update Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": false,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"{{emailAddress}}\",\r\n  \"encryptedPassword\": \"{{password}}\",\r\n  \"passwordHash\": \"\",\r\n  \"apiKey\": \"{{apiKey}}\",\r\n  \"fromEmailAddress\": \"{{emailAddress}}\",\r\n  \"fromName\": \"{{emailAddress}}\",\r\n  \"startOnUTC\": \"2020-10-07T17:10:41.309Z\",\r\n  \"endOnUTC\": \"2021-10-07T17:10:41.309Z\",\r\n  \"name\": \"{{emailAccountName}}\",\r\n  \"id\": \"{{entityId}}\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Account Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Provider\",\r\n        \"value\":\"SMTP\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"{{emailAddress}}\",\r\n  \"encryptedPassword\": \"{{password}}\",\r\n  \"fromEmailAddress\": \"{{emailAddress}}\",\r\n  \"fromName\": \"{{emailAddress}}\",\r\n  \"name\": \"{{emailAccountName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localcloudhost}}emailaccounts",
+							"host": [
+								"{{localcloudhost}}emailaccounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Account Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Accounts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email Attachment",
+			"item": [
+				{
+					"name": "Get Attachments by Email Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emails/{{entityId}}/emailattachments",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emails",
+								"{{entityId}}",
+								"emailattachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Attachments by Email Id Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emails/{{entityId}}/emailattachments/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emails",
+								"{{entityId}}",
+								"emailattachments",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Attachment by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emails/{{entityId}}/emailattachments/{{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emails",
+								"{{entityId}}",
+								"emailattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email Attachments View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments/view",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email Attachment - Existing Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"{{childEntityId}}\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emails/{{entityId}}/emailattachments/files?driveName=Files",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emails",
+								"{{entityId}}",
+								"emailattachments",
+								"files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Attachment - New Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"contentType\": \"image/png\",\r\n            \"sizeInBytes\": 78283,\r\n            \"contentStorageAddress\": \"BinaryObjects\\\\e9f57f7b-727f-4482-915d-3b33cc080711\\\\QueueItemAPI\\\\d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"binaryObjectId\": \"d98ff92a-ab6c-4857-8018-c37d64b93c23\",\r\n            \"emailId\": \"d12716c4-b577-48ba-aef7-35e51aeb9190\",\r\n            \"name\": \"CountCredentialsSequenceDiagram.png\",\r\n            \"id\": \"46ec8303-0890-4c55-bd75-144b173a071a\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"nicole.carrero@accelirate.com\",\r\n            \"createdOn\": null,\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": null,\r\n            \"timestamp\": \"AAAAAAAGKic=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": null\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments/{{childEntityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Attachment With File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments/{{childEntityId}}/update",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments",
+								"{{childEntityId}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Attachment Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"ContentStorageAddress\",\r\n        \"value\":\"Files\\\\Email Attachments\\\\DesignDocumentTemplate.md\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emails/{{entityId}}/emailattachments/{{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emails",
+								"{{entityId}}",
+								"emailattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Email Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{childEntityId}}/emailattachments/{{childEntityId}}",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{childEntityId}}",
+								"emailattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Email Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}emails/{{entityId}}/emailattachments/{{childEntityId}}/Export",
+							"host": [
+								"{{localhost}}emails"
+							],
+							"path": [
+								"{{entityId}}",
+								"emailattachments",
+								"{{childEntityId}}",
+								"Export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email Settings",
+			"item": [
+				{
+					"name": "Get Email Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Settings by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Settings Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"organizationId\": \"{{organizationId}}\",\r\n  \"isEmailDisabled\": true,\r\n  \"addToAddress\": \"{{emailAddress}}\",\r\n  \"addCCAddress\": \"\",\r\n  \"addBCCAddress\": \"\",\r\n  \"allowedDomains\": \"string\",\r\n  \"blockedDomains\": \"string\",\r\n  \"subjectAddPrefix\": \"string\",\r\n  \"subjectAddSuffix\": \"string\",\r\n  \"bodyAddPrefix\": \"string\",\r\n  \"bodyAddSuffix\": \"string\",\r\n  \"id\": \"\",\r\n  \"isDeleted\": false,\r\n  \"createdBy\": \"\",\r\n  \"createdOn\": \"\",\r\n  \"deletedBy\": \"\",\r\n  \"deleteOn\": \"2020-10-07T19:03:00.525Z\",\r\n  \"timestamp\": \"\",\r\n  \"updatedOn\": \"\",\r\n  \"updatedBy\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"organizationId\": \"{{organizationId}}\",\r\n            \"isEmailDisabled\": false,\r\n            \"addToAddress\": \"{{emailAddress}}\",\r\n            \"addCCAddress\": \"\",\r\n            \"addBCCAddress\": \"\",\r\n            \"allowedDomains\": \"gmail.com, hotmail.com, yahoo.com\",\r\n            \"blockedDomains\": \"hotwire.com\",\r\n            \"subjectAddPrefix\": \"MySubjectPrefix\",\r\n            \"subjectAddSuffix\": \"MySubjectSuffix\",\r\n            \"bodyAddPrefix\": \"MyBodyPrefix\",\r\n            \"bodyAddSuffix\": \"MyBodySuffix\",\r\n            \"id\": \"{{entityId}}\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"\",\r\n            \"createdOn\": \"2020-10-07T19:05:31.6287826\",\r\n            \"deletedBy\": \"\",\r\n            \"deleteOn\": \"2020-10-07T19:03:00.525\",\r\n            \"timestamp\": \"AAAAAAAAkns=\",\r\n            \"updatedOn\": null,\r\n            \"updatedBy\": \"\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Email Settings Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"BlockedDomains\",\r\n        \"value\":\"YourDomain\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailsettings/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailsettings",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

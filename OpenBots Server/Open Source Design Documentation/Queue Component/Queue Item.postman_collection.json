@@ -1,0 +1,1200 @@
+{
+	"info": {
+		"_postman_id": "f13074d9-a9bb-44d7-adcb-9ac6c2f5d9cc",
+		"name": "Queue Item",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queue",
+			"item": [
+				{
+					"name": "Get Queues Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queues/count",
+							"host": [
+								"{{localhost}}queues"
+							],
+							"path": [
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Queues",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queues",
+							"host": [
+								"{{localhost}}queues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"QueueTest\",\r\n  \"description\": \"\",\r\n  \"maxRetryCount\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localcloudhost}}queues",
+							"host": [
+								"{{localcloudhost}}queues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queues/{{entityId}}",
+							"host": [
+								"{{localhost}}queues"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Queue1Test\",\r\n  \"description\": \"Test queue1\",\r\n  \"maxRetryCount\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queues/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queues",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Queue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queues/{{entityId}}",
+							"host": [
+								"{{localhost}}queues"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"MaxRetryCount\",\r\n        \"value\":4\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queues/631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queues",
+								"631f3f8f-59c7-4b10-9a1f-8aee6d5ee33e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queue Item",
+			"item": [
+				{
+					"name": "Get Queue Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Item Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Items View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/view",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Item Details View",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/view/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"view",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get QueueItems Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rollback Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/rollback/?isFatal=true&transactionKey={{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"rollback",
+								""
+							],
+							"query": [
+								{
+									"key": "isFatal",
+									"value": "true"
+								},
+								{
+									"key": "errorCode",
+									"value": "400 Bad Request",
+									"disabled": true
+								},
+								{
+									"key": "transactionKey",
+									"value": "{{childEntityId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item Property",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Priority\",\r\n        \"value\":\"90\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dequeue Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/dequeue?agentId={{childEntityId2}}&queueId={{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"dequeue"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{childEntityId2}}"
+								},
+								{
+									"key": "queueId",
+									"value": "{{childEntityId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enqueue Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isLocked\": false,\r\n  \"queueId\": \"{{childEntityId}}\",\r\n  \"dataJson\": \"This is my email.\",\r\n  \"name\": \"MyQueueItem\",\r\n  \"jsonType\": \"Email\",\r\n  \"type\": \"Text\",\r\n  \"priority\": 100,\r\n  \"expireonUTC\": \"2021-11-22T19:17:32.497Z\",\r\n  \"postponeuntilUTC\": \"\",\r\n  \"retryCount\": 0,\r\n  \"errorCode\": null,\r\n  \"errorMessage\": null,\r\n  \"errorSerialized\": null,\r\n  \"source\": null,\r\n  \"event\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/enqueue",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"enqueue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Commit Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/commit?transactionKey={{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"commit"
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{childEntityId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item State / State Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/{{entityId}}/state?transactionKey={{childEntityId}}&stateMessage=Queue Item transaction is being processed.",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"{{entityId}}",
+								"state"
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{childEntityId}}"
+								},
+								{
+									"key": "stateMessage",
+									"value": "Queue Item transaction is being processed."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend Queue Item LockedBy DateTime",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/queueitems/extend/?transactionKey={{childEntityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"queueitems",
+								"extend",
+								""
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{childEntityId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item with Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Source",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Event",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ExpireOnUTC",
+									"value": "2020-11-22T19:17:32.497",
+									"type": "text"
+								},
+								{
+									"key": "PostponeUntilUTC",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Type",
+									"value": "Text",
+									"type": "text"
+								},
+								{
+									"key": "DataJson",
+									"value": "Email body goes here.",
+									"type": "text"
+								},
+								{
+									"key": "State",
+									"value": "New",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "QueueId",
+									"value": "{{childEntityId}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queue Item Attachment",
+			"item": [
+				{
+					"name": "Get Queue Item Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Item Attachments View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/view",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Item Attachments Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/count",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Queue Item Attachment Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Queue Item Attachment - Existing Files",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"{{childEntityId}}\", \"{{childEntityId2}}\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/files",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"files"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Files",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Queue Item Attachment - New Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item Attachment File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}/update",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}",
+								"update"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item Attachment Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"PayloadSizeInBytes\",\r\n        \"value\":\"0\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Queue Item Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Queue Item Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Queue Item Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}/export",
+							"host": [
+								"{{localhost}}queueitems"
+							],
+							"path": [
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

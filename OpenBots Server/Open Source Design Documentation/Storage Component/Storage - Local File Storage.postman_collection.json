@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "98fe0d1a-d263-4d87-995d-ece533e9ae10",
-		"name": "Storage Component - Local File Storage (Open Source)",
+		"name": "Storage - Local File Storage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -79,14 +79,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/DriveDetails/37a01356-7514-47a2-96ce-986faadd628e",
+							"raw": "{{localhost}}storage/drives/DriveDetails/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
 								"DriveDetails",
-								"37a01356-7514-47a2-96ce-986faadd628e"
+								"{{entityId}}"
 							]
 						}
 					},
@@ -182,13 +182,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/65def3fc-1515-482c-9013-30d35f1d1abf",
+							"raw": "{{localhost}}storage/drives/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"65def3fc-1515-482c-9013-30d35f1d1abf"
+								"{{entityId}}"
 							]
 						}
 					},
@@ -210,13 +210,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/e940c375-a5a0-4905-b102-75f89da2c453",
+							"raw": "{{localhost}}storage/drives/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"e940c375-a5a0-4905-b102-75f89da2c453"
+								"{{entityId}}"
 							]
 						}
 					},
@@ -289,26 +289,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files"
-							],
-							"query": [
-								{
-									"key": "file",
-									"value": "true",
-									"disabled": true
-								},
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -342,13 +330,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders"
 							],
 							"query": [
@@ -390,13 +378,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e",
+							"raw": "{{localhost}}storage/drives/{{driveId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e"
+								"{{driveId}}"
 							],
 							"query": [
 								{
@@ -417,11 +405,6 @@
 								{
 									"key": "$skip",
 									"value": "0",
-									"disabled": true
-								},
-								{
-									"key": "$filter",
-									"value": "ParentId+eq+guid'37a01356-7514-47a2-96ce-986faadd628e'",
 									"disabled": true
 								}
 							]
@@ -457,18 +440,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e?$filter=ParentId eq guid'37a01356-7514-47a2-96ce-986faadd628e'",
+							"raw": "{{localhost}}storage/drives/{{driveId}}?$filter=ParentId eq guid'{{childEntityId}}'",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e"
+								"{{driveId}}"
 							],
 							"query": [
 								{
 									"key": "$filter",
-									"value": "ParentId eq guid'37a01356-7514-47a2-96ce-986faadd628e'"
+									"value": "ParentId eq guid'{{childEntityId}}'"
 								}
 							]
 						}
@@ -491,13 +474,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/Count",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/Count",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
 								"Count"
 							],
@@ -528,13 +511,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/folders/count",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/folders/count",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"folders",
 								"count"
 							],
@@ -565,15 +548,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/f73d75b3-76b7-46cd-bc01-00506557c2af",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"f73d75b3-76b7-46cd-bc01-00506557c2af"
+								"{{entityId}}"
 							],
 							"query": [
 								{
@@ -602,15 +585,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/a7740dc6-5f2f-411c-b91e-01285bc72cfa",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders",
-								"a7740dc6-5f2f-411c-b91e-01285bc72cfa"
+								"{{entityId}}"
 							],
 							"query": [
 								{
@@ -723,13 +706,13 @@
 							"formdata": [
 								{
 									"key": "StoragePath",
-									"value": "Files\\FolderTest",
+									"value": "gegabytes",
 									"type": "text"
 								},
 								{
 									"key": "Files",
 									"type": "file",
-									"src": "/C:/Users/Name/source/repos/Cloud Design Documentation/Agent Component/Sequence Diagrams/AgentComponentSequenceDiagram.png"
+									"src": []
 								},
 								{
 									"key": "Files",
@@ -740,13 +723,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files"
 							],
 							"query": [
@@ -796,13 +779,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders"
 							],
 							"query": [
@@ -832,15 +815,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Download",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}/Download",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"{{entityId}}",
 								"Download"
 							]
 						}
@@ -863,15 +846,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"5c4fbfca-24f7-4466-86d9-8ba92702af9d"
+								"{{entityId}}"
 							],
 							"query": [
 								{
@@ -900,15 +883,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/18fad814-edb4-4abe-a7dd-1d5451091ae7",
+							"raw": "{{localhost}}storage/drives/{{drives}}/Folders/{{entityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{drives}}",
 								"Folders",
-								"18fad814-edb4-4abe-a7dd-1d5451091ae7"
+								"{{entityId}}"
 							],
 							"query": [
 								{
@@ -946,15 +929,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Rename",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}/Rename",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"{{entityId}}",
 								"Rename"
 							],
 							"query": [
@@ -993,15 +976,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/34b49b3e-fded-4ba4-a0ce-d85ed0d3705e/Rename",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders/{{entityId}}/Rename",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders",
-								"34b49b3e-fded-4ba4-a0ce-d85ed0d3705e",
+								"{{entityId}}",
 								"Rename"
 							],
 							"query": [
@@ -1031,17 +1014,17 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/5c4fbfca-24f7-4466-86d9-8ba92702af9d/Copy/168792ed-4d7e-4965-bb14-8ce8969c743e",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}/Copy/{{childEntityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"5c4fbfca-24f7-4466-86d9-8ba92702af9d",
+								"{{entityId}}",
 								"Copy",
-								"168792ed-4d7e-4965-bb14-8ce8969c743e"
+								"{{childEntityId}}"
 							],
 							"query": [
 								{
@@ -1070,17 +1053,17 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/18fad814-edb4-4abe-a7dd-1d5451091ae7/Copy/e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders/{{entityId}}/Copy/{{childEntityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders",
-								"18fad814-edb4-4abe-a7dd-1d5451091ae7",
+								"{{entityId}}",
 								"Copy",
-								"e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0"
+								"{{childEntityId}}"
 							],
 							"query": [
 								{
@@ -1109,17 +1092,17 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Files/c06b67c0-4468-4ba8-ab48-ab4e7af4601c/Move/168792ed-4d7e-4965-bb14-8ce8969c743e",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Files/{{entityId}}/Move/{{childEntityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Files",
-								"c06b67c0-4468-4ba8-ab48-ab4e7af4601c",
+								"{{entityId}}",
 								"Move",
-								"168792ed-4d7e-4965-bb14-8ce8969c743e"
+								"{{childEntityId}}"
 							],
 							"query": [
 								{
@@ -1148,17 +1131,17 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{localhost}}storage/drives/37a01356-7514-47a2-96ce-986faadd628e/Folders/168792ed-4d7e-4965-bb14-8ce8969c743e/Move/e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0",
+							"raw": "{{localhost}}storage/drives/{{driveId}}/Folders/{{entityId}}/Move/{{childEntityId}}",
 							"host": [
 								"{{localhost}}storage"
 							],
 							"path": [
 								"drives",
-								"37a01356-7514-47a2-96ce-986faadd628e",
+								"{{driveId}}",
 								"Folders",
-								"168792ed-4d7e-4965-bb14-8ce8969c743e",
+								"{{entityId}}",
 								"Move",
-								"e4c4dec3-3ab5-48a2-b2d6-b0cca853cff0"
+								"{{childEntityId}}"
 							],
 							"query": [
 								{
@@ -1192,18 +1175,12 @@
 								{
 									"key": "Files",
 									"type": "file",
-									"src": "/C:/Users/Name/source/repos/Cloud Design Documentation/Email Component/Sequence Diagrams/EmailAccountsController/AllEmailAccountsSequenceDiagram.png"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
+									"src": []
 								}
 							]
 						},
 						"url": {
-							"raw": "{{localhost}}storage/drives/{driveId}/Files/{fileId}/Replace",
+							"raw": "{{localhost}}storage/drives/{driveId}/Files/{{entityId}}/Replace",
 							"host": [
 								"{{localhost}}storage"
 							],
@@ -1211,7 +1188,7 @@
 								"drives",
 								"{driveId}",
 								"Files",
-								"{fileId}",
+								"{{entityId}}",
 								"Replace"
 							],
 							"query": [

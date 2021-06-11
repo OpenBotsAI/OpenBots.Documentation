@@ -1,0 +1,1119 @@
+{
+	"info": {
+		"_postman_id": "b8d1baf2-d338-4ce5-8481-2d0ab879dc3a",
+		"name": "Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Automation",
+			"item": [
+				{
+					"name": "Get All Automations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Automations View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/view",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Details View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/view/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"view",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automations Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add an Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "Automation",
+									"type": "text"
+								},
+								{
+									"key": "AutomationEngine",
+									"value": "{{organizationName}}",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}automations",
+							"host": [
+								"{{localhost}}automations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"AutomationEngine\",\r\n        \"value\":\"{{organizationName}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation with File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "name",
+									"value": "Name.txt",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Published",
+									"type": "text"
+								},
+								{
+									"key": "automationEngine",
+									"value": "{{organizationName}}",
+									"type": "text"
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localhost}}automations/{{entityId}}/update",
+							"host": [
+								"{{localhost}}automations"
+							],
+							"path": [
+								"{{entityId}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"TestAutomation1\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"{{organizationName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}automations/{{entityId}}/export",
+							"host": [
+								"{{localhost}}automations"
+							],
+							"path": [
+								"{{entityId}}",
+								"export"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}automations/{{entityId}}",
+							"host": [
+								"{{localhost}}automations"
+							],
+							"path": [
+								"{{entityId}}"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automations/getlookup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automations",
+								"getlookup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Parameters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"Name\" : \"ExampleParameters\",\r\n    \"DataType\" : \"Text\",\r\n    \"Value\" : \"Hello World\"\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Automations/{{entityId}}/UpdateParameters",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Automations",
+								"{{entityId}}",
+								"UpdateParameters"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automation Execution Logs",
+			"item": [
+				{
+					"name": "Add Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs"
+							]
+						},
+						"description": "Adds a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs"
+							]
+						},
+						"description": " Provides a list of all ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Agent Start Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/startautomation",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"startautomation"
+							]
+						},
+						"description": "Allows Agent to add a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Agent End Automation Execution Log",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"trigger\": \"sometrigger\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"Completed\",\r\n  \"hasErrors\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/{{entityId}}/endautomation",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"{{entityId}}",
+								"endautomation"
+							]
+						},
+						"description": "Agent is able to update a ProcessExecutionLog End status"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides a ProcessExecutionLog's details for a particular ProcessExecutionLog Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Automation Execution log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes a ProcessExecutionLog with a specified id from the ProcessExecutionLog."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ProcessName\",\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"trigger\": \"string\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"string\",\r\n  \"hasErrors\": true,\r\n  \"errorMessage\": \"string\",\r\n  \"errorDetails\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates a ProcessExecutionLog "
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Execution Logs Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/name\",\r\n        \"value\":\"Patched Name\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates partial details of ProcessExecutionLog."
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Logs View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/view",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"view"
+							]
+						},
+						"description": "Gets the view for all processExecution logs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log View by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/view/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"view",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the view for a given processExecutionLog id"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/automationexecutionlogs/Count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"automationexecutionlogs",
+								"Count"
+							]
+						},
+						"description": "Gets the total count of processExecutionLogs"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automation Logs",
+			"item": [
+				{
+					"name": "All Automation Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AutomationLogs",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AutomationLogs"
+							]
+						},
+						"description": "Provides a paginated list of all process logs\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Logs By Automation Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AutomationLogs/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AutomationLogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides a ProcessLog's details for a particular ProcessLog Id."
+					},
+					"response": []
+				},
+				{
+					"name": "Export Automation Logs By Job Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AutomationLogs/export/csv?$filter=jobId eq guid'{{childEntityId}}'",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AutomationLogs",
+								"export",
+								"csv"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "jobId eq guid'{{childEntityId}}'"
+								}
+							]
+						},
+						"description": "Provides a downloadable file for the provided JobId."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Automation Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"string\",\r\n  \"messageTemplate\": \"string\",\r\n  \"level\": \"string\",\r\n  \"automationLogTimeStamp\": \"2020-09-16T13:28:36.610Z\",\r\n  \"exception\": \"string\",\r\n  \"jobId\": \"{{childEntityId}}\",\r\n  \"automationId\": \"{{childEntityId2}}\",\r\n  \"agentId\": \"{{childEntityId3}}\",\r\n  \"machineName\": \"string\",\r\n  \"automationName\": \"string\",\r\n  \"logger\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AutomationLogs",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AutomationLogs"
+							]
+						},
+						"description": "Adds a new ProcessLog to the existing ProcessLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Logs Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AutomationLogs/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AutomationLogs",
+								"count"
+							]
+						},
+						"description": "Gets the total count of processLogs"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
