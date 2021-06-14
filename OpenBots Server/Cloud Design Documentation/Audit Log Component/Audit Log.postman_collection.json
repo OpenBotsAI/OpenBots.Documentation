@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "032ffd2a-a7b1-44c4-8e6c-ea42e1dc9c34",
+		"name": "Audit Log",
+		"description": "The audit log component is able to pull a list of audit logs from the Server.  It can pull all audit logs, pull audit logs based on filtering (Service Name, Method Name, Updated By, and Timestamp), and pull individual audit log information by it's unique id.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Audit Logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/AuditLogs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"AuditLogs"
+					]
+				},
+				"description": "Get information for all audit logs from the Server."
+			},
+			"response": []
+		},
+		{
+			"name": "Audit Log Details by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/AuditLogs/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"AuditLogs",
+						"{{entityId}}"
+					]
+				},
+				"description": "Retrieve all audit log details by individual audit log id"
+			},
+			"response": []
+		},
+		{
+			"name": "Export CSV",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/auditlogs/export",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"auditlogs",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Audit Logs Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/auditlogs/count",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"auditlogs",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Service Name List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/auditlogs/auditlogslookup",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"auditlogs",
+						"auditlogslookup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

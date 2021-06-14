@@ -1,0 +1,1049 @@
+{
+	"info": {
+		"_postman_id": "fad6608a-f828-4347-96b5-4b17f2f455f9",
+		"name": "Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Automation",
+			"item": [
+				{
+					"name": "Get All Automations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Automations View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/view",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automations Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/count",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Details View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/view/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"view",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add an Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "AddNewAutomation",
+									"type": "text"
+								},
+								{
+									"key": "AutomationEngine",
+									"value": "{{organizationName}}",
+									"type": "text"
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation with File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "name",
+									"value": "AddNewAutomation",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Published",
+									"type": "text"
+								},
+								{
+									"key": "automationEngine",
+									"value": "{{organizationName}}",
+									"type": "text"
+								},
+								{
+									"key": "DriveName",
+									"value": "Azure",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}/update",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}/export",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}",
+								"export"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"TestAutomation1\",\r\n\"status\": \"Published\",\r\n\"automationEngine\": \"Python\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"AutomationEngine\",\r\n        \"value\":\"{{organizationName}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Automation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automation Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automations/getlookup",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"getlookup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automation Execution Logs",
+			"item": [
+				{
+					"name": "Add Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs"
+							]
+						},
+						"description": "Adds a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Logs View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/view",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"view"
+							]
+						},
+						"description": "Gets the view for all processExecution logs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs"
+							]
+						},
+						"description": " Provides a list of all ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Agent Start Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/startautomation",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"startautomation"
+							]
+						},
+						"description": "Allows Agent to add a new ProcessExecutionLog to the existing ProcessExecutionLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Agent End Automation Execution Log",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-10-06T03:16:38.114Z\",\r\n  \"trigger\": \"sometrigger\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"Completed\",\r\n  \"hasErrors\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/{{entityId}}/endautomation",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"{{entityId}}",
+								"endautomation"
+							]
+						},
+						"description": "Agent is able to update a ProcessExecutionLog End status"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides a ProcessExecutionLog's details for a particular ProcessExecutionLog Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Automation Execution log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes a ProcessExecutionLog with a specified id from the ProcessExecutionLog."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Execution Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ProcessName\",\r\n  \"jobID\": \"{{childEntityId}}\",\r\n  \"automationID\": \"{{childEntityId2}}\",\r\n  \"agentID\": \"{{childEntityId3}}\",\r\n  \"startedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"completedOn\": \"2020-09-09T03:16:38.114Z\",\r\n  \"trigger\": \"string\",\r\n  \"triggerDetails\": \"string\",\r\n  \"status\": \"string\",\r\n  \"hasErrors\": true,\r\n  \"errorMessage\": \"string\",\r\n  \"errorDetails\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates a ProcessExecutionLog "
+					},
+					"response": []
+				},
+				{
+					"name": "Update Automation Execution Logs Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/name\",\r\n        \"value\":\"Patched Name\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates partial details of ProcessExecutionLog."
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log View by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/view/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"view",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the view for a given processExecutionLog id"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Execution Log Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/automationexecutionlogs/Count",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"automationexecutionlogs",
+								"Count"
+							]
+						},
+						"description": "Gets the total count of processExecutionLogs"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automation Logs",
+			"item": [
+				{
+					"name": "All Automation Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AutomationLogs",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AutomationLogs"
+							]
+						},
+						"description": "Provides a paginated list of all process logs\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Export Automation Logs By Job Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AutomationLogs/export/csv?$filter=jobId eq guid'{{childEntityId}}'",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AutomationLogs",
+								"export",
+								"csv"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "jobId eq guid'{{childEntityId}}'"
+								}
+							]
+						},
+						"description": "Provides a downloadable file for the provided JobId."
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Logs By Automation Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AutomationLogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AutomationLogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides a ProcessLog's details for a particular ProcessLog Id."
+					},
+					"response": []
+				},
+				{
+					"name": "Add Automation Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"string\",\r\n  \"messageTemplate\": \"string\",\r\n  \"level\": \"string\",\r\n  \"automationLogTimeStamp\": \"2020-09-16T13:28:36.610Z\",\r\n  \"exception\": \"string\",\r\n  \"jobId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"automationId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"agentId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"machineName\": \"string\",\r\n  \"automationName\": \"string\",\r\n  \"logger\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AutomationLogs",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AutomationLogs"
+							]
+						},
+						"description": "Adds a new ProcessLog to the existing ProcessLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Automation Logs Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AutomationLogs/count",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AutomationLogs",
+								"count"
+							]
+						},
+						"description": "Gets the total count of processLogs"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

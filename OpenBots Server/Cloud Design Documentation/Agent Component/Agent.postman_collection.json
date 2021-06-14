@@ -6,529 +6,789 @@
 	},
 	"item": [
 		{
-			"name": "Post Agent",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n            \"machineName\": \"MyPc\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"ipAddresses\": \"188.153.1.51\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"Test-Agent\",\r\n            \"machineAccountName\" : \"Machine001\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents"
-					]
-				},
-				"description": "Adds a new Agent to the existing Agents"
-			},
-			"response": []
-		},
-		{
-			"name": "Heartbeat",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"lastReportedOn\": \"2020-11-18T12:30:57.5687289\",\r\n    \"lastReportedStatus\":\"InProgress\",\r\n    \"lastReportedWork\" : \"Updating File\",\r\n    \"lastReportedMessage\":\"Files have been downloaded\",\r\n    \"isHealthy\":true\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/2e8a3b19-5bb3-492c-b98c-88831333b157/addheartbeat",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"2e8a3b19-5bb3-492c-b98c-88831333b157",
-						"addheartbeat"
-					]
-				},
-				"description": "Performs a heartbeat operation on the Agent id that was passed"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Agents",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents"
-					]
-				},
-				"description": "Get a list of all existing Agents"
-			},
-			"response": []
-		},
-		{
-			"name": "Patch Update Agent",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/isConnected\",\r\n      \"value\": true\r\n    }\r\n]\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/4ecf55fe-e333-43bd-98a6-8899bf0b3246",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"4ecf55fe-e333-43bd-98a6-8899bf0b3246"
-					]
-				},
-				"description": "Perform a patch operation on the agent id that was specified"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Agent by Id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/4ecf55fe-e333-43bd-98a6-8899bf0b3246",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"4ecf55fe-e333-43bd-98a6-8899bf0b3246"
-					]
-				},
-				"description": "Gets the properties of the Agent id that was requested"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Agent by Id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/6806cd94-65f2-4326-bdd0-debb29ca1f56",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"6806cd94-65f2-4326-bdd0-debb29ca1f56"
-					]
-				},
-				"description": "Deletes the Agent that corresponds to the id that was passed"
-			},
-			"response": []
-		},
-		{
-			"name": "Connect",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PATCH",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/Agents/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/connect?MachineName=MyPc&MacAddresses=1234",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"Agents",
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"connect"
-					],
-					"query": [
-						{
-							"key": "MachineName",
-							"value": "MyPc"
+			"name": "Agent",
+			"item": [
+				{
+					"name": "Post Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "MacAddresses",
-							"value": "1234"
-						}
-					]
-				},
-				"description": "Performs and handshake with a machine. If the handshake succeeds an agentId is returned"
-			},
-			"response": []
-		},
-		{
-			"name": "Put Update Agent",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n            \"machineName\": \"MyPc\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"ipAddresses\": \"188.153.1.51\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"Test-Agent\",\r\n            \"machineAccountName\" : \"Machine001\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/Agents/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/6806cd94-65f2-4326-bdd0-debb29ca1f56",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"Agents",
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"6806cd94-65f2-4326-bdd0-debb29ca1f56"
-					]
-				},
-				"description": "Provides an action to update an Agent, when Agent id and the new details of Agent are given"
-			},
-			"response": []
-		},
-		{
-			"name": "Disconnect",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PATCH",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/disconnect?MachineName=MyPc&MacAddresses=1234&AgentId=6806cd94-65f2-4326-bdd0-debb29ca1f56",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"disconnect"
-					],
-					"query": [
-						{
-							"key": "MachineName",
-							"value": "MyPc"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"machineName\": \"MyPc\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"ipAddresses\": \"188.153.1.51\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"Test-Agent\",\r\n            \"machineAccountName\" : \"Machine001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "MacAddresses",
-							"value": "1234"
+						"url": {
+							"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents",
+							"host": [
+								"{{ServerURL}}"
+							],
+							"path": [
+								"organizations",
+								"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+								"Agents"
+							]
 						},
-						{
-							"key": "AgentId",
-							"value": "6806cd94-65f2-4326-bdd0-debb29ca1f56"
+						"description": "Adds a new Agent to the existing Agents"
+					},
+					"response": []
+				},
+				{
+					"name": "Heartbeat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastReportedOn\": \"2020-11-18T12:30:57.5687289\",\r\n    \"lastReportedStatus\":\"InProgress\",\r\n    \"lastReportedWork\" : \"Updating File\",\r\n    \"lastReportedMessage\":\"Files have been downloaded\",\r\n    \"isHealthy\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/{{entityId}}/addheartbeat",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}",
+								"addheartbeat"
+							]
+						},
+						"description": "Performs a heartbeat operation on the Agent id that was passed"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents"
+							]
+						},
+						"description": "Get a list of all existing Agents"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Update Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/isConnected\",\r\n      \"value\": true\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Perform a patch operation on the agent id that was specified"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the properties of the Agent id that was requested"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Agent by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes the Agent that corresponds to the id that was passed"
+					},
+					"response": []
+				},
+				{
+					"name": "Connect",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{ServerURL}}/organizations/{{organizationId}}/Agents/connect?MachineName={{machineName}}&MacAddresses={{macAddresses}}",
+							"host": [
+								"{{ServerURL}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"connect"
+							],
+							"query": [
+								{
+									"key": "MachineName",
+									"value": "{{machineName}}"
+								},
+								{
+									"key": "MacAddresses",
+									"value": "{{macAddresses}}"
+								}
+							]
+						},
+						"description": "Performs and handshake with a machine. If the handshake succeeds an agentId is returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Put Update Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"machineName\": \"{{machineName}}\",\r\n            \"macAddresses\": \"{{macAddresses}}\",\r\n            \"ipAddresses\": \"{{ipAddresses}}\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"Test-Agent\",\r\n            \"machineAccountName\" : \"{{machineAccountName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ServerURL}}/organizations/{{organizationId}}/Agents/{{entityId}}",
+							"host": [
+								"{{ServerURL}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides an action to update an Agent, when Agent id and the new details of Agent are given"
+					},
+					"response": []
+				},
+				{
+					"name": "Disconnect",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/disconnect?MachineName={{machineName}}&MacAddresses={{macAddresses}}&AgentId={{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"disconnect"
+							],
+							"query": [
+								{
+									"key": "MachineName",
+									"value": "{{machineName}}"
+								},
+								{
+									"key": "MacAddresses",
+									"value": "{{macAddresses}}"
+								},
+								{
+									"key": "AgentId",
+									"value": "{{entityId}}"
+								}
+							]
+						},
+						"description": "Updates the isConnected field if the disconnect details are correct"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/Count",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"Count"
+							]
+						},
+						"description": "Provides a Count of Agents"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/GetLookup",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"GetLookup"
+							]
+						},
+						"description": "Lookup a list of Agent name and IDs"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent Heartbeats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/{{entityId}}/AgentHeartbeats",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"{{entityId}}",
+								"AgentHeartbeats"
+							]
+						},
+						"description": "Provides a list of heartbeat details for a particular agent id"
+					},
+					"response": []
+				},
+				{
+					"name": "Resolve Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AgentGroupName\" : \"\",\r\n    \"AgentName\" : \"ExampleAgent\",\r\n    \"HostMachineName\" : \"{{machineName}}\",\r\n    \"MacAddressesCS\" : \"{{macAddresses}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Agents/Resolve",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"Agents",
+								"Resolve"
+							]
 						}
-					]
-				},
-				"description": "Updates the isConnected field if the disconnect details are correct"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Assets",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Assets",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Assets"
-					]
-				},
-				"description": "Gets a paginated list of all Assets"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Agent Count",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/Count",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"Count"
-					]
-				},
-				"description": "Provides a Count of Agents"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Agent Lookup",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/GetLookup",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"GetLookup"
-					]
-				},
-				"description": "Lookup a list of Agent name and IDs"
-			},
-			"response": []
-		},
-		{
-			"name": "Get Agent Heartbeats",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{ServerURL}}/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/Agents/2e8a3b19-5bb3-492c-b98c-88831333b157/AgentHeartbeats",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-						"Agents",
-						"2e8a3b19-5bb3-492c-b98c-88831333b157",
-						"AgentHeartbeats"
-					]
-				},
-				"description": "Provides a list of heartbeat details for a particular agent id"
-			},
-			"response": []
-		},
-		{
-			"name": "Resolve Agent",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"AgentGroupName\" : \"\",\r\n    \"AgentName\" : \"ExampleAgent\",\r\n    \"HostMachineName\" : \"Desktop-Test\",\r\n    \"MacAddressesCS\" : \"12:34:56:78\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{ServerURL}}/organizations/8b17fd7e-88f9-4530-beff-a183a44956fa/Agents/Resolve",
-					"host": [
-						"{{ServerURL}}"
-					],
-					"path": [
-						"organizations",
-						"8b17fd7e-88f9-4530-beff-a183a44956fa",
-						"Agents",
-						"Resolve"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Agent Group",
+			"item": [
+				{
+					"name": "Get All AgentGroups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups"
+							]
+						},
+						"description": "Gets a list of all AgentGroups"
+					},
+					"response": []
+				},
+				{
+					"name": "Post AgentGroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"NewGroup\",\r\n    \"IsEnabled\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups"
+							]
+						},
+						"description": "Adds a new AgentGroup to the existing AgentGroups"
+					},
+					"response": []
+				},
+				{
+					"name": "Get AgentGroup by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the values for the specified AgentGroup"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT update AgentGroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"FirstGroup2\",\r\n    \"IsEnabled\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates the specified AgentGroup entity with the provided values"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch update AgentGroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/name\",\r\n      \"value\": \"NewGroupName\"\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"{{entityId}}"
+							]
+						},
+						"description": "Performs a partial update on the specifeid AgentGroup entity"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete AgentGroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes the specified AgentGroup"
+					},
+					"response": []
+				},
+				{
+					"name": "Post new AgentGroupMember",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"AgentId\" : \"{{childEntityId}}}}\"\r\n},\r\n{\r\n    \"AgentId\" : \"{{childEntityId2}}\"\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/{{entityId}}/UpdateGroupMembers",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"{{entityId}}",
+								"UpdateGroupMembers"
+							]
+						},
+						"description": "Creates a new AgentGroupMember entity with the specified IDs"
+					},
+					"response": []
+				},
+				{
+					"name": "Get AgentGroup view by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/AgentGroups/view/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"AgentGroups",
+								"view",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

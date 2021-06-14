@@ -1,15 +1,15 @@
 {
 	"info": {
-		"_postman_id": "3ac9f646-0919-4c52-8561-115dc748a7f2",
-		"name": "Storage Component - Azure Blob Storage",
+		"_postman_id": "e3ad307a-1982-4911-b0eb-519dc2ea4aab",
+		"name": "Queue",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "DrivesController",
+			"name": "Queue",
 			"item": [
 				{
-					"name": "All Drives",
+					"name": "Get All Queues",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -24,21 +24,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives"
+								"queues"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Drives Count",
+					"name": "Get Queues Count",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -53,14 +53,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/count",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues/count",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queues",
 								"count"
 							]
 						}
@@ -68,7 +68,7 @@
 					"response": []
 				},
 				{
-					"name": "Drive Details By Id",
+					"name": "Get Queue Details",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -83,15 +83,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/DriveDetails/{{entityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
-								"DriveDetails",
+								"queues",
 								"{{entityId}}"
 							]
 						}
@@ -99,38 +98,7 @@
 					"response": []
 				},
 				{
-					"name": "Drive Details By Name",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/DriveDetailsByName/Files",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"DriveDetailsByName",
-								"Files"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Drive",
+					"name": "Add a Queue",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -146,7 +114,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"NewFiles\",\r\n  \"fileStorageAdapterType\": \"AzureBlobStorage\",\r\n  \"storagePath\": \"{{storagePath}}\",\r\n  \"maxStorageAllowedInBytes\": 100000000,\r\n  \"isDefault\": false,\r\n  \"description\": \"Second storage drive\",\r\n  \"isExternal\": false,\r\n  \"connectionString\": \"{{connectionString}}\"\r\n}",
+							"raw": "{\r\n  \"name\": \"QueueTest\",\r\n  \"description\": \"\",\r\n  \"maxRetryCount\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,21 +122,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/Queues",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives"
+								"Queues"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update Drive",
+					"name": "Update a Queue",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -184,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "        {\r\n            \"fileStorageAdapterType\": \"LocalFileStorage\",\r\n            \"storagePath\": \"OldFiles\",\r\n            \"maxStorageAllowedInBytes\": null,\r\n            \"isDefault\": false,\r\n            \"name\": \"OldFiles\"\r\n        }",
+							"raw": "{\r\n  \"name\": \"Queue1Test\",\r\n  \"description\": \"Test queue1\",\r\n  \"maxRetryCount\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -192,14 +160,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queues",
 								"{{entityId}}"
 							]
 						}
@@ -207,7 +175,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Drive",
+					"name": "Delete a Queue",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -222,14 +190,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queues",
 								"{{entityId}}"
 							]
 						}
@@ -237,7 +205,7 @@
 					"response": []
 				},
 				{
-					"name": "Drive Names Lookup",
+					"name": "Update Queue Property",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -249,114 +217,27 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "PATCH",
 						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/driveNames?adapterType=AzureBlobStorage",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"driveNames"
-							],
-							"query": [
-								{
-									"key": "adapterType",
-									"value": "AzureBlobStorage"
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"MaxRetryCount\",\r\n        \"value\":4\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Drives View (Billing Component)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							}
 						},
-						"method": "GET",
-						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/Drives/View",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queues/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"Drives",
-								"View"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Max Drive Size Count",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/Drives/MaxDriveSizeCount",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"Drives",
-								"MaxDriveSizeCount"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Used Drive Storage Count",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/Drives/UsedDriveStorageCount",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"Drives",
-								"UsedDriveStorageCount"
+								"queues",
+								"{{entityId}}"
 							]
 						}
 					},
@@ -365,13 +246,10 @@
 			]
 		},
 		{
-			"name": "FilesController",
+			"name": "Queue Item",
 			"item": [
 				{
-					"name": "All Files",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get Queue Items",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -385,36 +263,22 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Files"
+								"queueitems"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "All Folders",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get Queue Items View",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -428,43 +292,23 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/view",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Folders"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
+								"queueitems",
+								"view"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "All Files & Folders",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get Queue Item Details",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -478,59 +322,23 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								},
-								{
-									"key": "$orderby",
-									"value": "createdOn+desc",
-									"disabled": true
-								},
-								{
-									"key": "$top",
-									"value": "5",
-									"disabled": true
-								},
-								{
-									"key": "$skip",
-									"value": "0",
-									"disabled": true
-								},
-								{
-									"key": "$filter",
-									"value": "ParentId+eq+guid'37a01356-7514-47a2-96ce-986faadd628e'",
-									"disabled": true
-								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "All Files & Folders With ParentId Filter (All Child Files & Folders)",
+					"name": "Get Queue Item Details View",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -546,329 +354,128 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}?$filter=ParentId eq guid'{{childEntityId}}'",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}"
-							],
-							"query": [
-								{
-									"key": "$filter",
-									"value": "ParentId eq guid'{{childEntityId}}'"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Files Count",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/Count",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Files",
-								"Count"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Folders Count",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders/count",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Folders",
-								"count"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "File Details By Id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Files",
-								"{{childEntityId}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Folder Details By Id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders/{{childEntityId}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Folders",
-								"{{childEntityId}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "File Details By Storage Path",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Details/Files?path={{storagePath}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Details",
-								"Files"
-							],
-							"query": [
-								{
-									"key": "path",
-									"value": "{{storagePath}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Folder Details By Storage Path",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Details/Files?path={{storagePath}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Details",
-								"Files"
-							],
-							"query": [
-								{
-									"key": "path",
-									"value": "{{storagePath}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Upload Files",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "StoragePath",
-									"value": "Files/TestFolder1",
-									"type": "text"
-								},
-								{
-									"key": "Files",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "Files",
-									"type": "file",
-									"src": []
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/view/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Files"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
+								"queueitems",
+								"view",
+								"{{entityId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Folder",
+					"name": "Get QueueItems Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/count",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Priority\",\r\n        \"value\":\"90\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enqueue Queue Item",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -881,52 +488,328 @@
 							]
 						},
 						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isLocked\": false,\r\n  \"queueId\": \"{{childEntityId}}\",\r\n  \"dataJson\": \"This is my email.\",\r\n  \"name\": \"MyQueueItem\",\r\n  \"jsonType\": \"Email\",\r\n  \"type\": \"Text\",\r\n  \"priority\": 100,\r\n  \"expireonUTC\": \"2021-11-22T19:17:32.497Z\",\r\n  \"postponeuntilUTC\": \"\",\r\n  \"retryCount\": 0,\r\n  \"errorCode\": null,\r\n  \"errorMessage\": null,\r\n  \"errorSerialized\": null,\r\n  \"source\": null,\r\n  \"event\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/enqueue",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"enqueue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dequeue Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/dequeue?agentId={{childEntityId}}&queueId={{childEntityId2}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"dequeue"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{childEntityId}}"
+								},
+								{
+									"key": "queueId",
+									"value": "{{childEntityId2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Commit Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/commit?transactionKey={{transactionKey}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"commit"
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{transactionKey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rollback Queue Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/rollback/?isFatal=true&transactionKey={{transactionKey}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"rollback",
+								""
+							],
+							"query": [
+								{
+									"key": "isFatal",
+									"value": "true"
+								},
+								{
+									"key": "errorCode",
+									"value": "400 Bad Request",
+									"disabled": true
+								},
+								{
+									"key": "transactionKey",
+									"value": "{{transactionKey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend Queue Item LockedBy DateTime",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/extend/?transactionKey={{transactionKey}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"extend",
+								""
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{transactionKey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item State / State Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/state?transactionKey={{transactionKey}}&stateMessage=Queue Item transaction is being processed.",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}",
+								"state"
+							],
+							"query": [
+								{
+									"key": "transactionKey",
+									"value": "{{transactionKey}}"
+								},
+								{
+									"key": "stateMessage",
+									"value": "Queue Item transaction is being processed."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item with Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "Name",
-									"value": "TestFolder1",
+									"value": "QueueItem",
 									"type": "text"
 								},
 								{
-									"key": "StoragePath",
-									"value": "Files",
+									"key": "QueueId",
+									"value": "{{childEntityId}}",
 									"type": "text"
 								},
 								{
-									"key": "isFile",
-									"value": "false",
+									"key": "Source",
+									"value": "",
 									"type": "text"
+								},
+								{
+									"key": "Event",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ExpireOnUTC",
+									"value": "2020-11-22T19:17:32.497",
+									"type": "text"
+								},
+								{
+									"key": "PostponeUntilUTC",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Type",
+									"value": "Text",
+									"type": "text"
+								},
+								{
+									"key": "DataJson",
+									"value": "Email body goes here.",
+									"type": "text"
+								},
+								{
+									"key": "State",
+									"value": "New",
+									"type": "text"
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Files",
+									"type": "file",
+									"src": []
 								}
 							]
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Folders"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
+								"queueitems",
+								"{{entityId}}"
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Queue Item Attachment",
+			"item": [
 				{
-					"name": "Download File",
+					"name": "Get Queue Item Attachments",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -941,25 +824,23 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}/Download",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Files",
-								"{{childEntityId}}",
-								"Download"
+								"queueitemattachments"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete File",
+					"name": "Get Queue Item Attachments View",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -971,34 +852,27 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/view",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Files",
-								"{{childEntityId}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
+								"queueitemattachments",
+								"view"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Folder",
+					"name": "Get Queue Item Attachments Count",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1010,34 +884,27 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders/{{childEntityId}}",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/count",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Folders",
-								"{{childEntityId}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
+								"queueitemattachments",
+								"count"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Rename File",
+					"name": "Get Queue Item Attachment Details",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1049,11 +916,33 @@
 								}
 							]
 						},
-						"method": "PUT",
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Queue Item Attachment - Existing Files",
+					"request": {
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"ABC123\"\r\n}",
+							"raw": "[\"{{childEntityId}}\", \"{{childEntityId2}}\"]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1061,18 +950,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}/Rename",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/files",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Files",
-								"{{childEntityId}}",
-								"Rename"
+								"queueitemattachments",
+								"files"
 							],
 							"query": [
 								{
@@ -1086,7 +974,7 @@
 					"response": []
 				},
 				{
-					"name": "Rename Folder",
+					"name": "Add Queue Item Attachment - New Files",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1098,35 +986,44 @@
 								}
 							]
 						},
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"FolderTest\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": []
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders/{{childEntityId}}/Rename",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Folders",
-								"{{childEntityId}}",
-								"Rename"
+								"queueitemattachments"
 							],
 							"query": [
 								{
 									"key": "driveName",
 									"value": "Files",
+									"disabled": true
+								},
+								{
+									"key": "driveName",
+									"value": "Azure",
 									"disabled": true
 								}
 							]
@@ -1135,89 +1032,7 @@
 					"response": []
 				},
 				{
-					"name": "Move File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}/Move/{{childEntityId2}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Files",
-								"{{childEntityId}}",
-								"Move",
-								"{{childEntityId2}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Move Folder",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Folders/{{childEntityId}}/Move/{{childEntityId2}}",
-							"host": [
-								"{{serverUrl}}"
-							],
-							"path": [
-								"Storage",
-								"{{organizationId}}",
-								"drives",
-								"{{entityId}}",
-								"Folders",
-								"{{childEntityId}}",
-								"Move",
-								"{{childEntityId2}}"
-							],
-							"query": [
-								{
-									"key": "driveName",
-									"value": "Files",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Replace File",
+					"name": "Update Queue Item Attachment File",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1235,38 +1050,180 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "Files",
+									"key": "file",
 									"type": "file",
 									"src": []
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{serverUrl}}/Storage/{{organizationId}}/drives/{{entityId}}/Files/{{childEntityId}}/Replace",
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}/update",
 							"host": [
 								"{{serverUrl}}"
 							],
 							"path": [
-								"Storage",
+								"organizations",
 								"{{organizationId}}",
-								"drives",
+								"queueitems",
 								"{{entityId}}",
-								"Files",
+								"queueitemattachments",
 								"{{childEntityId}}",
-								"Replace"
+								"update"
 							],
 							"query": [
 								{
 									"key": "driveName",
-									"value": "Files",
+									"value": "Azure",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Queue Item Attachment Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"PayloadSizeInBytes\",\r\n        \"value\":\"0\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Queue Item Attachments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}",
+								"queueitemattachments"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Queue Item Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}"
+							],
+							"query": [
+								{
+									"key": "driveName",
+									"value": "Azure",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Queue Item Attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/queueitems/{{entityId}}/queueitemattachments/{{childEntityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"queueitems",
+								"{{entityId}}",
+								"queueitemattachments",
+								"{{childEntityId}}"
 							]
 						}
 					},
@@ -1284,5 +1241,25 @@
 				"type": "string"
 			}
 		]
-	}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
 }

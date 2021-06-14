@@ -1,0 +1,700 @@
+{
+	"info": {
+		"_postman_id": "b0e3cd17-06b0-4efb-9aa7-3d7a61912cf5",
+		"name": "Integration Event",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Integration Events ",
+			"item": [
+				{
+					"name": "Get Integration Event by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides an IntegrationEvent's details for a particular IntegrationEvent id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All IntegrationEvents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents"
+							]
+						},
+						"description": "Gets a list of all integration events "
+					},
+					"response": []
+				},
+				{
+					"name": "Integration Events Lookpu",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/IntegrationEventLookup",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"IntegrationEventLookup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Employee Onboarded\",\r\n    \"Description\" : \"New Employee has be onboarded\",\r\n    \"EntityType\" : \"Employee\",\r\n    \"PayloadSchema\" : \"Name : Bob Smith\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/BusinessEvents",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"BusinessEvents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Raise Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EntityID\" : \"{{entityId}}\",\r\n    \"EntityName\" : \"John Smith\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/BusinessEvents/RaiseEvent/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"RaiseEvent",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Employee Onboarded\",\r\n    \"Description\" : \"New Employee has be onboarded\",\r\n    \"EntityType\" : \"Employee\",\r\n    \"PayloadSchema\" : \"Name : Bob Smith\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/BusinessEvents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partially Update Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/Name\",\r\n        \"value\":\"NewEmployee\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/BusinessEvents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"BusinessEvents",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Existing Business Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEvents/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEvents",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "ReadOnly API containing details about all existing integration events"
+		},
+		{
+			"name": "Integration Event Subscriptions",
+			"item": [
+				{
+					"name": "Get All Subscriptions ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions"
+							]
+						},
+						"description": "Provides a list of all Integration Event Subscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Integration Event Subscription by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides an IntegrationEventSubscription's details for a particular IntegrationEventSubscription id"
+					},
+					"response": []
+				},
+				{
+					"name": "Post New IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{entityId}}\",\r\n  \"name\": \"FirstSubscription\",\r\n  \"entityType\": \"Agent\",\r\n  \"integrationEventName\": \"Agent.UnhealthyReported\",\r\n  \"entityID\": \"\",\r\n  \"entityName\": \"\",\r\n  \"transportType\": \"HTTPS\",\r\n  \"httP_URL\": \"https://localhost:5001/api/WebhooksClient\",\r\n  \"httP_AddHeader_Key\": \"string\",\r\n  \"httP_AddHeader_Value\": \"string\",\r\n  \"httP_Max_RetryCount\": 0,\r\n  \"queuE_QueueID\": \"{{childEntityId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions"
+							]
+						},
+						"description": "Adds a new IntegrationEvntSubscription to the existing subscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Update an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates an IntegrationEventSubscription entity when the id of an existing subscription is given"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes an IntegrationEventSubscription with a specified id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Update an IntegrationEventSubscription",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"Name\",\r\n        \"value\":\"AgentsSubscription\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptions/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptions",
+								"{{entityId}}"
+							]
+						},
+						"description": "Updates partial details of IntegrationEventSubscription"
+					},
+					"response": []
+				}
+			],
+			"description": "API endpoint used to manager Event Subscriptions\r\n"
+		},
+		{
+			"name": "Integration Event Log",
+			"item": [
+				{
+					"name": "Get All Integration Event Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventLogs",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventLogs"
+							]
+						},
+						"description": "Provides a list of all IntegrationEventLogs"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Integration Event Log by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventLogs/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventLogs",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets an integration event log for the specified log ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Export Payload For the Specified Integration Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventLogs/ExportPayload/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventLogs",
+								"ExportPayload",
+								"{{entityId}}"
+							]
+						},
+						"description": "Export the payload corresponding to the specified attempt"
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup for all integrationEvent names",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventLogs/IntegrationEventLogsLookup",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventLogs",
+								"IntegrationEventLogsLookup"
+							]
+						},
+						"description": "Provides a list of all integration event logs by name\r\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Keeps a log of all integration events that have occured"
+		},
+		{
+			"name": "Integration Event Subscription Attempt",
+			"item": [
+				{
+					"name": "Get All Integregration Event Subscription Atemmpts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptionAttempts",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptionAttempts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubscriptionAttempt by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptionAttempts/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptionAttempts",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets details of the IntegrationEventSubscriptionAttempt corresponding to the provided Guid"
+					},
+					"response": []
+				}
+			],
+			"description": "Keeps a log of each attempt to send a webhook to an event subscription"
+		}
+	]
+}

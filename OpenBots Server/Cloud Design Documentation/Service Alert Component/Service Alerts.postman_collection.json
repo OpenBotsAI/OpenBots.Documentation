@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "a8765794-edf0-460f-9de9-cbd536e96284",
+		"name": "Service Alerts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All ServiceAlerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/ServiceAlerts",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"ServiceAlerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active ServiceAlerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/ServiceAlerts/Active",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"ServiceAlerts",
+						"Active"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,860 @@
+{
+	"info": {
+		"_postman_id": "e740b754-f53a-4216-8fc1-338225444d19",
+		"name": "Asset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets"
+					]
+				},
+				"description": "Provides a list of all Assets"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/Count",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"Count"
+					]
+				},
+				"description": "Get the total count of Assets"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides an Asset's details for a particular Asset Id."
+			},
+			"response": []
+		},
+		{
+			"name": "Asset by Name & Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/assets/getassetbyname/{{entityName}}?assetType=Text",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"assets",
+						"getassetbyname",
+						"{{entityName}}"
+					],
+					"query": [
+						{
+							"key": "assetType",
+							"value": "Text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Json Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "NewJsonAsset",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "Json",
+							"type": "text"
+						},
+						{
+							"key": "JsonValue",
+							"value": "{ text: value, test: test1 }",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets"
+					]
+				},
+				"description": "Adds a new asset to the existing Assets, but does no allow for files to be uploaded."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Text Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "NewTextAsset",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "Text",
+							"type": "text"
+						},
+						{
+							"key": "TextValue",
+							"value": "My text goes here",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets"
+					]
+				},
+				"description": "Adds a new asset to the existing Assets, but does no allow for files to be uploaded."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Number Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "NewNumber2Asset",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "Number",
+							"type": "text"
+						},
+						{
+							"key": "NumberValue",
+							"value": "567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets"
+					]
+				},
+				"description": "Adds a new asset to the existing Assets, but does no allow for files to be uploaded."
+			},
+			"response": []
+		},
+		{
+			"name": "Create File Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "FileAsset5",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "File",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets"
+					]
+				},
+				"description": "Adds a new asset to the existing Assets, but does no allow for files to be uploaded."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Agent Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Name",
+							"value": "FileAsset5",
+							"type": "text"
+						},
+						{
+							"key": "AgentId",
+							"value": "{{childEntityId}}",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/assets/addagentasset",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"assets",
+						"addagentasset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Export",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Export"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Export/download an Asset file"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"NewTextAsset\",\r\n    \"type\":\"Text\",\r\n    \"textvalue\": \"Hello, world\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides an action to update an Asset, when Asset id and the new details of Asset are given"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Asset With File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "FileAsset5",
+							"type": "text"
+						},
+						{
+							"key": "Type",
+							"value": "File",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "DriveName",
+							"value": "Azure",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Update",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Update"
+					]
+				},
+				"description": "Allows for assets to be updated, including objects of file type"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Updates partial details of Asset."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Asset Property",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/name\",\r\n        \"value\":\"Patched Name\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}"
+					]
+				},
+				"description": "Updates partial details of Asset."
+			},
+			"response": []
+		},
+		{
+			"name": "Increment Asset Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Increment",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Increment"
+					]
+				},
+				"description": "Increment in the Number value of Asset by 1."
+			},
+			"response": []
+		},
+		{
+			"name": "Decrement Asset Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Decrement",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Decrement"
+					]
+				},
+				"description": "Decreasets the value of a number asset by 1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Asset Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Add?value=5",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Add"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Adds a specified number value to the value of the specified number Asset"
+			},
+			"response": []
+		},
+		{
+			"name": "Subtract Asset Value",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Subtract?value=5",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Subtract"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Subtract a number value from the specified number Asset\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Append Text to Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/{{entityId}}/Append?value= name.txt",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"{{entityId}}",
+						"Append"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": " name.txt"
+						}
+					]
+				},
+				"description": "Append a string text value to a specified Asset of text type\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset View by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/view/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"view",
+						"{{entityId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Asset View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Assets/view",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Assets",
+						"view"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

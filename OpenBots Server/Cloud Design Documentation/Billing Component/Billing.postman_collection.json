@@ -21,13 +21,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/9138d127-68b0-4d7d-8af3-ff431a30017a/Billing/DailyBalances",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyBalances",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"9138d127-68b0-4d7d-8af3-ff431a30017a",
+						"{{organizationId}}",
 						"Billing",
 						"DailyBalances"
 					]
@@ -51,13 +51,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/9138d127-68b0-4d7d-8af3-ff431a30017a/Billing/DailyBalances/export/zip",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyBalances/export/zip",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"9138d127-68b0-4d7d-8af3-ff431a30017a",
+						"{{organizationId}}",
 						"Billing",
 						"DailyBalances",
 						"export",
@@ -83,13 +83,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyOrchestrationDebits",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyOrchestrationDebits"
 					]
@@ -113,13 +113,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyCredits",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyCredits"
 					]
@@ -143,13 +143,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits/Sum",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyOrchestrationDebits/Sum",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyOrchestrationDebits",
 						"Sum"
@@ -174,13 +174,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits/Sum",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyCredits/Sum",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyCredits",
 						"Sum"
@@ -205,13 +205,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyOrchestrationDebits/Count",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyOrchestrationDebits/Count",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyOrchestrationDebits",
 						"Count"
@@ -236,13 +236,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyCredits/Count",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyCredits/Count",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyCredits",
 						"Count"
@@ -267,13 +267,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/DailyBalances/Count",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/DailyBalances/Count",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"DailyBalances",
 						"Count"
@@ -298,13 +298,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/OrganizationBillingStatus",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/OrganizationBillingStatus",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"OrganizationBillingStatus"
 					]
@@ -328,13 +328,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ServerURL}}/organizations/590ad34a-d2a2-4d41-938d-3abb9c494f7d/Billing/CreditBalance",
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Billing/CreditBalance",
 					"host": [
-						"{{ServerURL}}"
+						"{{serverUrl}}"
 					],
 					"path": [
 						"organizations",
-						"590ad34a-d2a2-4d41-938d-3abb9c494f7d",
+						"{{organizationId}}",
 						"Billing",
 						"CreditBalance"
 					]

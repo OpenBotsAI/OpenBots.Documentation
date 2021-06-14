@@ -1,0 +1,595 @@
+{
+	"info": {
+		"_postman_id": "4ab4fa34-c01e-4b71-8e07-21ec857d1a8c",
+		"name": "Job",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs"
+					]
+				},
+				"description": "Provides a list of all Jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"AgentId\":\"{{childEntityId}}\",\r\n    \"AutomationId\" : \"{{childEntityId2}}\",\r\n    \"JobStatus\":\"New\",\r\n    \"Message\":\"\",\r\n    \"IsSuccessful\":\"true\",\r\n    \"StartTime\" :  \"4/18/2021 0:54:59 PM\",\r\n    \"EndTime\" : \"4/20/2021 8:54:59 PM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs"
+					]
+				},
+				"description": "Adds a new Job to the existing Jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides a Job's details for a particular Job Id."
+			},
+			"response": []
+		},
+		{
+			"name": "Put Update Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"agentId\": \"{{childEntityId}}\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"enqueueTime\": null,\r\n        \"dequeueTime\": null,\r\n        \"automationId\": \"{{childEntityId2}}\",\r\n        \"jobStatus\": 1,\r\n        \"message\": \"\",\r\n        \"JoBParameters\":\r\n    [{\"DataType\":\"Number\",\r\n    \"Value\":12,\r\n    \"Name\":\"JobParamNumber\"},\r\n    {\"DataType\":\"Text\",\r\n    \"Value\":\"Hello\",\r\n    \"Name\":\"JobParam2\"}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides an action to update a Job, when Job id and the new details of Job are given"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Job by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzRhODQ1Yy05YzUyLTRhYzAtOGIxMi00YmU1N2YxZmFjYjYiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQGFkbWluLmNvbSIsIm5iZiI6MTU5ODQ1NDU0OSwiZXhwIjoxNTk4NDU1NzQ5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.z0-QPyETzzdesnKK2rGccT_iYb9sNm9gGpkKJEO_P7k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}"
+					]
+				},
+				"description": "Deletes a Job with a specified id from the Job."
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Job by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"/message\",\r\n        \"value\":\"Testing message\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}"
+					]
+				},
+				"description": "Updates partial details of Job."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job ViewModel by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/view/{{entityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"view",
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides a Job's details and viewmodel for a particular Job Id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Job views",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/view",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"view"
+					]
+				},
+				"description": "Provide view detials for all jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "JobAgentsLookup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/JobAgentsLookup",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"JobAgentsLookup"
+					]
+				},
+				"description": "Provides a lookup list of all Jobs agents and processes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Status Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/CountByStatus",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"CountByStatus"
+					]
+				},
+				"description": "Gets the count of jobs for the specified filter"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/Count",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"Count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Next Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/Next?agentId={{childEntityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"Next"
+					],
+					"query": [
+						{
+							"key": "agentId",
+							"value": "{{childEntityId}}"
+						}
+					]
+				},
+				"description": "Gets the next available job for the provided agent Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Job Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ErrorReason\" : \"Something went wrong\",\r\n    \"ErrorCode\" : \"012345\",\r\n    \"SerializedErrorString\" : \"Exception Serialized\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}/Status/Completed?AgentID={{childEntityId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}",
+						"Status",
+						"Completed"
+					],
+					"query": [
+						{
+							"key": "AgentID",
+							"value": "{{childEntityId}}"
+						}
+					]
+				},
+				"description": "Updates a job with the specified status\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Export Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/Export/Zip",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"Export",
+						"Zip"
+					]
+				},
+				"description": "Exports Jobs into a downloadable file. Optional filetype paramteter can conatain  the values csv,zip, json"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Checkpoint to Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\" : \"Loop\",\r\n    \"Message\" : \"Process has begun\",\r\n    \"Iterator\" : \"ExcelFiles\",\r\n    \"IteratorValue\" : \"Invoice1\",\r\n    \"IteratorPosition\" : 1,\r\n    \"IteratorCount\" : 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}/AddCheckpoint",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}",
+						"AddCheckpoint"
+					]
+				},
+				"description": "Adds a checkpoint to the specified job id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Jobs's Checkpoints",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/{{entityId}}/JobCheckpoints",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"{{entityId}}",
+						"JobCheckpoints"
+					]
+				},
+				"description": "Gets all checkpoints for a specified job id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Sum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/Jobs/Sum",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"Jobs",
+						"Sum"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
