@@ -271,7 +271,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"agentId\": \"{{childEntityId}}\",\r\n\"automationId\": \"{{childEntityId2}}\",\r\n\"Parameters\" :\r\n[{\r\n\"Name\" : \"Greetings\",\r\n\"DataType\" : \"Text\",\r\n\"Value\" : \"HelloThere\"\r\n},\r\n{\r\n\"Name\" : \"SecondParameter\",\r\n\"DataType\" : \"Number\",\r\n\"Value\" : \"123\"\r\n}]\r\n}",
+					"raw": "{\r\n\"OneJobPerAgent\": \"false\",\r\n\"Parameters\" :\r\n[{\r\n\"Name\" : \"Greetings\",\r\n\"DataType\" : \"Text\",\r\n\"Value\" : \"HelloThere\"\r\n},\r\n{\r\n\"Name\" : \"SecondParameter\",\r\n\"DataType\" : \"Number\",\r\n\"Value\" : \"123\"\r\n}]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -279,7 +279,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/v1/schedules/RunNow",
+					"raw": "https://localhost:5001/api/v1/schedules/{{entityId}}/RunNow",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -289,6 +289,7 @@
 						"api",
 						"v1",
 						"schedules",
+						"{{entityId}}",
 						"RunNow"
 					]
 				},
