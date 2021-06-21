@@ -1,8 +1,8 @@
-Author: Dairon Hernandez
-Creation Date: 08/06/2020
+Author: DH
+Creation Date: 8/06/2020
 
-Updated On: 05/18/2021
-Updated By: Dairon Hernandez
+Updated By: NC
+Updated On: 6/16/2021
 
 **Agent Component**
 
@@ -18,7 +18,8 @@ Updated By: Dairon Hernandez
   - Administrator and/or user can view a list of agents and their heartbeats.
   - Administrator can declare new agents.
   - Administrator can edit and delete existing agents.
-  - Administrator can connect machines and receive an agent id.
+  - Administrator can connect machines and receive an agent id in the Agent.
+  - Administrator can disconnect machines in the Agent.
 - Out-of-Scope:
   - User can edit and delete existing agents.
   - User can declare new agents.
@@ -36,8 +37,8 @@ Updated By: Dairon Hernandez
         - The headers will be: Name, Status, Health, Is Enabled, Jobs, View, Edit, Delete.
           - The appropriate data will be displayed underneath each heading for all agents.
           - The user can click on each agent to view, connect, edit, or delete it.
-          - Hovering over one of the agent shows the last heartbeat time.
-  - Agent Controller:
+          - Hovering over one of the agents shows the last heartbeat time.
+  - Agents Controller:
     - The AgentsController will make an API request and use the AgentManager to access the AgentRepository to retrieve all the agents from the Server and will return that information back to the view. The controller will utilize this same structure to view, add, edit, or remove an agent.  Additionally, the AgentController can receive a connect, disconnect, or a heartbeat request, which will be handled by the AgentManager.
     - NOTE: The current API version is 1.
     - Routes:
@@ -45,33 +46,37 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : Organization id
           - Output : JSON file listing all agent information
-      - All agents viewmodel: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/view")]
+      - All agents view: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/view")]
         - Payloads
           - Input : Organization id
           - Output : JSON file listing all agent viewmodel information
+      - All group members: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/{id}/GetAllGroupMembers")]
+        - Payloads
+          - Input : Organization id
+          - Output : JSON file listing all agent group member information
       - Count agents: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/count")]
         - Payloads
           - Input : Organization id
           - Output : Count of all agents
       - Agent details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/{id}")]
         - Payloads
-          - Input : Organization id,agent id
+          - Input : Organization id, agent id
           - Output : JSON file listing agent information
-      - Resolve Agent values: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/agents/resolve")]
+      - Resolve agent: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/agents/resolve")]
         - Payloads
-          - Input : Organization id, AgentGroupName, AgentName, HostMachineName, MacAddressesCS
-          - Output : 200 OK response with ResolvedAgentResponseViewModel
+          - Input : Organization id, ResolveAgentViewModel data
+          - Output : JSON file listing ResolvedAgentResponseViewModel information
       - Create an agent: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/agents")]
         - Payloads
-          - Input : Organization id, Name, MachineName, MacAddresses, IPAddresses, IsEnabeld, IsConnected, CredentialId, and MachineAccountName, IPOption, IsEnhancedSecurity, and AgentSetting
+          - Input : CreateAgentViewModel data
           - Output : 200 OK response 
       - Edit an agent: [HttpPut("api/v{apiVersion}/organizations/{organizationId}/agents/{id}")]
         - Payloads
-          - Input :  Organization id, Name, MachineName, MacAddresses, IPAddresses, IsEnabeld, IsConnected, CredentialId, MachineAccountName, IPOption, IsEnhancedSecurity, and AgentSetting
+          - Input :  UpdateAgentViewModel data
           - Output : 200 OK response
       - Delete an agent: [HttpDelete("api/v{apiVersion}/organizations/{organizationId}/agents/{id}")]
         - Payloads
-          - Input : Organization id, Agent id
+          - Input : Organization id, agent id
           - Output : 200 OK response
       - Edit agent property: [HttpPatch("api/v{apiVersion}/organizations/{organizationId}/agents/{id}")]
         - Payloads
@@ -79,47 +84,71 @@ Updated By: Dairon Hernandez
           - Output : 200 OK reposnse
       - Connect verified machine: [HttpPatch("api/v{apiVersion}/organizations/{organizationId}/agents/connect")]
         - Payloads
-          - Input : Organization id, JsonPatchDocument in request body with MacAddresses and MachineName changes
-          - Output : AgentId, AgentName
+          - Input : Organization id, JsonPatchDocument in request body with MacAddresses and MachineName changes (ConnectAgentViewModel)
+          - Output : JSON file listing ConnectedViewModel data
       - Disconnect verified machine [HttpPatch("api/v{apiVersion}/organizations/{organizationId}/agents/disconnect")]
         - Payloads
-          - Input : Organization id, JsonPatchDocument in request body with AgentId, MachineName, and MacAdresses changes
+          - Input : Organization id, JsonPatchDocument in request body with AgentId, MachineName, and MacAdresses changes (ConnectAgentViewModel)
           - Output : 200 OK response
       - Agent heartbeat: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/agents/{AgentId}/AddHeartbeat")]
         - Payloads
-          - Input : Organization id, Heartbeat viewmodel containing lastUpdated fields
-          - Output : 200 OK containing the created AgentHeartbeat      
-      - Get Agent heartbeats: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/{AgentId}/AgentHeartbeats")]
+          - Input : Organization id, HeartbeatViewModel data
+          - Output : JSON file listing newly created agent heartbeat information
+      - Get agent heartbeats: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/{AgentId}/AgentHeartbeats")]
         - Payloads
-          - Input : Organization id, Agent id
-          - Output : 200 OK containing the created AgentHeartbeat 
+          - Input : Organization id, agent id
+          - Output : JSON file listing the agent heartbeats 
       - Agents lookup: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/agents/getlookup")]
         - Payloads
           - Input : Organization id
-          - Output : List of AgentIds and AgentNames
-  - Agent Manager(s):
+          - Output : List of agent ids and names
+  - Agent Manager:
     - The AgentManager will inherit BaseManager and IAgentManager, which both inherit IManager.
       - Beyond the base class and interfaces, AgentManager will implement the appropriate methods to assist AgentsController.  It will be responsible for performing the heartbeat functionalities of validating the Agent id.
-  - Agent Repository(s):
+  - Agent Repositories:
     - The AgentRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository, and IAgentRepository, which inherits IEntityRepository.
       - Beyond the base classes and interfaces, AgentRepository will retrieve all agents, add a new agent, retrieve/edit/delete an agent by id, connect/disconnect an agent, and find an agent by machine name, mac address, and IP address.
-    - AgentHeartbeatRepository will be responsible for updating and retreiving information about an agent's hearbeat
-  - Agent Data Model(s):
-    - The Agent data model will be used to view details of each agent.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Agent will have string MachineName, Guid MachineCredentials, string MacAddresses, string IPAddresses, bool IsEnabled, bool isConnected, Guid CredentialId, string IPOption, and bool IsEnhancedSecurity.
-    - The AgentHeartbeat model will be used to view details of each agent's heatbeat status. It will inherit Entity and INonAuditable.      
-      - Heartbeats will contain the fields DateTime LastReportedOn, string LastReportedStatus, string LastReportedWork, string LastReportedMessage, bool IsHealthy
+    - AgentHeartbeatRepository will be responsible for updating and retreiving information about an agent's hearbeat.
+  - Agent Data Models:
+    - The Agent data model will be used to view details of each agent.  It will inherit the NamedEntity class, which inherits the Entity class, and ITenanted.
+      - Beyond the base classes, Agent will have string MachineName, string MacAddresses, string IPAddresses, bool IsEnabled, bool IsConnected, Guid CredentialId, string IPOption, bool IsEnhancedSecurity, Guid OrganizationId, DateTime HeartbeatLastReportedOn, string HeartbeatLastReportedStatus, bool HeartbeatIsHealthy, and string MachineAccountName.
+    - The AgentHeartbeat model will be used to view details of each agent's heatbeat status. It will inherit Entity, INonAuditable, and ITenanted.      
+      - Heartbeats will contain Guid AgentId, DateTime LastReportedOn, string LastReportedStatus, string LastReportedWork, string LastReportedMessage, bool IsHealthy, and Guid OrganizationId.
+    - The UpdateAgentViewModel will be used as an input for the request.  It will inherit IViewModel<UpdateAgentViewModel, Agent>.
+      - UpdateAgentViewModel will have string Name, string MachineName, string MacAddresses, string IPAddresses, bool IsEnabled, bool IsConnected, Guid CredentialId, string IPOption, bool IsEnhancedSecurity, string MachineAccountName, and AgentSettingViewModel AgentSetting.
+    - The ResolveAgentViewModel will be used as an input for the resolve request.
+      - ResolveAgentViewModel will have string AgentGroupName, string AgentName, string HostMachineName, and string MacAddressesCS.
+    - The ResolvedAgentResponseViewModel is used to display the resolved agent.
+      - ResolvedAgentResponseViewModel will have Guid AgentId, string AgentName, string AgentGroupCS, int HeartbeatInterval, int JobLoggingInterval, and bool VerifySslCertificate.
+    - The HeartbeatViewModel will be used when adding a new heartbeat.  It will inherit IViewModel<HeartbeatViewModel, AgentHeartbeat>.
+      - HeartbeatViewModel will have DateTime LastReportedOn, string LastReportedStatus, string LastReportedWork, string LastReportedMessage, bool IsHealthy, and bool GetNextJob.
+    - The CreateAgentViewModel will be used when adding a new agent.  It will inherit IViewModel<CreateAgentViewModel, Agent>.
+      - CreateAgentViewModel will have Guid Id, string Name, string MachineName, string MacAddresses, string IPAddresses, bool IsEnabled, bool IsConnected, Guid CredentialId, string MachineAccountName, string IPOption, bool IsEnhancedSecurity, and AgentSettingViewModel AgentSetting.
+    - The ConnectedViewModel will be used to view details of a connected agent.  It will inherit IViewModel<Agent, ConnectedViewModel>.
+      - ConnectedViewModel will have string AgentId, string AgentName, and AgentSettingViewModel AgentSetting.
+    - The ConnectAgentViewModel will be used to connect or disconnect an agent.
+      - It will have string MachineName and string MacAddresses.
+    - The AllAgentsViewModel will be used to view all agent data.
+      - It will have Guid Id, string Name, string MachineName, string MacAddresses, string IPAddresses, bool IsEnabled, DateTime LastReportedOn, string LastReportedStatus, bool IsHealthy, string Status, Guid CredentialId, DateTime CreatedOn, string IPOption, and bool IsEnhancedSecurity.
+    - AgentViewModel will be used to view agent details.
+      - AgentViewModel will have Guid Id, string Name, string MachineName, string MacAddresses, string IPAddresses, bool IsEnabled, DateTime LastReportedOn, string LastReportedStatus, string LastReportedWork, string LastReportedMessage, bool IsHealthy, bool IsConnected, Guid CredentialId, string CredentialName, string IPOption, bool IsEnhancedSecurity, string MachineAccountName, and AgentSettingViewModel AgentSetting.
+    - AgentSettingViewModel will be used to view agent settings.
+      - It will have int HeartbeatInterval, int JobLoggingInterval, and bool VerifySslCertificate.
+
 **Sequence Diagrams**
 
 - [Agent Component Sequence Diagram](Sequence Diagrams/AgentComponentSequenceDiagram.png)
+- [Agent Group Members Sequence Diagram](Sequence Diagrams/AgentGroupsSequenceDiagram.png)
 - [Count Agents Sequence Diagram](Sequence Diagrams/CountAgentsSequenceDiagram.png)
 - [Agent Details Sequence Diagram](Sequence Diagrams/AgentDetailsSequenceDiagram.png)
+- [Resolve Agent Sequence Diagram](Sequence Diagrams/ResolveAgentSequenceDiagram.png)
 - [Create Agent Sequence Diagram](Sequence Diagrams/CreateAgentSequenceDiagram.png)
 - [Edit Agent Sequence Diagram](Sequence Diagrams/EditAgentSequenceDiagram.png)
 - [Delete Agent Sequence Diagram](Sequence Diagrams/DeleteAgentSequenceDiagram.png)
 - [Edit Agent Property Sequence Diagram](Sequence Diagrams/EditAgentPropertySequenceDiagram.png)
 - [Connect Agent Sequence Diagram](Sequence Diagrams/ConnectAgentSequenceDiagram.png)
 - [Disconnect Agent Sequence Diagram](Sequence Diagrams/DisconnectAgentSequenceDiagram.png)
+- [Add Agent Heartbeat Sequence Diagram](Sequence Diagrams/AddHeartbeatSequenceDiagram.png)
 - [Agent Heartbeat Sequence Diagram](Sequence Diagrams/AgentHeartbeatSequenceDiagram.png)
 - [Agents Lookup Sequence Diagram](Sequence Diagrams/AgentsLookupSequenceDiagram.png)
 

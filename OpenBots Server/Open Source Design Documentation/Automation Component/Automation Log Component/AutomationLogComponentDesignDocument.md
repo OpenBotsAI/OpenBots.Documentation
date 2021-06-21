@@ -1,8 +1,8 @@
-Author: Dairon Hernandez
+Author: DH
 Creation Date: 9/15/2020
 
-Updated On: 3/18/2021
-Updated By: Nicole Carrero
+Update By: NC
+Updated On: 6/15/2021
 
 **Automation Log Component**
 
@@ -61,10 +61,6 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : AutomationLog model
           - Output : JSON file with the created log
-      - Edit automation log: [HttpPut("api/v{apiVersion}/automationlogs/{id}")]
-        - Payloads
-          - Input : Automation log id
-          - Output : JSON file with updated automation log information
   - AutomationLogManager:
    - The AutomationLogManager will inherit BaseManager, which inherits IManager, and IAutomationLogManager.
       - Beyond the base class and interfaces, AutomationLogManager will implement the appropriate methods to assist the AutomationLogsController, which will be used when exporting automation logs.
@@ -81,7 +77,6 @@ Updated By: Nicole Carrero
 - [Automation Log Count Sequence Diagram](Sequence Diagrams/CountAutomationLogsSequenceDiagram.png)
 - [Automation Log Details Sequence Diagram](Sequence Diagrams/AutomationLogDetailsSequenceDiagram.png)
 - [Export Automation Logs Sequence Diagram](Sequence Diagrams/ExportAutomationLogsSequenceDiagram.png)
-- [Edit Automation Log Sequence Diagram](Sequence Diagrams/EditAutomationLogSequenceDiagram.png)
 - [Create Automation Log Sequence Diagram](Sequence Diagrams/CreateAutomationLogSequenceDiagram.png)
 
 **Unit Tests**

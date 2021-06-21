@@ -392,7 +392,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/RaiseEvent/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/RaiseEvent/d07de8de-3402-4994-9f24-1abaa0bcb03d",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -404,7 +404,7 @@
 								"IntegrationEvents",
 								"BusinessEvents",
 								"RaiseEvent",
-								"{{entityId}}"
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
 							]
 						}
 					},
@@ -435,7 +435,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -446,7 +446,7 @@
 								"v1",
 								"IntegrationEvents",
 								"BusinessEvents",
-								"{{entityId}}"
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
 							]
 						}
 					},
@@ -477,7 +477,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/BusinessEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -488,7 +488,7 @@
 								"v1",
 								"IntegrationEvents",
 								"BusinessEvents",
-								"{{entityId}}"
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
 							]
 						}
 					},
@@ -510,7 +510,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/v1/IntegrationEvents/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/IntegrationEvents/d07de8de-3402-4994-9f24-1abaa0bcb03d",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -520,7 +520,7 @@
 								"api",
 								"v1",
 								"IntegrationEvents",
-								"{{entityId}}"
+								"d07de8de-3402-4994-9f24-1abaa0bcb03d"
 							]
 						}
 					},
@@ -702,6 +702,38 @@
 					"response": []
 				},
 				{
+					"name": "Get All Integregration Event Subscription Atemmpts View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptionAttempts/view",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptionAttempts",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get SubscriptionAttempt by id",
 					"request": {
 						"auth": {
@@ -727,6 +759,40 @@
 								"api",
 								"v1",
 								"IntegrationEventSubscriptionAttempts",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets details of the IntegrationEventSubscriptionAttempt corresponding to the provided Guid"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubscriptionAttempt by Id View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/IntegrationEventSubscriptionAttempts/view/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"IntegrationEventSubscriptionAttempts",
+								"view",
 								"{{entityId}}"
 							]
 						},

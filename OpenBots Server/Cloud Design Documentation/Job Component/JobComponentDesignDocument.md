@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 8/18/2020
 
-Updated On: 03/18/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Job Component**
 
@@ -42,7 +42,7 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id
           - Output : JSON file listing all triggered job information
-      - All jobs (uses view model): [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/view")]
+      - All jobs view: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/view")]
         - Payloads
           - Input : Organization id
           - Output : JSON file listing triggered job information
@@ -50,34 +50,30 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id
           - Output : Count of all jobs
-      - Count all jobs by status [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/countbystatus")]
+      - Count all jobs by status: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/countbystatus")]
         - Payloads
           - Input : Organization id
           - Output : Count of all jobs grouped by status
-      - Job / Agent lookup: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/jobagentslookup")]
+      - Job/Agent lookup: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/jobagentslookup")]
         - Payloads
           - Input : Organization id
           - Output : JSON file of related process and agent information
-      - Individual job details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/{id}")]
+      - Job details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/{id}")]
         - Payloads
           - Input : Organization id, job id
           - Output : JSON file of all individual job information
-      - Individual job details (uses view model): [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/view/{id}")]
+      - Job details view: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/view/{id}")]
         - Payloads
           - Input : Organization id, job id
           - Output : JSON file listing  individual job information
-      - Export all jobs [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/export/{fileType?}")]
+      - Export all jobs: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/export/{fileType?}")]
         - Payloads
           - Input : File type specifying the if the response should be zip, csv or json file
           - Output : zip, csv or json file containing all retrieved jobs
-      - Sum of all jobs [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/sum")]
+      - Sum of all jobs: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/sum")]
         - Payloads
           - Input : None
           - Output : Sum of executionTimeInMinutes, automationExecutionLogCount and automationLogCount for the current jobs
-      - Get next available job for agent: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/next")]
-        - Payloads
-          - Input : Organization id, agent id
-          - Output : JSON file listing next available job information
       - Create a job: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/jobs")]
         - Payloads
           - Input : Organization id, Job model data
@@ -98,27 +94,44 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id, JsonPatchDocument in request body with changes
           - Output : 200 OK response
-      - Create a job checkpoint: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/jobs/JobId/,JobCheckpoint")]
+      - Create a job checkpoint: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/jobs/JobId/JobCheckpoint")]
       - Payloads
         - Input : Organization id, JobCheckpoint model data
         - Output : JSON file listing new job checkpoint information
-      - All Checkpoints belonging to the specified JobId: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/JobId/JobCheckpoint")]
+      - JobCheckpoints: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/jobs/JobId/JobCheckpoint")]
         - Payloads
           - Input : Organization id, job id
           - Output : JSON file listing checkpoints for the specified jobId
-  - JobManager:
+  - Job Manager:
     - The JobManager will inherit BaseManager, which inherits IManager, and IJobManager.
-      - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
-  - JobRepository:
-    - The JobRepository will inherit EntityRepository<Job>, which inherits EntityRepository, and IJobRepository.
-      - Beyond the base classes and interface, JobRepository will retrieve all jobs, find an individual job's details, and find related properties from the Agents and Processes data tables.
-    - JobParameterRepository will be resposnible for updating and retreiving records from the JobParameters table
-    - JobCheckpointRepository will be resposnible for updating and retreiving records from the JobCheckpoint table
-  - Job Data Model:
-    - The Job data model will be used to view details of each triggered job.  It will inherit the Entity class and INonAuditable interface.
-      - Beyond the base class, Job will have string AgentId, DateTime StartTime, DateTime EndTime, double ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime Dequeue Time, Guid Process Id, enum JobStatusType JobStatus, string Message, bool IsSuccessful, string ErrorReason, string ErrorCode, and string SerializedErrorString Guid ScheduleId.
-    - The JobParameter data model contains detials about the paramters that belong to a particular job. JobParameter inherits from NamedEnity and contains the fields string Name, string Datatype, string Value, and GUID jobId.
-    - The JobCheckpoint data model contains information about the current state of a job's checkpoint. The JobCheckpoints are Non-Auditable and inherit from Named Entity. The model contains the fields: string Iterator, string IteratorValue, string IteratorPosition, string IteratorCount, GUID JobId
+      - Beyond the base class and interfaces, JobManager will implement appropriate methods to assist JobsController.
+  - Repositories:
+    - JobRepository:
+      - The JobRepository will inherit TenantEntityRepository<Job>, which inherits EntityRepository, and IJobRepository.
+        - Beyond the base classes and interface, JobRepository will retrieve all jobs, find an individual job's details, and find related properties from the Agents and Automations data tables.
+      - JobParameterRepository will be resposnible for updating and retreiving records from the JobParameters table.  It will inherit TenantEntityRepository<JobParameter> and IJobParameterRepository.
+      - JobCheckpointRepository will be resposnible for updating and retreiving records from the JobCheckpoint table.  It will inherit TenantEntityRepository<JobCheckpoint> and IJobCheckpointRepository.
+  - Models:
+    - Job Data Model:
+      - The Job data model will be used to view details of each triggered job.  It will inherit the Entity class and INonAuditable interface.
+        - Beyond the base class and interface, Job will have Guid ScheduleId, Guid AgentId, Guid AgentGroupId, DateTime StartTime, DateTime EndTime, int StartDay, int EndDay, long ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime Dequeue Time, Guid Automation Id (required), int AutomationVersion (required), Guid AutomationVersionId (required), JobStatusType JobStatus, string Message, bool IsSuccessful, string ErrorReason, string ErrorCode, string SerializedErrorString, int AutomationLogCount, int AutomationExecutionLogCount, and Guid OrganizationId.
+          - JobStatusType is an emun of type int with values Unknown (0), New (1), Assigned (2), InProgress (3), Failed (4), Completed (5), Stopping (6), and Abandoned (9).
+      - The JobParameter data model contains information about the parameters that belong to a particular job. JobParameter inherits from NamedEntity, which inherits Entity.
+        - Beyond the base classes, it will have string DataType, string Value, Guid JobId, and Guid OrganizationId.
+      - The JobCheckpoint data model contains information about the current state of a job's checkpoint. It inherits from NamedEntity, which inherits Entity, INonAuditable, and ITenanted. 
+        - Beyond the base classes, it will have string Message, string Iterator, string IteratorValue, string IteratorPosition, int IteratorCount, Guid JobId, and Guid OrganizationId.
+    - The AllJobsViewModel will be used to view additional details of all jobs.  It inherits IViewModel<Job, AllJobsViewModel>.
+      - It will have Guid Id, string AgentName, string AgentGroupName, string AutomationName, Guid ScheduleId, Guid AgentId, Guid AgentGroupId, DateTime StartTime, DateTime EndTime, long ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime DequeueTime, Guid AutomationId (required), int AutomationVersion (required), Guid AutomationVersionId (required), JobStatusType JobStatus, string Message, bool IsSuccessful, DateTime CreatedOn, string CreatedBy, string ErrorReason, string ErrorCode, string SerializedErrorString, int AutomationLogCount, and int AutomationExecutionLogCount.
+  - The JobViewModel will be used to view additional details of a job.  It inherits IViewModel<Job, JobViewModel>.
+    - It will have Guid Id, string AgentName, string AgentGroupName, string AutomationName, Guid ScheduleId, Guid AgentId, Guid AgentGroupId, DateTime StartTime, DateTime EndTime, long ExecutionTimeInMinutes, DateTime EnqueueTime, DateTime DequeueTime, Guid AutomationId (required), int AutomationVersion (required), Guid AutomationVersion (required), JobStatusType JobStatus, string Message, bool IsSuccessful, DateTime CreatedOn, string CreatedBy, string ErrorReason, string ErrorCode, string SerializedErrorString, int AutomationLogCount, int AutomationExecutionLoCount, Guid OrganziationId, and IEnumerable<JobParameter> JobParameters.
+  - The CreateJobViewModel will be used to create new jobs.  It inherits IViewModel<CreateJobViewModel, Job>.
+    - It will have Guid Id, Guid ScheduleId, Guid AgentId, Guid AgentGroupId, DateTime StartTime, DateTime EndTime, DateTime EnqueueTime, DateTime DequeueTime, Guid AutomationId (required), JobStatusType JobStatus, string Message, bool IsSuccessful, Guid OrganizationId, IEnumerable<JobParameter> JobParameters.
+  - The JobsLookupViewModel will be used to view a list of agents and automations for jobs.
+    - It will have List<JobAgentsLookup> AgentsLookup and List<JobAutomationLookup>.
+      - JobAgentsLookup will have Guid AgentId and string AgentName.
+      - JobAutomationLookup will have Guid AutomationId, string AutomationName, and string AutomationNameWithVersion.
+  - The JobErrorViewModel will be used to view errors that occur during a job.
+    - It will have string ErrorReason, string ErrorCode, and string SerializedErrorString.
 
 **Sequence Diagrams**
 

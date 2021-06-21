@@ -1,14 +1,14 @@
-Author: Nicole Carrero
-Creation Date:  8/19/2020
+Author: NC
+Creation Date: 8/19/2020
 
-Updated On: 05/13/2021
-Updated By: Dairon Hernandez
+Updated By: NC
+Updated On: 6/16/2021
 
 **Schedule Component**
 
 **Context**
 
-- Problem: Users cannot schedule when a Robot Job is performed.  An administrator should be able to define a trigger that will be utilized for the scheduling of Robot Jobs.  An administrator should be able to view a list of existing triggers and edit or delete them.  An administrator should be able to utilize time-based triggering through CRON expressions and disable triggers as needed.
+- Problem: Users cannot schedule when a robot job is performed.  An administrator should be able to define a trigger that will be utilized for the scheduling of robot jobs.  An administrator should be able to view a list of existing triggers and edit or delete them.  An administrator should be able to utilize time-based triggering through CRON expressions and disable triggers as needed.
 - Requirements: Ensure than an administrator is able to create schedules with a set name and type and utilize CRON expressions to perform schedule-based triggering.  Ensure that an administrator and user are able to view and edit a schedule from a list of all active schedules and disable them as needed.
 
 **Component Scope**
@@ -17,8 +17,9 @@ Updated By: Dairon Hernandez
   - Administrator can create schedules with a set name and type.
   - Administrator can utilize CRON expressions to perform shedule-based triggering.
   - Administrator and user can view/edit from a list of all active schedules and disable them as needed.
-  - Administrator can delete a schedule from a list. 
-  - Administrator can create "QueueArrival" schedulues which create new jobs when a new queue item is added to the specified Queue 
+  - Administrator can delete a schedule from a list.
+  - Administrator can create "QueueArrival" schedules which create new jobs when a new queue item is added to the specified Queue.
+  - Administrator and user can run a schedule now.
 - Out-of-Scope:
   - User can create schedules with a set name and type.
   - User can utilize CRON expressions to perform schedule-based triggering.
@@ -46,14 +47,14 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : None
           - Output : Count of all schedules in the Server
-      - Schedule Details: [HttpGet("api/v{apiVersion}/schedules/{id}")]
+      - Schedule details: [HttpGet("api/v{apiVersion}/schedules/{id}")]
         - Payloads
           - Input : Schedule id
           - Output : JSON file listing schedule information
-      - Schedule Details: [HttpGet("api/v{apiVersion}/schedules/{id}/View")]
+      - Schedule details view: [HttpGet("api/v{apiVersion}/schedules/{id}/View")]
         - Payloads
           - Input : Schedule id
-          - Output : JSON file listing schedule information with additional viewmodel details
+          - Output : JSON file listing schedule information with additional view model details
       - Create a schedule: [HttpPost("api/v{apiVersion}/schedules")]
         - Payloads
           - Input : Schedule data model
@@ -70,21 +71,32 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : JSONPatchDocument in request body with changes
           - Output : 200 OK response
-      - API to run a Job "NOW": [HttpPatch("api/v{apiVersion}/schedules/{id}/runnow")]
+      - Run a job now: [HttpPatch("api/v{apiVersion}/schedules/{id}/runnow")]
         - Payloads
-          - Input : RunNowViewModel containing automationId and agentId
+          - Input : RunNowViewModel containing automation id and agent id
           - Output : 200 OK response if run to attempt was successful
-  - ScheduleManager:
+  - Schedule Manager:
     - The ScheduleManager will inherit BaseManager and IScheduleManager, which both inherit IManager.
       - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
-  - ScheduleRepository:
+  - Schedule Repository:
     - The ScheduleRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository and IScheduleRepository, which inherits IEntityRepository.
       - The ScheduleRepository will retrieve all schedules, add a new schedule, or retrieve/edit/delete a schedule by id.
-  - Schedule Data Model:
+  - Data/View Models:
     - The Schedule data model will be used to view details of each schedule.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Schedule will have Guid AgentId, string AgentName, string CronExpression, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, string TriggerName, bool Recurrence, string StartingType, DateTime StartJobOn, DateTime RecurrenceUnit, DateTime JobRecurEveryUnit,  DateTime EndJobOn, DateTime EndJobAtOccurence, DateTime NoJobEndDate, string Status, DateTime ExpiryDate, DateTime StartDate, and Guid AutomationId, Guid QueueId, Integer MaxRunningJob.
-      - The ScheduleParameter data model contains detials about the paramters that belong to a particular Schedule. ScheduleParameter inherits from NamedEnity and contains the fields string Name, string Datatype, string Value, and GUID jobId.
-
+      - Beyond the base classes, Schedule will have Guid AgentId, Guid AgentGroupId, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, string TriggerName, bool Recurrence, string StartingType, DateTime StartJobOn, DateTime RecurrenceUnit, DateTime JobRecurEveryUnit,  DateTime EndJobOn, DateTime EndJobAtOccurence, DateTime NoJobEndDate, string Status, DateTime ExpiryDate, DateTime StartDate, and Guid AutomationId, Guid QueueId, int MaxRunningJobs, and bool GroupExecution.
+    - The ScheduleParameter data model contains detials about the parameters that belong to a particular schedule. ScheduleParameter inherits from NamedEnity, which inherits from Entity.
+      - It will have string DataType, string Value, and Guid ScheduleId.
+    - The ScheduleViewModel will be used to view additional details of a schedule.  It inherits IViewModel<Schedule, ScheduleViewModel>.
+      - It will have Guid Id, string Name, Guid AgentId, Guid AgentGroupId, string AgentName, string AgentGroupName, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string AutomationName, string TriggerName, string StartingType, string Status, DateTime ExpiryDate, DateTime CreatedOn, string CreatedBy, bool ScheduleNow, Guid QueueId, int MaxRunningJobs, bool GroupExecution, and IEnumberable<ScheduleParameter> ScheduleParameters.
+    - The RunNowViewModel will be used to run a job at the current time.
+      - It will have bool GroupExecution and IEnumerable<ParametersViewModel> JobParameters.
+        - ParametersViewModel inherits NamedEntity, which inherits Entity.
+          - In addition to the base classes, it will have string DataType, and string Value.
+          - It will include a method to verify the parameter name availability.
+    - The CreateScheduleViewModel will be used to add and update a schedule.  It will inherit IViewModel<CreateScheduleViewModel, Schedule>.
+      - It will have Guid Id, string Name, Guid AgentId, Guid AgentGroupId, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string StartingType, string Status, DateTime ExpiryDate, DateTime StartDate, Guid QueueId, int MaxRunningJobs, bool GroupExecution, and IEnumberable<ParameterViewMode> Parameters.
+    - The AllSchedulesViewModel will be used to view additional details of all schedules.
+      - It will have Giod Id, string Name, Guid AgentId, Guid AgentGroupId, string AgentName, string AgentGroupName, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string AutomationName, string TriggerName, string StartingType, string Status, DateTime ExpiryDate, DateTime StartDate, DateTime CreatedOn, string CreatedBy, bool ScheduleNow, Guid QueueId, int MaxRunningJobs, and bool GroupExecution.
 
 **Sequence Diagrams**
 
@@ -98,7 +110,5 @@ Updated By: Dairon Hernandez
 
 **Unit Tests**
 
-- Positive Test Cases:
-  - N/A
-- Negative Test Cases:
-  - N/A
+- Positive Test Cases: N/A
+- Negative Test Cases: N/A

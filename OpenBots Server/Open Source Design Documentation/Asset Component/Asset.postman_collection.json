@@ -31,6 +31,34 @@
 			"response": []
 		},
 		{
+			"name": "Get All Assets View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}Assets/view",
+					"host": [
+						"{{localhost}}Assets"
+					],
+					"path": [
+						"view"
+					]
+				},
+				"description": "Provides a list of all Assets"
+			},
+			"response": []
+		},
+		{
 			"name": "Get Asset Count",
 			"request": {
 				"auth": {
@@ -79,6 +107,35 @@
 						"{{localhost}}Assets"
 					],
 					"path": [
+						"{{entityId}}"
+					]
+				},
+				"description": "Provides an Asset's details for a particular Asset Id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset by Id View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}Assets/view/{{entityId}}",
+					"host": [
+						"{{localhost}}Assets"
+					],
+					"path": [
+						"view",
 						"{{entityId}}"
 					]
 				},
@@ -484,41 +541,6 @@
 			"response": []
 		},
 		{
-			"name": "Delete Asset by Id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{localhost}}Assets/{{entityId}}",
-					"host": [
-						"{{localhost}}Assets"
-					],
-					"path": [
-						"{{entityId}}"
-					],
-					"query": [
-						{
-							"key": "driveName",
-							"value": "Azure",
-							"disabled": true
-						}
-					]
-				},
-				"description": "Updates partial details of Asset."
-			},
-			"response": []
-		},
-		{
 			"name": "Update Asset Property",
 			"request": {
 				"auth": {
@@ -554,6 +576,41 @@
 						"v1",
 						"Assets",
 						"EntityId"
+					]
+				},
+				"description": "Updates partial details of Asset."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}Assets/{{entityId}}",
+					"host": [
+						"{{localhost}}Assets"
+					],
+					"path": [
+						"{{entityId}}"
+					],
+					"query": [
+						{
+							"key": "driveName",
+							"value": "Azure",
+							"disabled": true
+						}
 					]
 				},
 				"description": "Updates partial details of Asset."

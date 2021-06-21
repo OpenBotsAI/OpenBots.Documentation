@@ -1,8 +1,8 @@
-Author: Nicole Carrero
-Creation Date:  8/19/2020
+Author: NC
+Creation Date: 8/19/2020
 
-Updated On: 05/13/2021
-Updated By: Dairon Hernandez
+Updated By: NC
+Updated On: 6/18/2021
 
 **Schedule Component**
 
@@ -46,11 +46,11 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : Organization id
           - Output : Count of all schedules in the Server
-      - Schedule Details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}")]
+      - Schedule details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}")]
         - Payloads
           - Input : Organization id, schedule id
           - Output : JSON file listing schedule information
-      - Schedule Details: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}/View")]
+      - Schedule details view: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}/View")]
         - Payloads
           - Input : Organization id, schedule id
           - Output : JSON file listing schedule information with additional viewmodel details
@@ -70,25 +70,36 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : Organization id, JSONPatchDocument in request body with changes
           - Output : 200 OK response
-      - API to run a Job "NOW": [HttpPatch("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}/runnow")]
+      - Run a job now: [HttpPatch("api/v{apiVersion}/organizations/{organizationId}/schedules/{id}/runnow")]
         - Payloads
           - Input : Organization id, RunNowViewModel containing automation id and agent id
           - Output : 200 OK response if run to attempt was successful
-      - Can Run Jobs: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/CanRunJobs")]
+      - Can run jobs: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/schedules/CanRunJobs")]
         - Payloads
           - Input : Organization id
           - Output : Boolean specifying if execution is blocked for the current organization
-  - ScheduleManager:
+  - Schedule Manager:
     - The ScheduleManager will inherit BaseManager and IScheduleManager, which both inherit IManager.
-      - Beyond the base class and interfaces, AssetManager will implement appropriate methods to assist AssetsController.
+      - Beyond the base class and interfaces, ScheduleManager will implement appropriate methods to assist SchedulesController.
   - ScheduleRepository:
-    - The ScheduleRepository will inherit EntityRepository, which inherits ReadOnlyEntityRepository and IScheduleRepository, which inherits IEntityRepository.
+    - The ScheduleRepository will inherit TenantEntityRepository, which inherits ReadOnlyEntityRepository and IScheduleRepository, which inherits IEntityRepository.
       - The ScheduleRepository will retrieve all schedules, add a new schedule, or retrieve/edit/delete a schedule by id.
-  - Schedule Data Model:
+  - Data/View Models:
     - The Schedule data model will be used to view details of each schedule.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Schedule will have Guid AgentId, string AgentName, string CronExpression, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, string TriggerName, bool Recurrence, string StartingType, DateTime StartJobOn, DateTime RecurrenceUnit, DateTime JobRecurEveryUnit,  DateTime EndJobOn, DateTime EndJobAtOccurence, DateTime NoJobEndDate, string Status, DateTime ExpiryDate, DateTime StartDate, and Guid AutomationId, Guid QueueId, Integer MaxRunningJob.
-      - The ScheduleParameter data model contains detials about the paramters that belong to a particular Schedule. ScheduleParameter inherits from NamedEnity and contains the fields string Name, string Datatype, string Value, and GUID jobId.
-
+      - Beyond the base classes, Schedule will have Guid AgentId, Guid AgentGroupId, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, string TriggerName, bool Recurrence, string StartingType, DateTime StartJobOn, DateTime RecurrenceUnit, DateTime JobRecurEveryUnit,  DateTime EndJobOn, DateTime EndJobAtOccurence, DateTime NoJobEndDate, string Status, DateTime ExpiryDate, DateTime StartDate, and Guid AutomationId, Guid QueueId, int MaxRunningJobs, bool GroupExecution, and Guid OrganizationId.
+    - The ScheduleParameter data model contains detials about the parameters that belong to a particular schedule.  ScheduleParameter inherits from NamedEntity, which inherits Entity, and ITenanted.
+      - It will have string DataType, string Value, Guid ScheduleId, and Guid OrganizationId.
+    - The ScheduleViewModel will be used to view additional details of a schedule.  It inherits IViewModel<Schedule, ScheduleViewModel>.
+      - It will have Guid Id, string Name, Guid AgentId, Guid AgentGroupId, string AgentName, string AgentGroupName, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string AutomationName, string TriggerName, string StartingType, string Status, DateTime ExpiryDate, DateTime CreatedOn, string CreatedBy, bool ScheduleNow, Guid QueueId, int MaxRunningJobs, bool GroupExecution, and IEnumberable<ScheduleParameter> ScheduleParameters.
+    - The RunNowViewModel will be used to run a job at the current time.
+      - It will have bool GroupExecution and IEnumerable<ParametersViewModel> JobParameters.
+        - ParametersViewModel inherits NamedEntity, which inherits Entity.
+          - In addition to the base classes, it will have string DataType, and string Value.
+          - It will include a method to verify the parameter name availability.
+    - The CreateScheduleViewModel will be used to add and update a schedule.  It will inherit IViewModel<CreateScheduleViewModel, Schedule>.
+      - It will have Guid Id, string Name, Guid AgentId, Guid AgentGroupId, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string StartingType, string Status, DateTime ExpiryDate, DateTime StartDate, Guid QueueId, int MaxRunningJobs, bool GroupExecution, and IEnumberable<ParameterViewMode> Parameters.
+    - The AllSchedulesViewModel will be used to view additional details of all schedules.
+      - It will have Giod Id, string Name, Guid AgentId, Guid AgentGroupId, string AgentName, string AgentGroupName, string CRONExpression, string CRONExpressionTimeZone, DateTime LastExecution, DateTime NextExecution, bool IsDisabled, Guid ProjectId, Guid AutomationId, string AutomationName, string TriggerName, string StartingType, string Status, DateTime ExpiryDate, DateTime StartDate, DateTime CreatedOn, string CreatedBy, bool ScheduleNow, Guid QueueId, int MaxRunningJobs, and bool GroupExecution.
 
 **Sequence Diagrams**
 
@@ -102,7 +113,5 @@ Updated By: Dairon Hernandez
 
 **Unit Tests**
 
-- Positive Test Cases:
-  - N/A
-- Negative Test Cases:
-  - N/A
+- Positive Test Cases: N/A
+- Negative Test Cases: N/A

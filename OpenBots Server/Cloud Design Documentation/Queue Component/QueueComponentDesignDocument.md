@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 8/19/2020
 
-Updated On: 3/18/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Queue Component**
 
@@ -45,9 +45,9 @@ Updated By: Nicole Carrero
       - The user can click on each queue to edit or delete it, or view the queue details on a separate page.
     - On the Add Queue and Add Queue Item pages, the user can input the appropriate details to create a new queue or queue item.
 - Controllers:
+- NOTE: The current API version is 1.
   - QueuesController:
     - The QueuesController will make an API request to access the QueueRepository to retrieve all queues from the Server and will return that information back to the view.  The controller will utilize this same structure to add, edit, or delete a queue.
-    - NOTE: The current API version is 1.
     - Routes:
       - All queues: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/queues")]
         - Payloads
@@ -155,10 +155,6 @@ Updated By: Nicole Carrero
        - Payloads
          - Input : Organization id, queue item id, attachment id
          - Output : JSON file listing specific queue item attachment information
-     - Queue item attachments: [HttpGet("api/v{apiVersion}/organizations/{organizationId}/queueitems/{queueItemId}/queueitemattachments")]
-       - Payloads
-         - Input : Organization id
-         - Output : JSON file listing queue item attachment information
      - Create queue item attachment (existing files): [HttpPost("api/v{apiVersion}/organizations/{organizationId}/queueitems/{queueItemId}/queueitemattachments/files")]
        - Payloads
          - Input : Organization id, queue item id, attachment id, array of file ids
@@ -196,36 +192,36 @@ Updated By: Nicole Carrero
       - Beyond the base class and interfaces, QueueItemManager will implement the appropriate methods to assist QueueItemsController and QueueItemAttachmentsController.
 - Repositories:
   - QueueRepository:
-    - The QueueRepository inherits from EntityRepository<Queue>, which inherits from ReadOnlyEntityRepository<Queue>, and IQueueRepository.
+    - The QueueRepository inherits from TenantEntityRepository<Queue>, which inherits from ReadOnlyEntityRepository<Queue>, and IQueueRepository.
       - Beyond the base classes and interface, QueueRepository will retrieve all queues, add a new queue, or retrieve/edit/delete a queue by id.
   - QueueItemRepository:
-    - The QueueItemRepository inherits from EntityRepository<QueueItemModel>, which inherits from ReadOnlyEntityRepository<QueueItemModel>, and IQueueItemRepository.
-      - Beyond the base classes and interface, QueueItemRepository will retrieve all queue items, add a new queue item, or edit/delete a queue item by id.  It will have FindAllView method to allow the view model to display both the properties of the queue item and the corresponding binary object ids.
+    - The QueueItemRepository inherits from TenantEntityRepository<QueueItemModel>, which inherits from ReadOnlyEntityRepository<QueueItemModel>, and IQueueItemRepository.
+      - Beyond the base classes and interface, QueueItemRepository will retrieve all queue items, add a new queue item, or edit/delete a queue item by id.  It will have FindAllView method to allow the view model to display both the properties of the queue item and the corresponding file ids.
   - QueueItemAttachmentRepository:
-    - The QueueItemAttachmentRepository inherits from EntityRepository<QueueItemAttachment> and IQueueItemAttachmentRepository.
+    - The QueueItemAttachmentRepository inherits from TenantEntityRepository<QueueItemAttachment> and IQueueItemAttachmentRepository.
       - Beyond the base class and interface, QueueItemAttachmentRepository will retrieve all queue item attachments, add a new queue item attachment, or edit/export/delete a queue item attachment by id.
 - Models:
   - Queue Data Model:
-    - The Queue data model will be used to view details of each queue.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Queue will have string Description and int MaxRetryCount.
+    - The Queue data model will be used to view details of each queue.  It will inherit the NamedEntity class, which inherits the Entity class, and ITenanted.
+      - Beyond the base classes, Queue will have string Description, int MaxRetryCount, and Guid OrganizationId.
   - QueueItemModel Data Model:
-    - The QueueItemModel data model will be used to view details of each queue item.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, QueueItemModel will have bool IsLocked, DateTime LockedOnUTC, DateTime LockedUntilUTC, Guid LockedBy, Guid QueueId, string Type, string JsonType, string DataJson, string State, string StateMessage, Guid LockTransactionKey, DateTime LockedEndTimeUTC, int RetryCount, int Priority, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, and long PayloadSizeInBytes.
+    - The QueueItemModel data model will be used to view details of each queue item.  It will inherit the NamedEntity class, which inherits the Entity class, and ITenanted.
+      - Beyond the base classes, QueueItemModel will have bool IsLocked, DateTime LockedOnUTC, DateTime LockedUntilUTC, Guid LockedBy, Guid QueueId, string Type, string JsonType, string DataJson, string State, string StateMessage, Guid LockTransactionKey, DateTime LockedEndTimeUTC, int RetryCount, int Priority, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, long PayloadSizeInBytes, Guid OrganizationId, Guid IntegrationEventId, and Guid EventLogId.
   - QueueItemAttachment Data Model:
-    - The QueueItemAttachment data model will be used to view the binary object ids that correlate with the attachments of a queue item.  It will inherit the Entity class.
-      - Beyond the base class, QueueItemAttachment will have Guid QueueItemId, Guid FileId, and long SizeInBytes.
+    - The QueueItemAttachment data model will be used to view the file ids that correlate with the attachments of a queue item.  It will inherit the Entity class.
+      - Beyond the base class, QueueItemAttachment will have Guid QueueItemId, Guid FileId, long SizeInBytes, and Guid OrganizationId.
   - Queue View Model:
     - The QueueViewModel view model will be used to view details of each queue.
       - QueueViewModel will have string Name (required), string Description, and int MaxRetryCount.
   - AllQueueItemsViewModel View Model:
-    - The AllQueueItemsVieWModel view model will be used to view details of each queue item in addition to the list of related binary object ids (file attachments).  It will inherit IViewModel<QueueItemmodel, AllQueueItemsViewModel>.
-      - Beyond the interface, AllQueueItemsViewModel will have string Name, Guid Id, string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, List<Guid> BinaryObjectIds, Guid QueueId, DateTime CreatedOn, and long PayloadSizeInBytes.
+    - The AllQueueItemsVieWModel view model will be used to view details of each queue item in addition to the list of related file ids (file attachments).  It will inherit IViewModel<QueueItemmodel, AllQueueItemsViewModel>.
+      - Beyond the interface, AllQueueItemsViewModel will have string Name, Guid Id, string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, List<Guid> FileIds, Guid QueueId, DateTime CreatedOn, and long PayloadSizeInBytes.
   - QueueItemViewModel View Model:
-    - The QueueItemViewModel view model will be used to view details of an individual queue item in addition to the list of related binary object ids (file attachments).  It will inherit NamedEntity, which inherits Entity, and IViewModel<QueueItemModel, QueueItemViewModel>.
+    - The QueueItemViewModel view model will be used to view details of an individual queue item in addition to the list of related file ids (file attachments).  It will inherit NamedEntity, which inherits Entity, and IViewModel<QueueItemModel, QueueItemViewModel>.
       - Beyond the base classes and interface, QueueItemViewModel will have string State, string StateMessage, bool IsLocked, Guid LockedBy, DateTime LockedOnUTC, DateTime LockedUntilUTC, DateTime LockedEndTimeUTC, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string ErrorCode, string ErrorMessage, string ErrorSerialized, string Source, string Event, string ResultJSON, Guid QueueId, string Type, string JsonType, string DataJson, Guid LockTransactionKey, int RetryCount, int Priority, long PayloadSizeInBytes, and List<QueueItemAttachment> Attachments.
   - UpdateQueueItemViewModel View Model:
-    - The UpdateQueueItemViewModel view model will be used to update details of an individual queue item in addition to the list of related binary object ids (file attachments).  It will inherit IViewModel<QueueItemModel, UpdateQueueItemModel>.
-      - Beyond the interface, UpdateQueueItemViewModel will have Guid Id, string Name, Guid QueueId, string Source, string Event, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string Type, string DataJson, string State, List<Guid> FileIds, and IFormFile[] Files.
+    - The UpdateQueueItemViewModel view model will be used to update details of an individual queue item in addition to the list of related file ids (file attachments).  It will inherit IViewModel<QueueItemModel, UpdateQueueItemModel>.
+      - Beyond the interface, UpdateQueueItemViewModel will have Guid Id, string Name, Guid QueueId, string Source, string Event, DateTime ExpireOnUTC, DateTime PostponeUntilUTC, string Type, string DataJson, string State, List<Guid> FileIds, IFormFile[] Files, and string DriveId.
   - AllQueueItemAttachments View Model:
     - The AllQueueItemAttachmentsViewModel view model will be used to view details of queue item attachments associated with a particular queue item.
       - AllQueueItemAttachmentsViewModel will have Guid QueueItemId, Guid FileId, long SizeInBytes, and string Name.

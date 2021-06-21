@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 12/4/2020
 
-Updated On: 3/23/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/15/2021
 
 **Email Component**
 
@@ -191,7 +191,7 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Email id, attachment id, file id(s) list, optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s) information
-      - Add email attachment(s) (upload new file(s)) [HttpPost("api/v{apiVersion}/emails/{emailId}/emailattachments")]
+      - Add email attachment(s) (upload new file(s)): [HttpPost("api/v{apiVersion}/emails/{emailId}/emailattachments")]
         - Payloads
           - Input : Email id, file(s), optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s)
@@ -236,13 +236,13 @@ Updated By: Nicole Carrero
   - EmailRepository:
     - The EmailRepository will inherit EntityRepository<EmailModel>, which inherits ReadOnlyEntityRepository<EmailModel>, and IEmailRepository.
       - Beyond the base classes and interface, EmailRepository will access the EmailLog data table to retrieve, add, edit, or delete the entity in the Server.
-- Data Models:
+- Models:
   - Email Address Data Model:
     - The EmailAddress data model will be used for email addresses when sending an email.  It has the methods ToMailAddress and IterateBack to assist in the creation of the email message.
       - EmailAddress will have string Name and string Address.
   - Email Attachment Data Model:
     - The EmailAttachment Data Model will be used for storing email attachments when sending an email.  It inherits the NamedEntity class, which inherits Entity and INamedEntity.  Entity inherits the IEntity interface.
-      - Beyond the base classes and interfaces, EmailAttachment will have string ContentType, long SizeInBytes, string StorageContentAddress, Guid BinaryObjectId, and Guid EmailId.
+      - Beyond the base classes and interfaces, EmailAttachment will have string ContentType, long SizeInBytes, string StorageContentAddress, Guid FileId, and Guid EmailId.
   - Email Account Data Model:
     - The EmailAccount data model will be used to determine which email account to use as the sender of an email.  It inherits the NamedEntity class, which inherits Entity and INamedEntity.  Entity inherits the IEntity interface.
       - Beyond the base classes and interfaces, EmailAccount will have bool IsDisabled, bool IsDefault, string Provider, bool IsSslEnabled, string Host, int Port, string Username, string EncryptedPassword, string PasswordHash, string ApiKey, string FromEmailAddress, string FromName, DateTime StartOnUTC, and DateTime EndOnUTC.
@@ -261,6 +261,9 @@ Updated By: Nicole Carrero
   - Email Account View Model:
     - The EmailAccountViewModel view model will be used to display specific properties of an email account.  It will inherit IViewModel<EmailAccount, EmailAccountViewModel>.
       - EmailAccountViewModel will have Guid Id, string Name, bool IsDisabled, bool IsDefault, string Provider, bool IsSslEnabled, string Host, int Port, string Username, string PasswordHash, string ApiKey, string FromEmailAddress, string FromName, DateTime StartOnUTC, and DateTime EndOnUTC.
+  - Email Account Lookup:
+    - The EmailAccountLookup view model will be used to display a list of email accounts by name.
+      - It will have Guid EmailAccountId and string EmailAccountName.
   - Email View Model:
     - The EmailViewModel view model will be used to display specific properties of an email.  It will inherit IViewModel<EmailModel, EmailViewModel>.
       - EmailViewModel will have Guid Id, Guid EmailAccountId, DateTime SentOnUTC, string EmailObjectJson, string SenderAddress, Guid SenderUserId, string Status, and DateTime CreatedOn.
@@ -275,10 +278,10 @@ Updated By: Nicole Carrero
       - UpdateEmailViewModel will have DateTime SentOnUTC, string EmailObjectJson, string SenderName, string SenderAddress, Guid SenderUserId, string Status, string Reason, string Direction, Guid ConversationId, Guid ReplyToEmailId, Guid EmailAccountId, and IFormFile[] Files.
   - All Email Attachments View Model:
     - The AllEmailAttachmentsViewModel view model will be used to display specific properties of email attachments.
-      - AllEmailAttachments will have Guid EmailId, Guid BinaryObjectId, long SizeInBytes, and string Name.
+      - AllEmailAttachments will have Guid EmailId, Guid FileId, long SizeInBytes, and string Name.
   - Update Email Attachment View Model:
     - The UpdateEmailAttachmentViewModel view model will be used to update an email attachment.
-      - UpdateEmailAttachmentViewModel will have Guid Id, string Name, string ContentType, long SizeInBytes, Guid BinaryObjectId, and IFormFile File.
+      - UpdateEmailAttachmentViewModel will have Guid Id, string Name, string ContentType, long SizeInBytes, Guid FileId, and IFormFile File.
 
 **Sequence Diagrams**
 

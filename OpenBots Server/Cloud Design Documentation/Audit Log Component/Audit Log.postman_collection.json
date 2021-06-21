@@ -37,6 +37,37 @@
 			"response": []
 		},
 		{
+			"name": "All Audit Logs View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/AuditLogs/view",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"AuditLogs",
+						"view"
+					]
+				},
+				"description": "Get information for all audit logs from the Server."
+			},
+			"response": []
+		},
+		{
 			"name": "Audit Log Details by Id",
 			"request": {
 				"auth": {
@@ -61,6 +92,38 @@
 						"{{organizationId}}",
 						"AuditLogs",
 						"{{entityId}}"
+					]
+				},
+				"description": "Retrieve all audit log details by individual audit log id"
+			},
+			"response": []
+		},
+		{
+			"name": "Audit Log Details by Id View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/organizations/{{organizationId}}/AuditLogs/{{entityId}}/view",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"organizations",
+						"{{organizationId}}",
+						"AuditLogs",
+						"{{entityId}}",
+						"view"
 					]
 				},
 				"description": "Retrieve all audit log details by individual audit log id"

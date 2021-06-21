@@ -39,6 +39,63 @@
 			"response": []
 		},
 		{
+			"name": "All Audit Logs View",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/AuditLogs/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"AuditLogs",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Audit Logs Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/auditlogs/count",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"auditlogs",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Audit Log Details by Id",
 			"request": {
 				"auth": {
@@ -72,6 +129,40 @@
 			"response": []
 		},
 		{
+			"name": "Audit Log Details by Id View",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/v1/AuditLogs/{{entityId}}/view",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"AuditLogs",
+						"{{entityId}}",
+						"view"
+					]
+				},
+				"description": "Retrieve all audit log details by individual audit log id"
+			},
+			"response": []
+		},
+		{
 			"name": "Export CSV",
 			"request": {
 				"auth": {
@@ -98,38 +189,6 @@
 						"v1",
 						"auditlogs",
 						"export"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Audit Logs Count",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:5001/api/v1/auditlogs/count",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"api",
-						"v1",
-						"auditlogs",
-						"count"
 					]
 				}
 			},

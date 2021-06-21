@@ -820,157 +820,7 @@
 			"name": "Access Request",
 			"item": [
 				{
-					"name": "Edit Request Property",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"isAccessRequested\",\r\n        \"value\":\"true\"\r\n    }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/accessrequests/3e90f265-eec4-484e-958c-12909634e50a",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"organizations",
-								"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
-								"accessrequests",
-								"3e90f265-eec4-484e-958c-12909634e50a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Request",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"organizations",
-								"{{organizationId}}",
-								"accessrequests",
-								"{{entityId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reject Request",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/reject",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"organizations",
-								"{{organizationId}}",
-								"accessrequests",
-								"{{entityId}}",
-								"reject"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Approve Request",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/approve",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"organizations",
-								"{{organizationId}}",
-								"accessrequests",
-								"{{entityId}}",
-								"approve"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Access Request",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "All Access Requests",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -984,17 +834,41 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"organizationId\": \"{{organizationId}}\",\r\n    \"personId\": \"{{personId}}\",\r\n    \"isAccessRequested\": true,\r\n    \"accessRequestedOn\": \"2020-10-20T18:39:36.5206211\",\r\n    \"organization\": \"{{organizationName}}\",\r\n    \"person\": null,\r\n    \"id\": \"{{entityId}}\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"\",\r\n    \"createdOn\": \"2020-10-16T18:39:36.7533333\",\r\n    \"deletedBy\": \"\",\r\n    \"deleteOn\": null,\r\n    \"timestamp\": \"AAAAAAACAQU=\",\r\n    \"updatedOn\": \"2020-10-16T19:13:02.5801572\",\r\n    \"updatedBy\": \"EMAIL\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pending Access Requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/pending",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -1006,7 +880,7 @@
 								"organizations",
 								"{{organizationId}}",
 								"accessrequests",
-								"{{entityId}}"
+								"pending"
 							]
 						}
 					},
@@ -1085,7 +959,7 @@
 					"response": []
 				},
 				{
-					"name": "Pending Access Requests",
+					"name": "Edit Access Request",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1097,10 +971,19 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationId\": \"{{organizationId}}\",\r\n    \"personId\": \"{{personId}}\",\r\n    \"isAccessRequested\": true,\r\n    \"accessRequestedOn\": \"2020-10-20T18:39:36.5206211\",\r\n    \"organization\": \"{{organizationName}}\",\r\n    \"person\": null,\r\n    \"id\": \"{{entityId}}\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"\",\r\n    \"createdOn\": \"2020-10-16T18:39:36.7533333\",\r\n    \"deletedBy\": \"\",\r\n    \"deleteOn\": null,\r\n    \"timestamp\": \"AAAAAAACAQU=\",\r\n    \"updatedOn\": \"2020-10-16T19:13:02.5801572\",\r\n    \"updatedBy\": \"EMAIL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/pending",
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -1112,14 +995,14 @@
 								"organizations",
 								"{{organizationId}}",
 								"accessrequests",
-								"pending"
+								"{{entityId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "All Access Requests",
+					"name": "Approve Request",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1131,10 +1014,10 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests",
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/approve",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -1145,7 +1028,121 @@
 								"v1",
 								"organizations",
 								"{{organizationId}}",
-								"accessrequests"
+								"accessrequests",
+								"{{entityId}}",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/accessrequests/{{entityId}}/reject",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"accessrequests",
+								"{{entityId}}",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Request Property",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\":\"replace\",\r\n        \"path\":\"isAccessRequested\",\r\n        \"value\":\"true\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/ef8a6670-f522-4fcd-a55e-90aa92d1deb7/accessrequests/3e90f265-eec4-484e-958c-12909634e50a",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"ef8a6670-f522-4fcd-a55e-90aa92d1deb7",
+								"accessrequests",
+								"3e90f265-eec4-484e-958c-12909634e50a"
 							]
 						}
 					},

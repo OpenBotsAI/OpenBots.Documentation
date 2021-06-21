@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 8/14/2020
 
-Updated On: 3/18/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Automation Component**
 
@@ -66,10 +66,6 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id, Automation model data (name, automation engine, file, and optional drive name)
           - Output : JSON file listing new automation information
-      - Upload automation file: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automations/{id}/upload")]
-        - Payloads
-          - Input : Organization id, automation file
-          - Output : JSON file listing updated automation information
       - Update automation with file (create new automation with updated version): [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automations/{id}/update")]
         - Payloads
           - Input : Organization id, automation id, file, name, drive name (optional)
@@ -94,7 +90,7 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id
           - Output : JSON file listing automation id, name, and name with version
-      - Update Automation Parameters: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automations/automationId/UpdateParameters")]
+      - Update automation parameters: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automations/{automationId}/UpdateParameters")]
         - Payloads
           - Input : Organization id, JSON body containing a list of automation parameters
           - Output : JSON file listing new automation parameters
@@ -103,28 +99,31 @@ Updated By: Nicole Carrero
       - Beyond the base class and interfaces, AutomationManager will implement appropriate methods to assist AutomationController
 - Repositories:
   - AutomationRepository:
-    - AutomationRepository will inherit EntityRepository<Automation>, which inherits ReadOnlyEntityRepository<Automation>, and IAutomationRepository.
+    - AutomationRepository will inherit TenantEntityRepository<Automation>, which inherits ReadOnlyEntityRepository<Automation>, and IAutomationRepository.
       - The AutomationRepository will retrieve all automations, add/edit a new automation, or retrieve/delete an automation by id.  It will use FindAllView method to find the view model properties to display in the return of the get automations request.
   - AutomationVersionRepository:
-    - The AutomationVersionRepository will inherit EntityRepository<AutomationVersion>, which inherits ReadOnlyEntityRepository<AutomationVersion>, and IAutomationVersionRepository.
+    - The AutomationVersionRepository will inherit TenantEntityRepository<AutomationVersion>, which inherits ReadOnlyEntityRepository<AutomationVersion>, and IAutomationVersionRepository.
       - The AutomationVersionRepository will retrieve all automation versions, add/edit a new automation version, or retrieve/delete an automation version by id.
+  - AutomationParamaterRepository:
+    - The AutomationParameterRepository will inherit TenantEntityRepository<AutomationParameter>, which inherits ReadOnlyEntityRepository<AutomationParameter>, and IAutomationParameterRepository.
+      - The AutomationParameterRepository will retrieve, add, edit, or delete automation parameters.
 - Models:
   - Automation Data Model:
-    - The Automation data model will be used to view details of each automation.  It will inherit the NamedEntity class, which inherits the Entity class.
-      - Beyond the base classes, Automation will have Guid FileId, string OriginalPackageName, string AutomationEngine, double AverageSuccessful ExecutionInMinutes, and double AverageUnSuccessfulExecutionInMinutes.
+    - The Automation data model will be used to view details of each automation.  It will inherit the NamedEntity class, which inherits the Entity class, and ITenanted.
+      - Beyond the base classes, Automation will have Guid FileId, string OriginalPackageName, string AutomationEngine, long AverageSuccessful ExecutionInMinutes, long AverageUnSuccessfulExecutionInMinutes, and Guid OrganizationId.
   - Automation Version Data Model:
-    - The AutomationVersion data model will be used to view details about the automation version of each automation.  It will inherit the Entity class.
-      - Beyond the base class, AutomationVersion will have Guid AutomationId, int VersionNumber, string PublishedBy, DateTime PublishedOnUTC, and string Status.
+    - The AutomationVersion data model will be used to view details about the automation version of each automation.  It will inherit the Entity class and ITenanted.
+      - Beyond the base class, AutomationVersion will have Guid AutomationId, int VersionNumber, string PublishedBy, DateTime PublishedOnUTC, string Status, and Guid OrganizationId.
   - AutomationParameter Data Model:
-    - The AutomationParameters will be used to store parameter information associated with a particular Automation, which will be utilized when executing a job.
-      - Beyond the base class, AutomationParameter will have Guid AutomationId, string Name, string Value, and string DataType.
+    - The AutomationParameters will be used to store parameter information associated with a particular Automation, which will be utilized when executing a job.  It will inherit NamedEntity, which inherits Entity, and ITenanted.
+      - Beyond the base class, AutomationParameter will have string DataType, string Value, Guid AutomationId, and Guid OrganizationId.
   - AllAutomationsViewModel View Model:
     - The AllAutomationsVieWModel view model will be used to view details of each automation in addition to the details of each automation version.  It will inherit IViewModel<Automation, AllAutomationsViewModel>.
       - Beyond the interface, AllAutomationsViewModel will have Guid Id, string Name, DateTime CreatedOn, string CreatedBy, string Status, and int VersionNumber.
       - It will have a Map method to map a specific automation to the view model.
   - AutomationViewModel View Model:
     - The AutomationViewModel view model will be used to view details of an individual automation in addition to the details of its automation version.  It will inherit NamedEntity, which inherits Entity, and IViewModel<Automation, AutomationViewModel>.
-      - Beyond the base classes and interface, AutomationViewModel will have int VersionNumber, Guid VersionId, string Status, IFormFile File, Guid FileId, string OriginalPackageName, string PublishedBy, DateTime PublishedOnUTC, string AutomationEngine, and string DriveName.
+      - Beyond the base classes and interface, AutomationViewModel will have int VersionNumber, Guid VersionId, string Status, IFormFile File, Guid FileId, string OriginalPackageName, string PublishedBy, DateTime PublishedOnUTC, string AutomationEngine, long AverageSuccessfulExecutionInMinutes, long AverageUnSuccessfulExecutionInMinutes, string DriveId, and IEnumerable<AutomationParameter> AutomationParameters.
       - It will have a Map method to map a specific automation to the view model.
 
 **Sequence Diagrams**

@@ -457,6 +457,50 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Parameters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"Name\" : \"ExampleParameters\",\r\n    \"DataType\" : \"Text\",\r\n    \"Value\" : \"Hello World\"\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/organizations/{{organizationId}}/automations/{{entityId}}/updateparameters",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"organizations",
+								"{{organizationId}}",
+								"automations",
+								"{{entityId}}",
+								"updateparameters"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 8/20/2020
 
-Updated On: 3/18/2020
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Automation Execution Log Component**
 
@@ -59,7 +59,7 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id, job id
           - Output : JSON file listing the automation execution log details for a specific job
-      - Add a automation execution log for a job: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automationexecutionlogs]
+      - Add an automation execution log for a job: [HttpPost("api/v{apiVersion}/organizations/{organizationId}/automationexecutionlogs]
         - Payloads
           - Input : Organization id, automationExecutionLog data model
           - Output : JSON file with the created log

@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 2/9/2021
 
-Updated On: 5/12/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Storage Component**
 
@@ -31,23 +31,23 @@ Updated By: Nicole Carrero
 - Proposed Solution:
   - User Interface:
     - Dashboard
-      - The Dashboard will display a link under the Files tab named "Storage Drive" that redirects the user to view the available storage drives.
+      - The Dashboard will display a link under the Billing tab named "Storage" that redirects the user to view the available storage drives and the organization's storage informatiom.
         - The existing drives will be displayed in a table.
-          - The headers will be: Name, Size.
+          - The headers will be: Drive Name, Storage Assigned, Storage Used, and Remaining.
           - The appropriate data will be displayed underneath each heading.
             - The user can click on each drive, where the user will be shown the specific details.
-            - There will be a button to redirect the user to add, edit, or delete a drive.
-      - The Dashboard will display a link under the Files tab named "Files Manager" that redirects the user to view the files and folders at the top of the selected drive.
+            - There will be a button to redirect the user to add, edit, or delete a storage drive.
+      - The Dashboard will display a link in the "Files Manager" tab that redirects the user to view the files and folders at the top of the selected drive.
         - The existing files and folders will be displayed in a table.
           - The headers will be: Name, Type.
           - The appropriate data will be displayed underneath each heading.
-            - The user can click on each file or folder, where the user will be shown the specific details.
+            - The user can click on each file or folder, where the user will be shown the specific details on the right-hand side.
               - There will be a button to redirect the user to add, delete, rename, move, or copy a file or folder.  There will also be a button to download a file.
               - When a user double clicks a folder, it will redirect to show the files and folders within it.
               - The user can refresh the page using the refresh button.
   - NOTE: The current API version is 1.
-  - DrivesController:
-    - The DrivesController will make an API request to the FileManager, which in turn will call the appropriate adapter if necessary.  The StorageDriveRepository will be used to retrieve all the drives from the Server and will return that information back to the view.  The user can view all drives and add, edit, or delete a drive.
+  - Drives Controller:
+    - The DrivesController will make an API request to the FileManager, which in turn will call the appropriate adapter as necessary.  The StorageDriveRepository will be used to retrieve all the drives from the Cloud Server and will return that information back to the view.  The user can view all drives and add, edit, or delete a drive.
     - Routes:
       - All drives: [HttpGet("api/v{apiVersion}/Storage/{organizationId}/Drives")]
         - Payloads
@@ -94,7 +94,7 @@ Updated By: Nicole Carrero
           - Input : Organization id
           - Output : Count of all drives' currently used storage
   - Files Controller:
-    - The FilesController will make an API request to the FileManager, which in turn will call the appropriate adapter if necessary.  The StorageFileRepository and StorageFolderRepository will be used to retrieve all the files and/or folders from the Server and will return that information back to the view.  The user can view all files, folders, individual file or folder details, and add, edit (rename, move, or copy), or delete a file or folder.  The user can also export a file.
+    - The FilesController will make an API request to the FileManager, which in turn will call the appropriate adapter as necessary.  The StorageFileRepository and StorageFolderRepository will be used to retrieve all the files and/or folders from the Cloud Server and will return that information back to the view.  The user can view all files, folders, individual file or folder details, and add, edit (rename, move, or copy), or delete a file or folder.  The user can also export a file.
     - Routes:
       - All files and folders in a drive: [HttpGet("api/v{apiVersion}/Storage/{organizationId}/Drives/{driveId}")]
         - Payloads

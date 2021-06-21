@@ -490,6 +490,134 @@
 			"name": "Email Account",
 			"item": [
 				{
+					"name": "Get Email Accounts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Account Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"emailaccounts",
+								"{{entityId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"{{emailAddress}}\",\r\n  \"encryptedPassword\": \"{{password}}\",\r\n  \"fromEmailAddress\": \"{{emailAddress}}\",\r\n  \"fromName\": \"{{emailAddress}}\",\r\n  \"name\": \"{{emailAccountName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localcloudhost}}emailaccounts",
+							"host": [
+								"{{localcloudhost}}emailaccounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Email Account",
 					"request": {
 						"auth": {
@@ -513,38 +641,6 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"emailaccounts",
-								"{{entityId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Email Account",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
 						"url": {
 							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
 							"protocol": "https",
@@ -604,7 +700,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Email Account",
+					"name": "Delete Email Account",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -616,40 +712,7 @@
 								}
 							]
 						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"isDisabled\": false,\r\n  \"isDefault\": true,\r\n  \"provider\": \"SMTP\",\r\n  \"isSslEnabled\": true,\r\n  \"host\": \"smtp.office365.com\",\r\n  \"port\": 587,\r\n  \"username\": \"{{emailAddress}}\",\r\n  \"encryptedPassword\": \"{{password}}\",\r\n  \"fromEmailAddress\": \"{{emailAddress}}\",\r\n  \"fromName\": \"{{emailAddress}}\",\r\n  \"name\": \"{{emailAccountName}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{localcloudhost}}emailaccounts",
-							"host": [
-								"{{localcloudhost}}emailaccounts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Email Account",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
 							"raw": "https://localhost:5001/api/v1/emailaccounts/{{entityId}}",
@@ -669,7 +732,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Email Account Count",
+					"name": "Email Account Lookup",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -684,7 +747,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/v1/emailaccounts/count",
+							"raw": "https://localhost:5001/api/v1/emailaccounts/lookup",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -694,38 +757,7 @@
 								"api",
 								"v1",
 								"emailaccounts",
-								"count"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Email Accounts",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/emailaccounts",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"emailaccounts"
+								"lookup"
 							]
 						}
 					},

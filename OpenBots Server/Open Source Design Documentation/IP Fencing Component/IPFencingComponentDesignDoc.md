@@ -1,8 +1,8 @@
-Author: Dairon Hernandez
+Author: DH
 Creation Date: 11/25/2020
 
-Updated On: 3/18/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/16/2021
 
 **IPFencing Component**
 
@@ -15,50 +15,50 @@ Updated By: Nicole Carrero
 
 - In-Scope:
   - Administrators can set which IPs are allowed access to the API.
-  - Administrators can allow certain IPRanges to have access to the API.
+  - Administrators can allow certain IP ranges to have access to the API.
   - Administators can allow only requests which contain certain headers and header values.
 - Out-of-Scope:
-  - Allow Users to set IPRanges and Headers
+  - Users can set IP ranges and headers.
 
 **Design**
 
-- Overview: The IPFencing values can be set and updated using the IPFencing controller. Once an organization's rules have been created, they are then applied using the IPFilter middleware. The IPFilter middleware uses the IPFencing manager to call the necessary methods that verify if the IP matches and of the IP ranges and or headers. If an IP is listed on one of the organization's rules, depending on what the rule's usage is, this request will succeed or be restricted form access.
+- Overview: The IP fencing values can be set and updated using the IPFencingController. Once an organization's rules have been created, they are then applied using the IP filter middleware. The IP filter middleware uses the IPFencingManager to call the necessary methods that verify if the IP matches and checks the IP ranges and/or headers. If an IP is listed on one of the organization's rules, depending on what the rule's usage is, this request will succeed or be restricted from access.
 - Proposed Solution:
   - User Interface:
-    - In the Organization Settings there will be a section to update the values of the current Organization's setting.
-    - The settings will request that a one of allow or deny modes be selected.
-      - If allow mode is selected, then any request except the ones that are listed as deny in the IPFencing table will be allowed.
-      - If the deny mode is selected, then no requests will be allowed except the ones that match on one of the IPFencing rules.
-    - Once an IPFencing mode has been selected, it becomes possible to add new rules to the IPFencing table.
-        - Rules may contain specific IPV4/IPV6 addresses, IPV4/IPV6 ranges, or Header/Header value pairs
-  - IPFencingController:
-    - The IPFencing controller will be responsible for performing the necessary CRUD operations on the IPFencing table.
+    - In the organization's Settings section, there will be a page to update the values of the current organization's settings.
+    - The settings will request that allow or deny modes be selected.
+      - If allow mode is selected, then any request except the ones that are listed as deny in the IP fencing table will be allowed.
+      - If the deny mode is selected, then no requests will be allowed except the ones that match on one of the IP fencing rules.
+    - Once an IP fencing mode has been selected, it becomes possible to add new rules to the IP fencing table.
+        - Rules may contain specific IPV4/IPV6 addresses, IPV4/IPV6 ranges, or header/header value pairs.
+  - IP Fencing Controller:
+    - The IPFencingController will be responsible for performing the necessary operations on the IPFencing data table.
     - NOTE: The current API version is 1.
-      - All IPFencing: [HttpGet("api/v{apiVersion}/IPFencing")]
+      - All IP fencing: [HttpGet("api/v{apiVersion}/IPFencing")]
         - Payloads
           - Input : None
-          - Output : JSON file contataining all IPFencing rules for the specified Organization
-      - Individual IPFencing details: [HttpGet("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
+          - Output : JSON file containing all IP fencing rules for the specified organization
+      - IP fencing details: [HttpGet("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
         - Payloads
-          - Input : IPFencing id
-          - Output : JSON file of all individual IPFencing information for the specified Organization
-      - Create an IPFencing: [HttpPost("api/v{apiVersion}/Organizations/{organizationId}/IPFencing")]
+          - Input : IP fencing id
+          - Output : JSON file of all individual IP fencing information for the specified organization
+      - Create IP fencing: [HttpPost("api/v{apiVersion}/Organizations/{organizationId}/IPFencing")]
         - Payloads
           - Input : CreateIPFencingViewModel 
-          - Output : JSON file listing new IPFencing information
-      - Edit IPFencing: [HttpPut("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
+          - Output : JSON file listing new IP fencing information
+      - Edit IP fencing: [HttpPut("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
         - Payloads
-          - Input : IPFencing model
-          - Output : JSON file listing updated IPFencing information
-      - Delete IPFencing: [HttpDelete("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
+          - Input : IP fencing data model
+          - Output : JSON file listing updated IP fencing information
+      - Delete IP fencing: [HttpDelete("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
         - Payloads
-          - Input : IPFencing id
+          - Input : IP fencing id
           - Output : 200 OK response
-      - Edit IPFencing property: [HttpPatch("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
+      - Edit IP fencing property: [HttpPatch("api/v{apiVersion}/Organizations/{organizationId}/IPFencing/{id}")]
         - Payloads
-          - Input : IPFencing id, and JsonPatchDocument in request body with changes
+          - Input : JsonPatchDocument in request body with changes
           - Output : 200 OK response
-  - IPFencing Manager:
+  - IP Fencing Manager:
     - The IPFencingManager will inherit BaseManager, which inherits IManager, and IIPFencingManager.
       - Beyond the base class and interfaces, IPFencingManager will implement the appropriate methods to assist IPFencingController and the IPFilter MiddleWare.
   - IPFencingRepository:
@@ -75,6 +75,5 @@ Updated By: Nicole Carrero
 
 **Unit Tests**
 
-- Positive Test Cases:
-
-- Negative Test Cases:
+- Positive Test Cases: N/A
+- Negative Test Cases: N/A

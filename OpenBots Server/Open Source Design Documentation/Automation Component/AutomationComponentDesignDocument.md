@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 8/14/2020
 
-Updated On: 3/18/2021
-Updated By: Dairon Hernandez
+Updated By: NC
+Updated On: 6/15/2021
 
 **Automation Component**
 
@@ -66,10 +66,6 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : Automation model data (name, automation engine, file, and optional drive name)
           - Output : JSON file listing new automation information
-      - Upload automation file: [HttpPost("api/v{apiVersion}/automations/{id}/upload")]
-        - Payloads
-          - Input : Automation file
-          - Output : JSON file listing updated automation information
       - Update automation with file (create new automation with updated version): [HttpPost("api/v{apiVersion}/automations/{id}/update")]
         - Payloads
           - Input : Automation id, file, name, drive name (optional)
@@ -94,13 +90,13 @@ Updated By: Dairon Hernandez
         - Payloads
           - Input : None
           - Output : JSON file listing automation id, name, and name with version
-      - Update Automation Parameters: [HttpPost("api/v{apiVersion}/automations/automationId/UpdateParameters")]
+      - Update automation parameters: [HttpPost("api/v{apiVersion}/automations/automationId/UpdateParameters")]
         - Payloads
           - Input : JSON body containing a list of automation parameters
           - Output : JSON file listing new automation parameters
   - AutomationManager:
     - The AutomationManager will inherit BaseManager, which inherits IManager, and IAutomationManager.
-      - Beyond the base class and interfaces, AutomationManager will implement appropriate methods to assist AutomationController
+      - Beyond the base class and interfaces, AutomationManager will implement appropriate methods to assist AutomationsController.
 - Repositories:
   - AutomationRepository:
     - AutomationRepository will inherit EntityRepository<Automation>, which inherits ReadOnlyEntityRepository<Automation>, and IAutomationRepository.
@@ -108,6 +104,9 @@ Updated By: Dairon Hernandez
   - AutomationVersionRepository:
     - The AutomationVersionRepository will inherit EntityRepository<AutomationVersion>, which inherits ReadOnlyEntityRepository<AutomationVersion>, and IAutomationVersionRepository.
       - The AutomationVersionRepository will retrieve all automation versions, add/edit a new automation version, or retrieve/delete an automation version by id.
+  - AutomationParamaterRepository:
+    - The AutomationParameterRepository will inherit EntityRepository<AutomationParameter>, which inherits ReadOnlyEntityRepository<AutomationParameter>, and IAutomationParameterRepository.
+      - The AutomationParameterRepository will retrieve, add, edit, or delete automation parameters.
 - Models:
   - Automation Data Model:
     - The Automation data model will be used to view details of each automation.  It will inherit the NamedEntity class, which inherits the Entity class.

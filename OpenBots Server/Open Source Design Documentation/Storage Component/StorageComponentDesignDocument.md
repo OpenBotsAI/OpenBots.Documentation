@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 2/9/2021
 
-Updated On: 5/12/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/16/2021
 
 **Storage Component**
 
@@ -27,7 +27,7 @@ Updated By: Nicole Carrero
 
 **Design**
 
-- Overview: The overall structure uses the FilesController and / or DrivesController to allow the user to make a web request for either the entire list of files/folders within a drive or folder or details of an individual file or folder, or the entire list of drives within an organization.  If the user requests access to the entire list of files, folders, or drives, the request goes to the FilesController or DrivesController, which may use the FileManager (which can call the LocalFileStorageAdapter), and then calls the StorageFileRepository, StorageFolderRepository, or StorageDriveRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the files, folders, or drives could not be found.  The same process will occur when the user requests the file, folder, or server details as well as add, edit, delete, or export a file or folder.
+- Overview: The overall structure uses the FilesController and/or DrivesController to allow the user to make a web request for either the entire list of files/folders within a drive or folder or details of an individual file or folder, or the entire list of drives within an organization.  If the user requests access to the entire list of files, folders, or drives, the request goes to the FilesController or DrivesController, which may use the FileManager (which can call the LocalFileStorageAdapter), and then calls the StorageFileRepository, StorageFolderRepository, or StorageDriveRepository for access to the appropriate data from the Server.  If the request is valid, the data will be sent back to the user in the view.  If the request is invalid, the user will receive an error message stating that the files, folders, or drives could not be found.  The same process will occur when the user requests the file, folder, or server details as well as add, edit, delete, or export a file or folder.
 - Proposed Solution:
   - User Interface:
     - Dashboard
@@ -46,7 +46,7 @@ Updated By: Nicole Carrero
               - When a user double clicks a folder, it will redirect to show the files and folders within it.
               - The user can refresh the page using the refresh button.
   - NOTE: The current API version is 1.
-  - DrivesController:
+  - Drives Controller:
     - The DrivesController will make an API request to the FileManager, which in turn will call the appropriate adapter if necessary.  The StorageDriveRepository will be used to retrieve all the drives from the Server and will return that information back to the view.  The user can view all drives and add, edit, or delete a drive.
     - Routes:
       - All drives: [HttpGet("api/v{apiVersion}/Storage/Drives")]
@@ -192,7 +192,7 @@ Updated By: Nicole Carrero
   - Storage Drive Operation Repository:
     - The StorageDriveOperationRepository will inherit EntityRepository<StorageDriveOperation>, which inherits ReadOnlyEntityRepository, and IStorageDriveOperationRepository.
       - The StorageDriveOperationRepository will retrieve all file attribute entities, add a new file attribute, or retrieve, edit, or delete a file attribute entity by id.
-- Data Models/View Models:
+- Data/View Models:
   - Storage Drive Data Model:
     - The StorageDrive data model will be used to store details of each storage drive.  It will inherit the NamedEntity class, which inherits the Entity class.
       - Beyond the base classes, StorageDrive will have string FileStorageAdapterType, Guid OrganizationId, long StorageSizeInBytes, string StoragePath, long MaxStorageAllowedInBytes, and bool IsDefault.

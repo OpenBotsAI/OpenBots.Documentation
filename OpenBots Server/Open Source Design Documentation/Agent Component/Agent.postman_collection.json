@@ -9,91 +9,6 @@
 			"name": "Agent",
 			"item": [
 				{
-					"name": "Post Agent",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n            \"machineName\": \"{{machineName}}\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"SampleAgent\",\r\n            \"UserName\": \"SampleAgent\",\r\n            \"password\" : \"Password\",\r\n            \"AgentSetting\" : \r\n            {\"HeartbeatInterval\" : 31, \"JobLoggingInterval\" : 36, \"VerifySslCertificate\": true}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/agents/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"agents",
-								"{{entityId}}"
-							]
-						},
-						"description": "Adds a new Agent to the existing Agents"
-					},
-					"response": []
-				},
-				{
-					"name": "Heartbeat",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"lastReportedOn\": \"2021-01-07T13:53:55.1548516\",\r\n    \"lastReportedStatus\": \"\",\r\n    \"lastReportedWork\": \"\",\r\n    \"lastReportedMessage\": \"Hello\",\r\n    \"isHealthy\": true,\r\n    \"GetNextJob\" : true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/AddHeartbeat",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}",
-								"AddHeartbeat"
-							]
-						},
-						"description": "Performs a heartbeat operation on the Agent id that was passed"
-					},
-					"response": []
-				},
-				{
 					"name": "Get Agents",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -134,343 +49,6 @@
 							]
 						},
 						"description": "Get a list of all existing Agents"
-					},
-					"response": []
-				},
-				{
-					"name": "Patch Update Agent",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/isConnected\",\r\n      \"value\": true\r\n    }\r\n]\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}"
-							]
-						},
-						"description": "Perform a patch operation on the agent id that was specified"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Agent by Id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}"
-							]
-						},
-						"description": "Gets the properties of the Agent id that was requested"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Agent by Id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}"
-							]
-						},
-						"description": "Deletes the Agent that corresponds to the id that was passed"
-					},
-					"response": []
-				},
-				{
-					"name": "Connect",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/connect?MachineName={{machineName}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}",
-								"connect"
-							],
-							"query": [
-								{
-									"key": "MachineName",
-									"value": "{{machineName}}"
-								}
-							]
-						},
-						"description": "Performs and handshake with a machine. If the handshake succeeds an agentId is returned"
-					},
-					"response": []
-				},
-				{
-					"name": "Put Update Agent",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n            \"machineName\": \"{{machineName}}\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"SampleAgent\",\r\n            \"UserName\": \"SampleAgent\",\r\n            \"password\" : \"Password\",\r\n            \"AgentSetting\" : \r\n            {\"HeartbeatInterval\" : 31, \"JobLoggingInterval\" : 36, \"VerifySslCertificate\": true}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}"
-							]
-						},
-						"description": "Provides an action to update an Agent, when Agent id and the new details of Agent are given"
-					},
-					"response": []
-				},
-				{
-					"name": "Disconnect",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/disconnect?MachineName={{machineName}}&MacAddresses=1234&AgentId={{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"disconnect"
-							],
-							"query": [
-								{
-									"key": "MachineName",
-									"value": "{{machineName}}"
-								},
-								{
-									"key": "MacAddresses",
-									"value": "1234"
-								},
-								{
-									"key": "AgentId",
-									"value": "{{entityId}}"
-								}
-							]
-						},
-						"description": "Updates the isConnected field if the disconnect details are correct"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Agent Count",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/Count",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"Count"
-							]
-						},
-						"description": "Provides a Count of Agents"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Agent Lookup",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/GetLookup",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"GetLookup"
-							]
-						},
-						"description": "Lookup a list of Agent name and IDs"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Agent Heartbeats",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/AgentHeartbeats",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"Agents",
-								"{{entityId}}",
-								"AgentHeartbeats"
-							]
-						},
-						"description": "Provides a list of heartbeat details for a particular agent id"
 					},
 					"response": []
 				},
@@ -542,6 +120,72 @@
 					"response": []
 				},
 				{
+					"name": "Get Agent Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/Count",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"Count"
+							]
+						},
+						"description": "Provides a Count of Agents"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the properties of the Agent id that was requested"
+					},
+					"response": []
+				},
+				{
 					"name": "Resolve Agent",
 					"request": {
 						"auth": {
@@ -581,12 +225,487 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Post Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"machineName\": \"{{machineName}}\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"SampleAgent\",\r\n            \"UserName\": \"SampleAgent\",\r\n            \"password\" : \"Password\",\r\n            \"AgentSetting\" : \r\n            {\"HeartbeatInterval\" : 31, \"JobLoggingInterval\" : 36, \"VerifySslCertificate\": true}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/agents/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Adds a new Agent to the existing Agents"
+					},
+					"response": []
+				},
+				{
+					"name": "Put Update Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"machineName\": \"{{machineName}}\",\r\n            \"macAddresses\": \"12-34-56-AB-56-78\",\r\n            \"isEnabled\": true,\r\n            \"isHealthy\": true,\r\n            \"isConnected\": false,\r\n            \"name\": \"SampleAgent\",\r\n            \"UserName\": \"SampleAgent\",\r\n            \"password\" : \"Password\",\r\n            \"AgentSetting\" : \r\n            {\"HeartbeatInterval\" : 31, \"JobLoggingInterval\" : 36, \"VerifySslCertificate\": true}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Provides an action to update an Agent, when Agent id and the new details of Agent are given"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Agent by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Deletes the Agent that corresponds to the id that was passed"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Update Agent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/isConnected\",\r\n      \"value\": true\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}"
+							]
+						},
+						"description": "Perform a patch operation on the agent id that was specified"
+					},
+					"response": []
+				},
+				{
+					"name": "Connect",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/connect?MachineName={{machineName}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}",
+								"connect"
+							],
+							"query": [
+								{
+									"key": "MachineName",
+									"value": "{{machineName}}"
+								}
+							]
+						},
+						"description": "Performs and handshake with a machine. If the handshake succeeds an agentId is returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Disconnect",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/disconnect?MachineName={{machineName}}&MacAddresses=1234&AgentId={{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"disconnect"
+							],
+							"query": [
+								{
+									"key": "MachineName",
+									"value": "{{machineName}}"
+								},
+								{
+									"key": "MacAddresses",
+									"value": "1234"
+								},
+								{
+									"key": "AgentId",
+									"value": "{{entityId}}"
+								}
+							]
+						},
+						"description": "Updates the isConnected field if the disconnect details are correct"
+					},
+					"response": []
+				},
+				{
+					"name": "Heartbeat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastReportedOn\": \"2021-01-07T13:53:55.1548516\",\r\n    \"lastReportedStatus\": \"\",\r\n    \"lastReportedWork\": \"\",\r\n    \"lastReportedMessage\": \"Hello\",\r\n    \"isHealthy\": true,\r\n    \"GetNextJob\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/AddHeartbeat",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}",
+								"AddHeartbeat"
+							]
+						},
+						"description": "Performs a heartbeat operation on the Agent id that was passed"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent Heartbeats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/{{entityId}}/AgentHeartbeats",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"{{entityId}}",
+								"AgentHeartbeats"
+							]
+						},
+						"description": "Provides a list of heartbeat details for a particular agent id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agent Lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/Agents/GetLookup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"Agents",
+								"GetLookup"
+							]
+						},
+						"description": "Lookup a list of Agent name and IDs"
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Agent Group",
 			"item": [
+				{
+					"name": "Get All AgentGroups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AgentGroups",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AgentGroups"
+							]
+						},
+						"description": "Gets a list of all AgentGroups"
+					},
+					"response": []
+				},
+				{
+					"name": "AgentGroup Count",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}AgentGroups/Count",
+							"host": [
+								"{{localhost}}AgentGroups"
+							],
+							"path": [
+								"Count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get AgentGroup by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AgentGroups",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the values for the specified AgentGroup"
+					},
+					"response": []
+				},
+				{
+					"name": "Get AgentGroup by ID View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/v1/AgentGroups/view/{{entityId}}",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"AgentGroups",
+								"view",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets the values for the specified AgentGroup"
+					},
+					"response": []
+				},
 				{
 					"name": "Post AgentGroup",
 					"request": {
@@ -629,7 +748,7 @@
 					"response": []
 				},
 				{
-					"name": "Get All AgentGroups",
+					"name": "Update Group Members",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -641,42 +760,19 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
-						"url": {
-							"raw": "https://localhost:5001/api/v1/AgentGroups",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"AgentGroups"
-							]
-						},
-						"description": "Gets a list of all AgentGroups"
-					},
-					"response": []
-				},
-				{
-					"name": "Get AgentGroup by ID",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
+						"body": {
+							"mode": "raw",
+							"raw": "[{​​​​​​​​\r\n\"AgentId\" : \"{​​​​​​​​{​​​​​​​​childEntityId}​​​​​​​​}​​​​​​​​}​​​​​​​​}​​​​​​​​\"\r\n}​​​​​​​​,\r\n{​​​​​​​​\r\n\"AgentId\" : \"{​​​​​​​​{​​​​​​​​childEntityId2}​​​​​​​​}​​​​​​​​\"\r\n}​​​​​​​​]\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
-						"method": "GET",
-						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}",
+							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}/UpdateGroupMembers",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -686,15 +782,16 @@
 								"api",
 								"v1",
 								"AgentGroups",
-								"{{entityId}}"
+								"{{entityId}}",
+								"UpdateGroupMembers"
 							]
 						},
-						"description": "Gets the values for the specified AgentGroup"
+						"description": "Updates the specified AgentGroup entity with the provided values"
 					},
 					"response": []
 				},
 				{
-					"name": "PUT update AgentGroup",
+					"name": "Update AgentGroup",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -732,48 +829,6 @@
 							]
 						},
 						"description": "Updates the specified AgentGroup entity with the provided values"
-					},
-					"response": []
-				},
-				{
-					"name": "Patch update AgentGroup",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/name\",\r\n      \"value\": \"NewGroupName\"\r\n    }\r\n]\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5001",
-							"path": [
-								"api",
-								"v1",
-								"AgentGroups",
-								"{{entityId}}"
-							]
-						},
-						"description": "Performs a partial update on the specifeid AgentGroup entity"
 					},
 					"response": []
 				},
@@ -820,7 +875,7 @@
 					"response": []
 				},
 				{
-					"name": "Post new AgentGroupMember",
+					"name": "Patch update AgentGroup",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -832,10 +887,19 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "PATCH",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n      \"op\": \"replace\",\r\n      \"path\": \"/name\",\r\n      \"value\": \"NewGroupName\"\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}/AddAgentToGroup/{{childEntityId}}",
+							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -845,17 +909,15 @@
 								"api",
 								"v1",
 								"AgentGroups",
-								"{{entityId}}",
-								"AddAgentToGroup",
-								"{{childEntityId}}"
+								"{{entityId}}"
 							]
 						},
-						"description": "Creates a new AgentGroupMember entity with the specified IDs"
+						"description": "Performs a partial update on the specifeid AgentGroup entity"
 					},
 					"response": []
 				},
 				{
-					"name": "Get All Group Members",
+					"name": "Get Lookup",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -870,7 +932,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/v1/AgentGroups/{{entityId}}/GetAllGroupMembers",
+							"raw": "https://localhost:5001/api/v1/AgentGroups/GetLookup",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -880,8 +942,7 @@
 								"api",
 								"v1",
 								"AgentGroups",
-								"{{entityId}}",
-								"GetAllGroupMembers"
+								"GetLookup"
 							]
 						},
 						"description": "Gets all GroupMembers for the specified AgentGroup id"

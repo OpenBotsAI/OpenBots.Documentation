@@ -1,8 +1,8 @@
-Author: Nicole Carrero
+Author: NC
 Creation Date: 12/4/2020
 
-Updated On: 3/23/2021
-Updated By: Nicole Carrero
+Updated By: NC
+Updated On: 6/18/2021
 
 **Email Component**
 
@@ -191,7 +191,7 @@ Updated By: Nicole Carrero
         - Payloads
           - Input : Organization id, email id, attachment id, file id(s) list, optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s) information
-      - Add email attachment(s) (upload new file(s)) [HttpPost("api/v{apiVersion}/organizations/{organizationId}/emails/{emailId}/emailattachments")]
+      - Add email attachment(s) (upload new file(s)): [HttpPost("api/v{apiVersion}/organizations/{organizationId}/emails/{emailId}/emailattachments")]
         - Payloads
           - Input : Organization id, email id, file(s), optional query parameter ("?driveName={driveName}")
           - Output : JSON file listing newly created email attachment(s)
@@ -225,24 +225,24 @@ Updated By: Nicole Carrero
       - Beyond the base class and interfaces, EmailManager will implement the appropriate methods to assist EmailsController. 
 - Repositories:
   - EmailAccountRepository:
-    - The EmailAccountRepository will inherit EntityRepository<EmailAccount>, which inherits ReadOnlyEntityRepository<EmailAccount>, and IEmailAccountRepository.
+    - The EmailAccountRepository will inherit TenantEntityRepository<EmailAccount>, which inherits ReadOnlyEntityRepository<EmailAccount>, and IEmailAccountRepository.
       - Beyond the base classes and interface, EmailAccountRepository will access the EmailAccounts data table to retrieve, add, edit, or delete the entity in the Server.
   - EmailAttachmentRepository:
-    - The EmailAttachment Repository will inherit EntityRepository<EmailAttachment>, which inherits ReadOnlyEntityRepository<EmailAttachment>, and IEmailAttachmentRepository.
+    - The EmailAttachment Repository will inherit TenantEntityRepository<EmailAttachment>, which inherits ReadOnlyEntityRepository<EmailAttachment>, and IEmailAttachmentRepository.
       - Beyond the base classes and interface, EmailAttachmentRepository will access the EmailAttachments data table to retrieve, add, edit, or delete the entity in the Server.
   - EmailSettingsRepository:
-    - The EmailSettingsRepository will inherit EntityRepository<EmailSettings>, which inherits ReadOnlyEntityRepository<EmailSettings>, and IEmailSettingsRepository.
+    - The EmailSettingsRepository will inherit TenantEntityRepository<EmailSettings>, which inherits ReadOnlyEntityRepository<EmailSettings>, and IEmailSettingsRepository.
       - Beyond the base classes and interface, EmailSettingsRepository will access the EmailSettings data table to retrieve, add, edit, or delete the entity in the Server.
   - EmailRepository:
-    - The EmailRepository will inherit EntityRepository<EmailModel>, which inherits ReadOnlyEntityRepository<EmailModel>, and IEmailRepository.
+    - The EmailRepository will inherit TenantEntityRepository<EmailModel>, which inherits ReadOnlyEntityRepository<EmailModel>, and IEmailRepository.
       - Beyond the base classes and interface, EmailRepository will access the EmailLog data table to retrieve, add, edit, or delete the entity in the Server.
-- Data Models:
+- Data/View Models:
   - Email Address Data Model:
     - The EmailAddress data model will be used for email addresses when sending an email.  It has the methods ToMailAddress and IterateBack to assist in the creation of the email message.
       - EmailAddress will have string Name and string Address.
   - Email Attachment Data Model:
     - The EmailAttachment Data Model will be used for storing email attachments when sending an email.  It inherits the NamedEntity class, which inherits Entity and INamedEntity.  Entity inherits the IEntity interface.
-      - Beyond the base classes and interfaces, EmailAttachment will have string ContentType, long SizeInBytes, string StorageContentAddress, Guid BinaryObjectId, and Guid EmailId.
+      - Beyond the base classes and interfaces, EmailAttachment will have string ContentType, long SizeInBytes, string StorageContentAddress, Guid FileId, and Guid EmailId.
   - Email Account Data Model:
     - The EmailAccount data model will be used to determine which email account to use as the sender of an email.  It inherits the NamedEntity class, which inherits Entity and INamedEntity.  Entity inherits the IEntity interface.
       - Beyond the base classes and interfaces, EmailAccount will have bool IsDisabled, bool IsDefault, string Provider, bool IsSslEnabled, string Host, int Port, string Username, string EncryptedPassword, string PasswordHash, string ApiKey, string FromEmailAddress, string FromName, DateTime StartOnUTC, and DateTime EndOnUTC.
@@ -275,10 +275,10 @@ Updated By: Nicole Carrero
       - UpdateEmailViewModel will have DateTime SentOnUTC, string EmailObjectJson, string SenderName, string SenderAddress, Guid SenderUserId, string Status, string Reason, string Direction, Guid ConversationId, Guid ReplyToEmailId, Guid EmailAccountId, and IFormFile[] Files.
   - All Email Attachments View Model:
     - The AllEmailAttachmentsViewModel view model will be used to display specific properties of email attachments.
-      - AllEmailAttachments will have Guid EmailId, Guid BinaryObjectId, long SizeInBytes, and string Name.
+      - AllEmailAttachments will have Guid EmailId, Guid FileId, long SizeInBytes, and string Name.
   - Update Email Attachment View Model:
     - The UpdateEmailAttachmentViewModel view model will be used to update an email attachment.
-      - UpdateEmailAttachmentViewModel will have Guid Id, string Name, string ContentType, long SizeInBytes, Guid BinaryObjectId, and IFormFile File.
+      - UpdateEmailAttachmentViewModel will have Guid Id, string Name, string ContentType, long SizeInBytes, Guid FileId, and IFormFile File.
 
 **Sequence Diagrams**
 

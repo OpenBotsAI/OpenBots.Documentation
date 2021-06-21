@@ -634,7 +634,7 @@
 			"name": "Integration Event Subscription Attempt",
 			"item": [
 				{
-					"name": "Get All Integregration Event Subscription Atemmpts",
+					"name": "Get All Integregration Event Subscription Attempts",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -657,6 +657,36 @@
 								"organizations",
 								"{{organizationId}}",
 								"IntegrationEventSubscriptionAttempts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Integregration Event Subscription Attempts View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptionAttempts/view",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptionAttempts",
+								"view"
 							]
 						}
 					},
@@ -686,6 +716,38 @@
 								"organizations",
 								"{{organizationId}}",
 								"IntegrationEventSubscriptionAttempts",
+								"{{entityId}}"
+							]
+						},
+						"description": "Gets details of the IntegrationEventSubscriptionAttempt corresponding to the provided Guid"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubscriptionAttempt by Id View",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serverUrl}}/organizations/{{organizationId}}/IntegrationEventSubscriptionAttempts/view/{{entityId}}",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"organizations",
+								"{{organizationId}}",
+								"IntegrationEventSubscriptionAttempts",
+								"view",
 								"{{entityId}}"
 							]
 						},
